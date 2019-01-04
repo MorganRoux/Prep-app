@@ -11,6 +11,8 @@ exports[`should render Equipment List 1`] = `
         "category": "microphone",
         "id": 0,
         "key": "OJZIJDOIJAOD",
+        "parentKey": null,
+        "parentName": null,
         "quantity": 1,
       }
     }
@@ -23,6 +25,8 @@ exports[`should render Equipment List 1`] = `
         "category": "microphone",
         "id": 1,
         "key": "OIJZUZKXKZ",
+        "parentKey": null,
+        "parentName": null,
         "quantity": 1,
       }
     }
@@ -35,6 +39,8 @@ exports[`should render Equipment List 1`] = `
         "category": "microphone",
         "id": 2,
         "key": "POIUYNBVBCFD",
+        "parentKey": null,
+        "parentName": null,
         "quantity": 5,
       }
     }
@@ -48,6 +54,8 @@ exports[`should render Equipment List 1`] = `
         "category": "kit",
         "id": 1,
         "key": "PIUTRELJJGFHD",
+        "parentKey": null,
+        "parentName": null,
         "quantity": 1,
       }
     }

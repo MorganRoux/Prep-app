@@ -4,6 +4,7 @@ import EquipmentListItem from './EquipmentListItem';
 import { connect } from 'react-redux'
 import EquipmentKit from './EquipmentKit';
 import { removeEquipment } from '../actions/equipment';
+import { isNull } from 'util';
 
 export class EquipmentList extends React.Component {
     constructor(props) {
@@ -24,20 +25,22 @@ export class EquipmentList extends React.Component {
                 <h3>EquipmentList</h3>
                 
                 { this.props.equipments.map((equipment) => {
-                    
-                    return (equipment.category === 'kit') ? (
-                        <EquipmentKit 
-                            key={equipment.key}
-                            kit={equipment}
-                            onRemove = {this.onRemoveKit}
-                        />
-                    ):(
-                        <EquipmentListItem 
-                            key={equipment.key}
-                            equipment = {equipment}
-                            onRemove = {this.onRemoveItem}
-                        /> 
-                    ); 
+                    if(isNull(equipment.parentKey))
+                    {
+                        return (equipment.category === 'kit') ? (
+                            <EquipmentKit 
+                                key={equipment.key}
+                                kit={equipment}
+                                onRemove = {this.onRemoveKit}
+                            />
+                        ):(
+                            <EquipmentListItem 
+                                key={equipment.key}
+                                equipment = {equipment}
+                                onRemove = {this.onRemoveItem}
+                            /> 
+                        ); 
+                    }
                 })}
             </div> 
         );

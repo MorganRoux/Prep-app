@@ -4,10 +4,24 @@ import { shallow } from 'enzyme';
 import kits from '../fixtures/kits';
 import equipments from '../fixtures/equipment';
 
+let wrapper, removeEquipment;
+
+beforeEach(() => {
+    removeEquipment = jest.fn();
+    wrapper = shallow(<EquipmentKit 
+        kit = {equipments[3]}
+        kits = {kits}
+        removeEquipment = {removeEquipment}
+        equipments= {equipments}
+    />);
+
+});
+
 test('should render EquipmentKit', () => {
-    const wrapper = shallow(<EquipmentKit 
-                                kit = {equipments[3]}
-                                kits = {kits}
-                            />);
+    
     // expect(wrapper).toMatchSnapshot();
  });
+
+ test('should handle onRemove', () => {
+   
+ })

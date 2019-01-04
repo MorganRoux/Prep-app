@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import equipmentsReducer, { equipementsReducer } from '../../reducers/equipment';
+import equipmentsReducer from '../../reducers/equipment';
 import equipments from '../fixtures/equipment';
 
 
