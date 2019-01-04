@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Equipment List 1`] = `
+<div>
+  <h3>
+    EquipmentList
+  </h3>
+  <Connect(EquipmentListItem)
+    equipment={
+      Object {
+        "brand": "shure",
+        "category": "microphone",
+        "description": "micro cardioide",
+        "id": 1,
+        "publicName": "sm57",
+        "quantity": 1,
+        "stockName": "sm57A",
+      }
+    }
+    key="1"
+  />
+  <Connect(EquipmentListItem)
+    equipment={
+      Object {
+        "brand": "shure",
+        "category": "microphone",
+        "description": "micro grosse caisse",
+        "id": 2,
+        "publicName": "Beta91",
+        "quantity": 1,
+        "stockName": "B91",
+      }
+    }
+    key="2"
+  />
+  <Connect(EquipmentListItem)
+    equipment={
+      Object {
+        "brand": "shure",
+        "category": "microphone",
+        "description": "micro grosse caisse",
+        "id": 3,
+        "publicName": "Beta52",
+        "quantity": 5,
+        "stockName": "B52",
+      }
+    }
+    key="3"
+  />
+</div>
+`;

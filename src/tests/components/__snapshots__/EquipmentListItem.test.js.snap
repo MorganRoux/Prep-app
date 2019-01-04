@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EquipmentLIstItem 1`] = `
+<div>
+  <form>
+    <input
+      name="quantity"
+      onChange={[Function]}
+      placeholder="Quantity"
+      type="text"
+      value={1}
+    />
+    <input
+      name="public_name"
+      onChange={[Function]}
+      placeholder="Public Name"
+      type="text"
+      value="sm57"
+    />
+    <input
+      name="stock_name"
+      onChange={[Function]}
+      placeholder="Stock Name"
+      type="text"
+      value="sm57A"
+    />
+  </form>
+  <button
+    onClick={[Function]}
+  >
+    Remove
+  </button>
+</div>
+`;
