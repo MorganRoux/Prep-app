@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { EquipmentList } from '../../components/EquipmentList';
-import equipments from '../fixtures/equipments';
+import equipments from '../fixtures/equipment';
 
 test('should render Equipment List', () => {
     const wrapper = shallow(<EquipmentList equipments = {equipments}/>);

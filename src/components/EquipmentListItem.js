@@ -1,20 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { removeEquipment } from '../actions/equipments';
+import { removeEquipment } from '../actions/equipment';
 
 export class EquipmentListItem extends React.Component {
-    
     constructor(props) {
         super(props);
-        this.state = {
+        this.equipment = {
             id: props.equipment.id,
-            brand: props.equipment.brand,
-            category: props.equipment.category,
-            description: props.equipment.description,
             quantity: props.equipment.quantity,
-            publicName: props.equipment.publicName,
-            stockName: props.equipment.stockName
+            brand: props.stocklist[props.equipment.id].brand,
+            category: props.stocklist[props.equipment.id].category,
+            description: props.stocklist[props.equipment.id].description,
+            publicName: props.stocklist[props.equipment.id].publicName,
+            stockName: props.stocklist[props.equipment.id].stockName
         }
+        this.state = this.equipment;
     }
     
     onRemove = () => {
@@ -67,7 +67,8 @@ export class EquipmentListItem extends React.Component {
 const mapStateToProps = (state, props) => {
     return {
         equipments: state.equipments,
-        filters: state.filters
+        filters: state.filters,
+        stocklist : state.stocklist
     };
 } 
 

@@ -1,16 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { EquipmentListItem } from '../../components/EquipmentListItem';
-import equipments from '../fixtures/equipments';
+import equipments from '../fixtures/equipment'
+import stocklist from '../fixtures/equipment'
 
 let wrapper, removeEquipment;
 
 beforeEach( () => {
     removeEquipment = jest.fn();
-
     wrapper = shallow(<EquipmentListItem 
                             equipment = {equipments[0]}
-                            removeEquipment =  {removeEquipment}
+                            stocklist = {stocklist}
+                            removeEquipment = {removeEquipment}
                         />);
 });
 

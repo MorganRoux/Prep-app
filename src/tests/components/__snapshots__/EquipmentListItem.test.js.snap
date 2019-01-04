@@ -15,14 +15,12 @@ exports[`should render EquipmentLIstItem 1`] = `
       onChange={[Function]}
       placeholder="Public Name"
       type="text"
-      value="sm57"
     />
     <input
       name="stock_name"
       onChange={[Function]}
       placeholder="Stock Name"
       type="text"
-      value="sm57A"
     />
   </form>
   <button

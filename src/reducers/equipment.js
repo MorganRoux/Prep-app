@@ -1,4 +1,4 @@
-import equipments from '../tests/fixtures/equipments';
+import equipments from '../tests/fixtures/equipment';
 const equipmentReducerDefaultState = equipments;
 
 const equipmentsReducer = (state = equipmentReducerDefaultState, action) => {

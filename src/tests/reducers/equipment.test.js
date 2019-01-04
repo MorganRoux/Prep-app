@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import equipmentsReducer, { equipementsReducer } from '../../reducers/equipments';
-import equipments from '../fixtures/equipments';
+import equipmentsReducer, { equipementsReducer } from '../../reducers/equipment';
+import equipments from '../fixtures/equipment';
 
 
 test('should set default state', ()=>{

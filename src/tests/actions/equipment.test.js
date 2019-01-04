@@ -1,5 +1,5 @@
 
-import { removeEquipment } from '../../actions/equipments';
+import { removeEquipment } from '../../actions/equipment';
 
 
 test('should setup removeEquipment action object', () => {

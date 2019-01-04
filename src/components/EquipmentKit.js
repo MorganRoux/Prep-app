@@ -13,4 +13,9 @@ const EquipmentKit = () => {
     );
 }
 
+const mapStateToProps = (state) => {
+    return {
+        // kits: state.kits
+    };
+}
 export default EquipmentKit

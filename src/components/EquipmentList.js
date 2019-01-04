@@ -9,11 +9,13 @@ export const EquipmentList = (props) => (
         
         { props.equipments.map((equipment) => {
             
-            return (
+            return (equipment.category === 'kit') ? (
+                <EquipmentKit />
+            ):(
                 <EquipmentListItem 
-                    key={equipment.id}
-                    equipment = {equipment}
-                />   
+                key={equipment.id}
+                equipment = {equipment}
+                /> 
             ); 
         })}
     </div>

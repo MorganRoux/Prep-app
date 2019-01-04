@@ -8,13 +8,19 @@ exports[`should render Equipment List 1`] = `
   <Connect(EquipmentListItem)
     equipment={
       Object {
-        "brand": "shure",
         "category": "microphone",
-        "description": "micro cardioide",
-        "id": 1,
-        "publicName": "sm57",
+        "id": 0,
         "quantity": 1,
-        "stockName": "sm57A",
+      }
+    }
+    key="0"
+  />
+  <Connect(EquipmentListItem)
+    equipment={
+      Object {
+        "category": "microphone",
+        "id": 1,
+        "quantity": 1,
       }
     }
     key="1"
@@ -22,30 +28,12 @@ exports[`should render Equipment List 1`] = `
   <Connect(EquipmentListItem)
     equipment={
       Object {
-        "brand": "shure",
         "category": "microphone",
-        "description": "micro grosse caisse",
         "id": 2,
-        "publicName": "Beta91",
-        "quantity": 1,
-        "stockName": "B91",
+        "quantity": 5,
       }
     }
     key="2"
-  />
-  <Connect(EquipmentListItem)
-    equipment={
-      Object {
-        "brand": "shure",
-        "category": "microphone",
-        "description": "micro grosse caisse",
-        "id": 3,
-        "publicName": "Beta52",
-        "quantity": 5,
-        "stockName": "B52",
-      }
-    }
-    key="3"
   />
 </div>
 `;
