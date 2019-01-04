@@ -1,19 +1,48 @@
 import React from 'react';
 import EquipmentListItem from './EquipmentListItem';
+import { connect } from 'react-redux'
 import EquipmentKit from './EquipmentKit';
 
-const EquipmentList = () => {
-    return (
-        <div>
-            <h3>EquipmentList</h3>
+export class EquipmentList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-            <EquipmentListItem />
-            <EquipmentListItem />
-            <EquipmentListItem />
+    onRemove = (id) => {
+        this.props.removeEquipment(id);
+    }
 
-            <EquipmentKit />
-        </div>
-    );
+    onEdit = () => {
+
+    }
+
+    onAdd = () => {
+
+    }
+
+    render() {
+        return (
+            <div>
+                <h3>EquipmentList</h3>
+                
+                { this.props.equipments.map((equipment) => {
+                    
+                    return (
+                        <EquipmentListItem 
+                            key={equipment.id}
+                            equipment = {equipment}
+                        />   
+                    ); 
+                })}
+            </div>
+        );
+    }
 }
 
-export default EquipmentList
+const mapStateToProps = (state) => {
+    return {
+        equipments: state.equipments
+    }
+};
+
+export default connect(mapStateToProps)(EquipmentList)

@@ -1,25 +1,31 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { removeEquipment } from '../actions/equipments';
 
-export default class EquipmentListItem extends React.Component {
+export class EquipmentListItem extends React.Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            quantity: '',
-            name: '',
-            stockName: ''
+            id: props.equipment.id,
+            brand: props.equipment.brand,
+            category: props.equipment.category,
+            description: props.equipment.description,
+            quantity: props.equipment.quantity,
+            publicName: props.equipment.publicName,
+            stockName: props.equipment.stockName
         }
     }
     
     onRemove = () => {
-
+        this.props.removeEquipment(this.state.id);
     }
     onQuantityChange = () => {
 
     }
 
-    onNameChange = () => {
-
+    onPublicNameChange = () => {
+        console.log('change !');
     }
 
     onStockNameChange = () => {
@@ -34,16 +40,15 @@ export default class EquipmentListItem extends React.Component {
                         type="text"
                         name= "quantity"
                         placeholder="Quantity"
-                        autoFocus
                         value={this.state.quantity}
                         onChange = {this.onQuantityChange}
                     />
                     <input 
                         type="text"
-                        name= "name"
-                        placeholder="Name"
-                        value={this.state.name}
-                        onChange = {this.onNameChange}
+                        name= "public_name"
+                        placeholder="Public Name"
+                        value={this.state.publicName}
+                        onChange = {this.onPublicNameChange}
                     />
                     <input 
                         type="text"
@@ -58,4 +63,21 @@ export default class EquipmentListItem extends React.Component {
         );
     };
 }
+
+const mapStateToProps = (state, props) => {
+    return {
+        equipments: state.equipments,
+        filters: state.filters
+    };
+} 
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        removeEquipment: (id) => dispatch(removeEquipment(id)),
+        editEquipment: () => dispatch(editEquipment()),
+        addEquipment: () => dispatch(addEquipment())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EquipmentListItem)
 
