@@ -5,7 +5,7 @@ const equipmentsReducer = (state = equipmentReducerDefaultState, action) => {
     switch(action.type){
 
     case 'REMOVE_EQUIPMENT' :
-        const newState = state.filter((equipment) => (action.id !== equipment.id) );
+        const newState = state.filter((equipment) => (action.key !== equipment.key) );
         return newState;
     
     case 'EDIT_EQUIPMENT' :

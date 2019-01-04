@@ -10,12 +10,14 @@ test('should set default state', ()=>{
 });
 
 test('should remove equipement by id', ()=>{
-    const id = equipments[1].id;
+    const key = equipments[1].key;
     const action = {
         type: 'REMOVE_EQUIPMENT',
-        id
+        key
     }
-    const state = equipmentsReducer(equipments,action);
+    const state = equipmentsReducer(
+        [equipments[0],equipments[1],equipments[2]],
+        action);
     expect(state).toEqual([equipments[0], equipments[2]]);
 
 });

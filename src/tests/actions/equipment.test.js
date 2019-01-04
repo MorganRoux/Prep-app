@@ -3,11 +3,11 @@ import { removeEquipment } from '../../actions/equipment';
 
 
 test('should setup removeEquipment action object', () => {
-    const id = 2
-    const action = removeEquipment(id);
+    const key = 2
+    const action = removeEquipment(key);
     expect(action).toEqual({
         type: 'REMOVE_EQUIPMENT',
-        id
+        key
     });
 });
 

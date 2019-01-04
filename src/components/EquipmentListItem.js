@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { removeEquipment } from '../actions/equipment';
 
 export class EquipmentListItem extends React.Component {
     constructor(props) {
         super(props);
+
         this.equipment = {
             id: props.equipment.id,
+            key: props.equipment.key,
             quantity: props.equipment.quantity,
             brand: props.stocklist[props.equipment.id].brand,
             category: props.stocklist[props.equipment.id].category,
@@ -18,7 +19,7 @@ export class EquipmentListItem extends React.Component {
     }
     
     onRemove = () => {
-        this.props.removeEquipment(this.state.id);
+        this.props.onRemove(this.state.key);
     }
     onQuantityChange = () => {
 
@@ -72,13 +73,5 @@ const mapStateToProps = (state, props) => {
     };
 } 
 
-const mapDispatchToProps = (dispatch, props) => {
-    return {
-        removeEquipment: (id) => dispatch(removeEquipment(id)),
-        editEquipment: () => dispatch(editEquipment()),
-        addEquipment: () => dispatch(addEquipment())
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EquipmentListItem)
+export default connect(mapStateToProps)(EquipmentListItem)
 

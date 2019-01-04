@@ -1,8 +1,8 @@
 
 
-export const removeEquipment = (id) => ({
+export const removeEquipment = (key) => ({
     type: 'REMOVE_EQUIPMENT',
-    id
+    key
 }); 
 
 export const editEquipment = () => ({

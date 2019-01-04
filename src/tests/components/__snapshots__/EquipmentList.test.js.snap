@@ -10,30 +10,48 @@ exports[`should render Equipment List 1`] = `
       Object {
         "category": "microphone",
         "id": 0,
+        "key": "OJZIJDOIJAOD",
         "quantity": 1,
       }
     }
-    key="0"
+    key="OJZIJDOIJAOD"
+    onRemove={[Function]}
   />
   <Connect(EquipmentListItem)
     equipment={
       Object {
         "category": "microphone",
         "id": 1,
+        "key": "OIJZUZKXKZ",
         "quantity": 1,
       }
     }
-    key="1"
+    key="OIJZUZKXKZ"
+    onRemove={[Function]}
   />
   <Connect(EquipmentListItem)
     equipment={
       Object {
         "category": "microphone",
         "id": 2,
+        "key": "POIUYNBVBCFD",
         "quantity": 5,
       }
     }
-    key="2"
+    key="POIUYNBVBCFD"
+    onRemove={[Function]}
+  />
+  <Connect(EquipmentKit)
+    key="PIUTRELJJGFHD"
+    kit={
+      Object {
+        "category": "kit",
+        "id": 1,
+        "key": "PIUTRELJJGFHD",
+        "quantity": 1,
+      }
+    }
+    onRemove={[Function]}
   />
 </div>
 `;

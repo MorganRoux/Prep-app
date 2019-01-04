@@ -1,12 +1,37 @@
-import { equipments } from './equipment'
 
-console.log(equipments);
+
 const kits = [{
     name: 'kit1',
-    list: [equipments[0],equipment[0],equipments[2]]
+    list: [{
+        category: 'microphone',
+        quantity: 3,
+        id: 2
+    },{
+        category: 'microphone',
+        quantity: 10,
+        id: 1
+    },{
+        category: 'microphone',
+        quantity: 5,
+        id: 0
+    }],
+    id: 1
 },{
     name: 'kit2',
-    list: [equipments[1],equipment[1],equipments[1]]
+    list: [{
+        category: 'microphone',
+        quantity: 4,
+        id: 1
+    },{
+        category: 'microphone',
+        quantity: 1,
+        id: 1
+    },{
+        category: 'microphone',
+        quantity: 8,
+        id: 2
+    }],
+    id: 1
 }];
 
 export default kits
