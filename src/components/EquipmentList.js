@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import EquipmentKit from './EquipmentKit';
 import { removeEquipment } from '../actions/equipment';
 import { isNull } from 'util';
+import Table from '@material-ui/core/Table';
+import { Paper, TableBody, TableRow, TableCell } from '@material-ui/core';
+
 
 export class EquipmentList extends React.Component {
     constructor(props) {
@@ -21,9 +24,9 @@ export class EquipmentList extends React.Component {
     
     render() {
         return (
-            <div>
+            <Paper>
                 <h3>EquipmentList</h3>
-                
+                <Table>
                 { this.props.equipments.map((equipment) => {
                     if(isNull(equipment.parentKey))
                     {
@@ -34,15 +37,18 @@ export class EquipmentList extends React.Component {
                                 onRemove = {this.onRemoveKit}
                             />
                         ):(
+                            <TableBody>
                             <EquipmentListItem 
                                 key={equipment.key}
                                 equipment = {equipment}
                                 onRemove = {this.onRemoveItem}
                             /> 
+                            </TableBody>
                         ); 
                     }
                 })}
-            </div> 
+                </Table>
+            </Paper> 
         );
     }
 }

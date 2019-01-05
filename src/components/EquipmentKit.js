@@ -4,6 +4,7 @@ import EquipmentListItem from './EquipmentListItem';
 import { connect } from 'react-redux';
 import { removeEquipment } from '../actions/equipment';
 
+import {TableBody, TableRow, TableCell } from '@material-ui/core';
 export class EquipmentKit extends React.Component{
     constructor(props) {
         super(props);
@@ -15,8 +16,8 @@ export class EquipmentKit extends React.Component{
 
     render() {
         return (
-            <div>
-                <h4>EquipmentKit</h4>
+            <TableBody>
+                <TableRow><TableCell colSpan="4">EquipmentKit</TableCell></TableRow>
                 {   this.props.equipments.map((equipment) => {
                     return (
                     equipment.parentKey === this.props.kit.key && (
@@ -27,7 +28,7 @@ export class EquipmentKit extends React.Component{
                         />
                     )
                 )})}
-            </div>
+            </TableBody>
         );
     }
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import Table from '@material-ui/core/Table';
+import { Paper, TableBody, TableRow, TableCell } from '@material-ui/core';
 
 export class EquipmentListItem extends React.Component {
     constructor(props) {
@@ -35,8 +37,8 @@ export class EquipmentListItem extends React.Component {
     
     render() {
         return (
-            <div>
-                <form>
+            <TableRow>
+                <TableCell>
                     <input 
                         type="text"
                         name= "quantity"
@@ -44,23 +46,18 @@ export class EquipmentListItem extends React.Component {
                         value={this.state.quantity}
                         onChange = {this.onQuantityChange}
                     />
-                    <input 
-                        type="text"
-                        name= "public_name"
-                        placeholder="Public Name"
-                        value={this.state.publicName}
-                        onChange = {this.onPublicNameChange}
-                    />
-                    <input 
-                        type="text"
-                        name= "stock_name"
-                        placeholder="Stock Name"
-                        value={this.state.stockName}
-                        onChange = {this.onStockNameChange}
-                    />
-                </form>
-                <button onClick={this.onRemove}>Remove</button>
-            </div>
+                </TableCell>
+                <TableCell>
+                    {this.state.publicName}
+                </TableCell>
+                <TableCell>
+                    {this.state.stockName}
+                </TableCell>
+                    
+                <TableCell>
+                    <button onClick={this.onRemove}>Remove</button>
+                </TableCell>   
+            </TableRow>
         );
     };
 }
