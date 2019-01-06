@@ -1,32 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render EquipmentLIstItem 1`] = `
-<div>
-  <form>
-    <input
-      name="quantity"
-      onChange={[Function]}
-      placeholder="Quantity"
-      type="text"
-      value={1}
-    />
-    <input
-      name="public_name"
-      onChange={[Function]}
-      placeholder="Public Name"
-      type="text"
-    />
-    <input
-      name="stock_name"
-      onChange={[Function]}
-      placeholder="Stock Name"
-      type="text"
-    />
-  </form>
-  <button
-    onClick={[Function]}
+<WithStyles(TableRow)
+  key="OJZIJDOIJAOD-row"
+>
+  <WithStyles(TableCell)>
+    <WithStyles(Checkbox) />
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    key="OJZIJDOIJAOD-cell-1"
   >
-    Remove
-  </button>
-</div>
+    1
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    key="OJZIJDOIJAOD-cell-2"
+  />
+  <WithStyles(TableCell)
+    key="OJZIJDOIJAOD-cell-3"
+  >
+    sm57
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    key="OJZIJDOIJAOD-cell-4"
+  >
+    <WithStyles(IconButton)
+      aria-label="Delete"
+      className="delbutton"
+      onClick={[Function]}
+    >
+      <pure(DeleteIcon) />
+    </WithStyles(IconButton)>
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
 `;

@@ -4,14 +4,14 @@ import { EquipmentListItem } from '../../components/EquipmentListItem';
 import equipments from '../fixtures/equipment'
 import stocklist from '../fixtures/equipment'
 
-let wrapper, onRemove;
+let wrapper, removeEquipment;
 
 beforeEach( () => {
-    onRemove = jest.fn();
+    removeEquipment = jest.fn();
     wrapper = shallow(<EquipmentListItem 
                             equipment = {equipments[0]}
                             stocklist = {stocklist}
-                            onRemove = {onRemove}
+                            removeEquipment = {removeEquipment}
                         />);
 });
 
@@ -21,8 +21,8 @@ test('should render EquipmentLIstItem', () => {
 });
 
 test('should handle onRemove', () => {
-    wrapper.find('button').simulate('click');
-    expect(onRemove).toHaveBeenCalledWith(equipments[0].key);
+    wrapper.find('.delbutton').simulate('click');
+    expect(removeEquipment).toHaveBeenCalledWith(equipments[0].id);
 });
 
 test('should handle onPublicNameChange', () => {

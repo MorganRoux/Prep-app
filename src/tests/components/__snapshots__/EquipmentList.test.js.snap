@@ -1,65 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Equipment List 1`] = `
-<div>
+<WithStyles(Paper)>
   <h3>
     EquipmentList
   </h3>
-  <Connect(EquipmentListItem)
-    equipment={
-      Object {
-        "category": "microphone",
-        "id": 0,
-        "key": "OJZIJDOIJAOD",
-        "parentKey": null,
-        "parentName": null,
-        "quantity": 1,
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          <WithStyles(Checkbox) />
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Quantité
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Nom
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Description
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell) />
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)
+      key="OJZIJDOIJAOD-body"
+    >
+      <Connect(EquipmentListItem)
+        equipment={
+          Object {
+            "category": "microphone",
+            "id": "OJZIJDOIJAOD",
+            "parentId": null,
+            "parentName": null,
+            "quantity": 1,
+            "stockName": "sm57",
+          }
+        }
+        key="OJZIJDOIJAOD"
+      />
+    </WithStyles(TableBody)>
+    <WithStyles(TableBody)
+      key="OIJZUZKXKZ-body"
+    >
+      <Connect(EquipmentListItem)
+        equipment={
+          Object {
+            "category": "microphone",
+            "id": "OIJZUZKXKZ",
+            "parentId": null,
+            "parentName": null,
+            "quantity": 1,
+            "stockName": "B91",
+          }
+        }
+        key="OIJZUZKXKZ"
+      />
+    </WithStyles(TableBody)>
+    <WithStyles(TableBody)
+      key="POIUYNBVBCFD-body"
+    >
+      <Connect(EquipmentListItem)
+        equipment={
+          Object {
+            "category": "microphone",
+            "id": "POIUYNBVBCFD",
+            "parentId": null,
+            "parentName": null,
+            "quantity": 5,
+            "stockName": "B52",
+          }
+        }
+        key="POIUYNBVBCFD"
+      />
+    </WithStyles(TableBody)>
+    <Connect(EquipmentKit)
+      key="PIUTRELJJGFHD"
+      kit={
+        Object {
+          "category": "kit",
+          "id": "PIUTRELJJGFHD",
+          "parentId": null,
+          "parentName": null,
+          "quantity": 1,
+          "stockName": "kit1",
+        }
       }
-    }
-    key="OJZIJDOIJAOD"
-    onRemove={[Function]}
-  />
-  <Connect(EquipmentListItem)
-    equipment={
-      Object {
-        "category": "microphone",
-        "id": 1,
-        "key": "OIJZUZKXKZ",
-        "parentKey": null,
-        "parentName": null,
-        "quantity": 1,
-      }
-    }
-    key="OIJZUZKXKZ"
-    onRemove={[Function]}
-  />
-  <Connect(EquipmentListItem)
-    equipment={
-      Object {
-        "category": "microphone",
-        "id": 2,
-        "key": "POIUYNBVBCFD",
-        "parentKey": null,
-        "parentName": null,
-        "quantity": 5,
-      }
-    }
-    key="POIUYNBVBCFD"
-    onRemove={[Function]}
-  />
-  <Connect(EquipmentKit)
-    key="PIUTRELJJGFHD"
-    kit={
-      Object {
-        "category": "kit",
-        "id": 1,
-        "key": "PIUTRELJJGFHD",
-        "parentKey": null,
-        "parentName": null,
-        "quantity": 1,
-      }
-    }
-    onRemove={[Function]}
-  />
-</div>
+    >
+      <Connect(EquipmentListItem)
+        equipment={
+          Object {
+            "category": "microphone",
+            "id": "JHDJZJNZOCN",
+            "parentId": "PIUTRELJJGFHD",
+            "parentName": "kit1",
+            "quantity": 3,
+            "stockName": "sm57",
+          }
+        }
+        key="JHDJZJNZOCN"
+      />
+      <Connect(EquipmentListItem)
+        equipment={
+          Object {
+            "category": "microphone",
+            "id": "UATEREGEBDNK",
+            "parentId": "PIUTRELJJGFHD",
+            "parentName": "kit1",
+            "quantity": 10,
+            "stockName": "B52",
+          }
+        }
+        key="UATEREGEBDNK"
+      />
+      <Connect(EquipmentListItem)
+        equipment={
+          Object {
+            "category": "microphone",
+            "id": "POIAYLKJSDB",
+            "parentId": "PIUTRELJJGFHD",
+            "parentName": "kit1",
+            "quantity": 5,
+            "stockName": "B91",
+          }
+        }
+        key="POIAYLKJSDB"
+      />
+    </Connect(EquipmentKit)>
+    <Connect(EquipmentAddForm) />
+  </WithStyles(Table)>
+</WithStyles(Paper)>
 `;

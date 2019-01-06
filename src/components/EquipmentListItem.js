@@ -45,7 +45,10 @@ export class EquipmentListItem extends React.Component {
                 <TableCell key = {`${this.state.id}-cell-2`}>{this.state.stockItem.publicName}</TableCell>
                 <TableCell key = {`${this.state.id}-cell-3`}>{this.state.stockItem.stockName}</TableCell>
                 <TableCell key = {`${this.state.id}-cell-4`}>
-                    <IconButton aria-label="Delete" onClick = {this.onRemove}>
+                    <IconButton 
+                        className = {'delbutton'} 
+                        aria-label="Delete" 
+                        onClick = {this.onRemove}>
                     <DeleteIcon />
                     </IconButton>
                 </TableCell>   

@@ -10,10 +10,10 @@ test('should set default state', ()=>{
 });
 
 test('should remove equipement by id', ()=>{
-    const key = equipments[1].key;
+    const id = equipments[1].id;
     const action = {
         type: 'REMOVE_EQUIPMENT',
-        key
+        id
     }
     const state = equipmentsReducer(
         [equipments[0],equipments[1],equipments[2]],
