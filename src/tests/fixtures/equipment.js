@@ -3,51 +3,51 @@ import uuid from 'uuid'
 const equipments = [{
     category: 'microphone',
     quantity: 1,
-    id: 0,                          // id of the corresponding element in stocklist (non unique)
-    key: 'OJZIJDOIJAOD',            // key in the database (unique) => represent this element
-    parentKey: null,                // key in the database of the parent
+    stockId: 0,                          // id of the corresponding element in stocklist (non unique)
+    id: 'OJZIJDOIJAOD',            // key in the database (unique) => represent this element
+    parentId: null,                // key in the database of the parent
     parentName: null
 }, {
     category: 'microphone',
     quantity: 1,
-    id: 1,
-    key: 'OIJZUZKXKZ',
-    parentKey: null,
+    stockId: 1,
+    id: 'OIJZUZKXKZ',
+    parentId: null,
     parentName: null
 }, {
     category: 'microphone',
     quantity: 5,
-    id: 2,
-    key: 'POIUYNBVBCFD',
-    parentKey: null,
+    stockId: 2,
+    id: 'POIUYNBVBCFD',
+    parentId: null,
     parentName: null
 }, {
     category: 'kit',
     quantity: 1,
-    id: 1,                          // id of the corresponding element in kits (non unique)
-    key: 'PIUTRELJJGFHD',           // key in the database (unique) => represent this element
-    parentKey: null,
+    stockId: 1,                          // id of the corresponding element in kits (non unique)
+    id: 'PIUTRELJJGFHD',           // key in the database (unique) => represent this element
+    parentId: null,
     parentName: null
 },{
     category: 'microphone',
     quantity: 3,
-    id: 2,
-    key: 'JHDJZJNZOCN',
-    parentKey: 'PIUTRELJJGFHD',
+    stockId: 2,
+    id: 'JHDJZJNZOCN',
+    parentId: 'PIUTRELJJGFHD',
     parentName: 'kit1'
 },{
     category: 'microphone',
     quantity: 10,
-    id: 1,
-    key: 'UATEREGEBDNK',
-    parentKey: 'PIUTRELJJGFHD',
+    stockId: 1,
+    id: 'UATEREGEBDNK',
+    parentId: 'PIUTRELJJGFHD',
     parentName: 'kit1'
 },{
     category: 'microphone',
     quantity: 5,
-    id: 0,
-    key: 'POIAYLKJSDB',
-    parentKey: 'PIUTRELJJGFHD',
+    stockId: 0,
+    id: 'POIAYLKJSDB',
+    parentId: 'PIUTRELJJGFHD',
     parentName: 'kit1'
 }];
 

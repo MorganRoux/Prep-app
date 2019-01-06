@@ -8,21 +8,20 @@ export class EquipmentListItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.equipment = {
+        this.state = {
+            stockId: props.equipment.stockId,
             id: props.equipment.id,
-            key: props.equipment.key,
             quantity: props.equipment.quantity,
-            brand: props.stocklist[props.equipment.id].brand,
-            category: props.stocklist[props.equipment.id].category,
-            description: props.stocklist[props.equipment.id].description,
-            publicName: props.stocklist[props.equipment.id].publicName,
-            stockName: props.stocklist[props.equipment.id].stockName
+            brand: props.stocklist[props.equipment.stockId].brand,
+            category: props.stocklist[props.equipment.stockId].category,
+            description: props.stocklist[props.equipment.stockId].description,
+            publicName: props.stocklist[props.equipment.stockId].publicName,
+            stockName: props.stocklist[props.equipment.stockId].stockName
         }
-        this.state = this.equipment;
     }
     
     onRemove = () => {
-        this.props.removeEquipment(this.state.key);
+        this.props.removeEquipment(this.state.id);
     }
     onQuantityChange = () => {
 
@@ -38,8 +37,8 @@ export class EquipmentListItem extends React.Component {
     
     render() {
         return (
-            <TableRow>
-                <TableCell>
+            <TableRow key={`${this.state.id}-row`}>
+                <TableCell key = {`${this.state.id}-cell-1`}>
                     <input 
                         type="text"
                         name= "quantity"
@@ -48,14 +47,13 @@ export class EquipmentListItem extends React.Component {
                         onChange = {this.onQuantityChange}
                     />
                 </TableCell>
-                <TableCell>
+                <TableCell key = {`${this.state.id}-cell-2`}>
                     {this.state.publicName}
                 </TableCell>
-                <TableCell>
+                <TableCell key = {`${this.state.id}-cell-3`}>
                     {this.state.stockName}
                 </TableCell>
-                    
-                <TableCell>
+                <TableCell key = {`${this.state.id}-cell-4`}>
                     <button onClick={this.onRemove}>Remove</button>
                 </TableCell>   
             </TableRow>
@@ -73,7 +71,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        removeEquipment: (key) => dispatch(removeEquipment(key)),
+        removeEquipment: (id) => dispatch(removeEquipment(id)),
         editEquipment: () => dispatch(editEquipment()),
         addEquipment: () => dispatch(addEquipment())
     };

@@ -17,14 +17,14 @@ export class EquipmentList extends React.Component {
     renderKit = (kit) => {
         return (
             <EquipmentKit 
-                key={kit.key}
+                key={kit.id}
                 kit={kit}
             >
             { this.props.equipments.map((item) => {
                 return (
-                item.parentKey === kit.key && (
+                item.parentId === kit.id && (
                     <EquipmentListItem 
-                    key={uuid()}
+                    key={item.id}
                     equipment={item}
                     />
                 )
@@ -35,9 +35,9 @@ export class EquipmentList extends React.Component {
 
     renderItem = (item) => {
         return (
-            <TableBody>
+            <TableBody key = {`${item.id}-body`}>
                 <EquipmentListItem 
-                    key={item.key}
+                    key={item.id}
                     equipment = {item}
                 /> 
             </TableBody>
@@ -51,7 +51,7 @@ export class EquipmentList extends React.Component {
                 <Table>
                 { this.props.equipments.map((equipment) => {
                     //render only the equipments without parent
-                    if(isNull(equipment.parentKey))
+                    if(isNull(equipment.parentId))
                     {
                         return (equipment.category === 'kit') ? (
                             this.renderKit(equipment)
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        removeEquipment: (key) => dispatch(removeEquipment(key)),
+        removeEquipment: (id) => dispatch(removeEquipment(id)),
         editEquipment: () => dispatch(editEquipment()),
         addEquipment: () => dispatch(addEquipment())
     };

@@ -8,12 +8,18 @@ import {TableBody, TableRow, TableCell } from '@material-ui/core';
 export class EquipmentKit extends React.Component{
     constructor(props) {
         super(props);
+
+        this.state = {
+            ...props.kit
+        }
     }
 
     render() {
         return (
-            <TableBody>
-                <TableRow><TableCell colSpan="4">EquipmentKit</TableCell></TableRow>
+            <TableBody key = {`${this.state.id}-body`}>
+                <TableRow key = {`${this.state.id}-row`}>
+                    <TableCell key = {`${this.state.id}-cell-1`} colSpan="4">EquipmentKit</TableCell>
+                </TableRow>
                 { this.props.children }
             </TableBody>
         );
