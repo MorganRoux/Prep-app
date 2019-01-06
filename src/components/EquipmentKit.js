@@ -10,24 +10,11 @@ export class EquipmentKit extends React.Component{
         super(props);
     }
 
-    onRemove = (key) => {
-        this.props.removeEquipment(key);
-    }
-
     render() {
         return (
             <TableBody>
                 <TableRow><TableCell colSpan="4">EquipmentKit</TableCell></TableRow>
-                {   this.props.equipments.map((equipment) => {
-                    return (
-                    equipment.parentKey === this.props.kit.key && (
-                        <EquipmentListItem 
-                        key={uuid()}
-                        equipment={equipment}
-                        onRemove={this.onRemove}
-                        />
-                    )
-                )})}
+                { this.props.children }
             </TableBody>
         );
     }

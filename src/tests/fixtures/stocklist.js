@@ -4,7 +4,7 @@ const stocklist = [{
     description:'micro cardioide',
     publicName: 'sm57',
     stockName: 'sm57B',
-    id: 1
+    id: 1                       // id in the databae (unique)
 }, {
     category: 'microphone',
     brand: 'shure',

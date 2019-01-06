@@ -3,9 +3,9 @@ import uuid from 'uuid'
 const equipments = [{
     category: 'microphone',
     quantity: 1,
-    id: 0,
-    key: 'OJZIJDOIJAOD',
-    parentKey: null,
+    id: 0,                          // id of the corresponding element in stocklist (non unique)
+    key: 'OJZIJDOIJAOD',            // key in the database (unique) => represent this element
+    parentKey: null,                // key in the database of the parent
     parentName: null
 }, {
     category: 'microphone',
@@ -24,8 +24,8 @@ const equipments = [{
 }, {
     category: 'kit',
     quantity: 1,
-    id: 1,
-    key: 'PIUTRELJJGFHD',
+    id: 1,                          // id of the corresponding element in kits (non unique)
+    key: 'PIUTRELJJGFHD',           // key in the database (unique) => represent this element
     parentKey: null,
     parentName: null
 },{

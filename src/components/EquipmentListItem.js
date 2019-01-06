@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import { Paper, TableBody, TableRow, TableCell } from '@material-ui/core';
+import { removeEquipment } from '../actions/equipment';
 
 export class EquipmentListItem extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ export class EquipmentListItem extends React.Component {
     }
     
     onRemove = () => {
-        this.props.onRemove(this.state.key);
+        this.props.removeEquipment(this.state.key);
     }
     onQuantityChange = () => {
 
@@ -70,5 +71,13 @@ const mapStateToProps = (state, props) => {
     };
 } 
 
-export default connect(mapStateToProps)(EquipmentListItem)
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        removeEquipment: (key) => dispatch(removeEquipment(key)),
+        editEquipment: () => dispatch(editEquipment()),
+        addEquipment: () => dispatch(addEquipment())
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EquipmentListItem)
 

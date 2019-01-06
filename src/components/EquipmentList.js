@@ -13,37 +13,50 @@ export class EquipmentList extends React.Component {
     constructor(props) {
         super(props);
     }
-    
-    onRemoveItem = (key) => {
-        this.props.removeEquipment(key);
+
+    renderKit = (kit) => {
+        return (
+            <EquipmentKit 
+                key={kit.key}
+                kit={kit}
+            >
+            { this.props.equipments.map((item) => {
+                return (
+                item.parentKey === kit.key && (
+                    <EquipmentListItem 
+                    key={uuid()}
+                    equipment={item}
+                    />
+                )
+            )})}
+            </EquipmentKit>
+        );
     }
 
-    onRemoveKit = () => {
-
+    renderItem = (item) => {
+        return (
+            <TableBody>
+                <EquipmentListItem 
+                    key={item.key}
+                    equipment = {item}
+                /> 
+            </TableBody>
+        );
     }
-    
+
     render() {
         return (
             <Paper>
                 <h3>EquipmentList</h3>
                 <Table>
                 { this.props.equipments.map((equipment) => {
+                    //render only the equipments without parent
                     if(isNull(equipment.parentKey))
                     {
                         return (equipment.category === 'kit') ? (
-                            <EquipmentKit 
-                                key={equipment.key}
-                                kit={equipment}
-                                onRemove = {this.onRemoveKit}
-                            />
+                            this.renderKit(equipment)
                         ):(
-                            <TableBody>
-                            <EquipmentListItem 
-                                key={equipment.key}
-                                equipment = {equipment}
-                                onRemove = {this.onRemoveItem}
-                            /> 
-                            </TableBody>
+                            this.renderItem(equipment)
                         ); 
                     }
                 })}
