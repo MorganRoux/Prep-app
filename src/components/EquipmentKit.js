@@ -3,24 +3,53 @@ import React from 'react';
 import EquipmentListItem from './EquipmentListItem';
 import { connect } from 'react-redux';
 import { removeEquipment } from '../actions/equipment';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import {TableBody, TableRow, TableCell } from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+
 export class EquipmentKit extends React.Component{
     constructor(props) {
         super(props);
 
         this.state = {
-            ...props.kit
+            ...props.kit,
+            expand: true
         }
+    }
+    onRemove = () => {
+        this.props.removeEquipment(this.state.id);
+    }
+
+    onExpand = () => {
+        this.setState( (prevState) => ({
+            expand: !prevState.expand
+        }));
     }
 
     render() {
         return (
             <TableBody key = {`${this.state.id}-body`}>
                 <TableRow key = {`${this.state.id}-row`}>
-                    <TableCell key = {`${this.state.id}-cell-1`} colSpan="4">EquipmentKit</TableCell>
+                    <TableCell key = {`${this.state.id}-cell-1`}>
+                        <Checkbox />
+                        <IconButton aria-label="Expand" onClick = {this.onExpand}>
+                            <Icon color="primary">
+                            {this.state.expand ? 'arrow_drop_down' : 'arrow_right'}
+                            </Icon>
+                        </IconButton>
+                    </TableCell>
+                    <TableCell key = {`${this.state.id}-cell-2`}>{this.state.quantity}</TableCell>
+                    <TableCell key = {`${this.state.id}-cell-3`} colSpan="2">EquipmentKit</TableCell>
+                    <TableCell key = {`${this.state.id}-cell-4`}>
+                        <IconButton aria-label="Delete" onClick = {this.onRemove}>
+                        <DeleteIcon />
+                        </IconButton>
+                    </TableCell>
                 </TableRow>
-                { this.props.children }
+                { this.state.expand && this.props.children }
             </TableBody>
         );
     }
@@ -28,7 +57,6 @@ export class EquipmentKit extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-         kits: state.kits,
          equipments: state.equipments
     };
 }

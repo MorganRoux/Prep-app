@@ -3,21 +3,23 @@ import { connect } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import { Paper, TableBody, TableRow, TableCell } from '@material-ui/core';
 import { removeEquipment } from '../actions/equipment';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Checkbox from '@material-ui/core/Checkbox';
 
 export class EquipmentListItem extends React.Component {
     constructor(props) {
         super(props);
-
+        const stockItem = props.stocklist.find((item) => {
+            return ( item.stockName === props.equipment.stockName )
+        });
         this.state = {
-            stockId: props.equipment.stockId,
+            stockName: props.equipment.stockName,
             id: props.equipment.id,
             quantity: props.equipment.quantity,
-            brand: props.stocklist[props.equipment.stockId].brand,
-            category: props.stocklist[props.equipment.stockId].category,
-            description: props.stocklist[props.equipment.stockId].description,
-            publicName: props.stocklist[props.equipment.stockId].publicName,
-            stockName: props.stocklist[props.equipment.stockId].stockName
+            stockItem: stockItem
         }
+        
     }
     
     onRemove = () => {
@@ -38,23 +40,14 @@ export class EquipmentListItem extends React.Component {
     render() {
         return (
             <TableRow key={`${this.state.id}-row`}>
-                <TableCell key = {`${this.state.id}-cell-1`}>
-                    <input 
-                        type="text"
-                        name= "quantity"
-                        placeholder="Quantity"
-                        value={this.state.quantity}
-                        onChange = {this.onQuantityChange}
-                    />
-                </TableCell>
-                <TableCell key = {`${this.state.id}-cell-2`}>
-                    {this.state.publicName}
-                </TableCell>
-                <TableCell key = {`${this.state.id}-cell-3`}>
-                    {this.state.stockName}
-                </TableCell>
+                <TableCell><Checkbox /></TableCell>
+                <TableCell key = {`${this.state.id}-cell-1`}>{this.state.quantity}</TableCell>
+                <TableCell key = {`${this.state.id}-cell-2`}>{this.state.stockItem.publicName}</TableCell>
+                <TableCell key = {`${this.state.id}-cell-3`}>{this.state.stockItem.stockName}</TableCell>
                 <TableCell key = {`${this.state.id}-cell-4`}>
-                    <button onClick={this.onRemove}>Remove</button>
+                    <IconButton aria-label="Delete" onClick = {this.onRemove}>
+                    <DeleteIcon />
+                    </IconButton>
                 </TableCell>   
             </TableRow>
         );
