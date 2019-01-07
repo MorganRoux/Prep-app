@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render EquipmentLIstItem 1`] = `
+exports[`should render EquipmentListItem 1`] = `
 <WithStyles(TableRow)
   key="OJZIJDOIJAOD-row"
 >

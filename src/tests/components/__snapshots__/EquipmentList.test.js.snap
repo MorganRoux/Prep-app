@@ -68,7 +68,7 @@ exports[`should render Equipment List 1`] = `
     <WithStyles(TableBody)
       key="OJZIJDOIJAOD-body"
     >
-      <Connect(EquipmentListItem)
+      <Connect(Component)
         equipment={
           Object {
             "category": "microphone",
@@ -85,7 +85,7 @@ exports[`should render Equipment List 1`] = `
     <WithStyles(TableBody)
       key="OIJZUZKXKZ-body"
     >
-      <Connect(EquipmentListItem)
+      <Connect(Component)
         equipment={
           Object {
             "category": "microphone",
@@ -102,7 +102,7 @@ exports[`should render Equipment List 1`] = `
     <WithStyles(TableBody)
       key="POIUYNBVBCFD-body"
     >
-      <Connect(EquipmentListItem)
+      <Connect(Component)
         equipment={
           Object {
             "category": "microphone",
@@ -116,7 +116,7 @@ exports[`should render Equipment List 1`] = `
         key="POIUYNBVBCFD"
       />
     </WithStyles(TableBody)>
-    <Connect(EquipmentKit)
+    <Connect(Component)
       key="PIUTRELJJGFHD"
       kit={
         Object {
@@ -129,7 +129,7 @@ exports[`should render Equipment List 1`] = `
         }
       }
     >
-      <Connect(EquipmentListItem)
+      <Connect(Component)
         equipment={
           Object {
             "category": "microphone",
@@ -142,7 +142,7 @@ exports[`should render Equipment List 1`] = `
         }
         key="JHDJZJNZOCN"
       />
-      <Connect(EquipmentListItem)
+      <Connect(Component)
         equipment={
           Object {
             "category": "microphone",
@@ -155,7 +155,7 @@ exports[`should render Equipment List 1`] = `
         }
         key="UATEREGEBDNK"
       />
-      <Connect(EquipmentListItem)
+      <Connect(Component)
         equipment={
           Object {
             "category": "microphone",
@@ -168,8 +168,8 @@ exports[`should render Equipment List 1`] = `
         }
         key="POIAYLKJSDB"
       />
-    </Connect(EquipmentKit)>
-    <Connect(EquipmentAddForm) />
+    </Connect(Component)>
+    <Connect(Component) />
   </WithStyles(Table)>
 </WithStyles(Paper)>
 `;

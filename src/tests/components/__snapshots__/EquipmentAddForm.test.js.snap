@@ -48,36 +48,5 @@ exports[`should render EquipmentAddForm 1`] = `
       </WithStyles(IconButton)>
     </WithStyles(TableCell)>
   </WithStyles(TableRow)>
-  <WithStyles(Snackbar)
-    ContentProps={
-      Object {
-        "aria-describedby": "message-id",
-      }
-    }
-    action={
-      Array [
-        <WithStyles(IconButton)
-          aria-label="Close"
-          color="inherit"
-          onClick={[Function]}
-      >
-          <pure(CloseIcon) />
-      </WithStyles(IconButton)>,
-      ]
-    }
-    anchorOrigin={
-      Object {
-        "horizontal": "left",
-        "vertical": "bottom",
-      }
-    }
-    autoHideDuration={2000}
-    message={
-      <span
-        id="message-id"
-      />
-    }
-    open={false}
-  />
 </WithStyles(TableFooter)>
 `;

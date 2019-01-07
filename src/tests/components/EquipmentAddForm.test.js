@@ -5,13 +5,15 @@ import equipments from '../fixtures/equipment';
 import stocklist from '../fixtures/stocklist';
 
 
-let wrapper, addEquipment;
+let wrapper, addEquipment, enqueueSnackbar;
 
 beforeEach(() => {
     addEquipment = jest.fn();
+    enqueueSnackbar = jest.fn();
     wrapper = shallow(<EquipmentAddForm 
         kit = {equipments[3]}
         addEquipment = {addEquipment}
+        enqueueSnackbar = {enqueueSnackbar}
         equipments= {equipments}
         stocklist = {stocklist}
     />);
@@ -32,6 +34,15 @@ test('should render EquipmentAddForm', () => {
 
  });
 
+ test('should not change if quantity is not a number', () => {
+
+    const value = '3.5';
+     wrapper.find('input').at(0).simulate('change', { 
+         target: {value }
+     });
+     expect(wrapper.state('quantity')).toBe('');
+    
+})
  test('should handle on publicName change', () => {
     const value = 'name';
     wrapper.find('input').at(1).simulate('change', { 
@@ -42,7 +53,7 @@ test('should render EquipmentAddForm', () => {
 
 test('OnAdd : should display error message if fields empty on add', () => {
     wrapper.find('.add-button').simulate('click');
-    expect(wrapper.state('message')).toBe('Erreur : valeurs invalides');
+    expect(enqueueSnackbar).toHaveBeenLastCalledWith('Informations erronnées', {variant:'error'});
 });
 
 test('OnAdd : should display error message if item not found', () => {
@@ -51,7 +62,7 @@ test('OnAdd : should display error message if item not found', () => {
 
     wrapper.setState(()=>({quantity, publicName}));
     wrapper.find('.add-button').simulate('click');
-    expect(wrapper.state('message')).toBe('Erreur : item non trouvé');
+    expect(enqueueSnackbar).toHaveBeenLastCalledWith('Élement introuvable', {variant:'error'});
 });
 
 test('onAdd : should add an item', () => {
@@ -61,14 +72,13 @@ test('onAdd : should add an item', () => {
     const newState = {
         quantity: '',
         publicName:'', 
-        message: 'Élement ajouté !',
-        snackBarOpen: true
     }
     wrapper.setState(()=>({quantity, publicName: stocklist[0].publicName}));
     wrapper.find('.add-button').simulate('click');
 
     expect(addEquipment).toHaveBeenCalledWith(arg);
     expect(wrapper.state()).toEqual(newState);
+    expect(enqueueSnackbar).toHaveBeenLastCalledWith('3x sm57 ajoutés', {variant:'success'});
 });
 
 

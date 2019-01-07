@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import Table from '@material-ui/core/Table';
-import { Paper, TableBody, TableRow, TableCell } from '@material-ui/core';
+import {TableRow, TableCell } from '@material-ui/core';
 import { removeEquipment } from '../actions/equipment';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withSnackbar } from 'notistack';
 
 export class EquipmentListItem extends React.Component {
     constructor(props) {
@@ -24,6 +24,7 @@ export class EquipmentListItem extends React.Component {
     
     onRemove = () => {
         this.props.removeEquipment(this.state.id);
+        this.props.enqueueSnackbar('Item supprimé', {variant:'success'});
     }
     onQuantityChange = () => {
 
@@ -73,5 +74,5 @@ const mapDispatchToProps = (dispatch, props) => {
     };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(EquipmentListItem)
+export default connect(mapStateToProps,mapDispatchToProps)(withSnackbar(EquipmentListItem))
 

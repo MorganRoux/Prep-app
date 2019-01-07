@@ -3,9 +3,9 @@ import EquipmentListItem from './EquipmentListItem';
 import EquipmentAddForm from './EquipmentAddForm';
 import { connect } from 'react-redux'
 import EquipmentKit from './EquipmentKit';
-import { removeEquipment } from '../actions/equipment';
 import Table from '@material-ui/core/Table';
-import { Paper, TableBody, TableRow, TableCell, TableHead, TableFooter, TableSortLabel } from '@material-ui/core';
+import { Paper, TableBody, TableRow, TableCell, TableHead, TableSortLabel } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Checkbox from '@material-ui/core/Checkbox';
 
@@ -13,7 +13,8 @@ export class EquipmentList extends React.Component {
     constructor(props) {
         super(props);
     }
-    
+
+
     rows = [
         {id: 'quantity', label: 'Quantité'},
         {id: 'name', label: 'Nom'},
@@ -113,9 +114,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        removeEquipment: (id) => dispatch(removeEquipment(id)),
-        editEquipment: () => dispatch(editEquipment()),
-        addEquipment: () => dispatch(addEquipment())
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EquipmentList)

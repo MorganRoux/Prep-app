@@ -2,12 +2,10 @@ import React from 'react'
 import { Paper, TableBody, TableRow, TableCell, TableFooter } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
 
 import { addEquipment } from '../actions/equipment'
 import { connect } from 'react-redux'
+import { withSnackbar } from 'notistack'
 
 export class EquipmentAddForm extends React.Component {
     
@@ -16,10 +14,7 @@ export class EquipmentAddForm extends React.Component {
 
         this.state = {
             quantity: '',
-            publicName: '',
-            message: undefined,
-            snackBarOpen: false
-            
+            publicName: ''
         }
     }
 
@@ -33,44 +28,46 @@ export class EquipmentAddForm extends React.Component {
 
     onQuantityChange = (e) => {
         const quantity = e.target.value;
-        this.setState( () => ({quantity, message: undefined}));
+        if(quantity.match(/^\d*$/)) {
+            this.setState( () => ({quantity}));
+        }
     }
 
     onPublicNameChange = (e) => {
         const publicName = e.target.value;
-        this.setState( () => ({publicName, message: undefined}));
+        this.setState( () => ({publicName}));
     }
 
     onAdd = () => {
+
+        // test the inputs
         if(!this.state.publicName || !this.state.quantity) {
-            this.setState(() => ({
-                message: 'Erreur : valeurs invalides',
-                snackBarOpen: true
-            }))
+            this.props.enqueueSnackbar('Informations erronnées', {variant:'error'});
             return;
         }
 
-        //searching the item in the stocklist
+        // search the item in the stocklist
         const itemToAdd = this.props.stocklist.find( (item) => {
             return (item.publicName === this.state.publicName)
         });
         if (!itemToAdd) { 
-            this.setState(() => ({
-                message: 'Erreur : item non trouvé',
-                snackBarOpen: true
-            }))
+            this.props.enqueueSnackbar('Élement introuvable', {variant:'error'});
             return;
         }
+
+        // add item
         this.props.addEquipment({
             ...itemToAdd,
             quantity: this.state.quantity
         });
+        const s = this.state.quantity === '1' ? '':'s'
+        this.props.enqueueSnackbar(
+            `${this.state.quantity}x ${this.state.publicName} ajouté${s}`, {variant:'success'});
 
         this.setState( () => ({
             quantity: '',
-            publicName:'', 
-            message: 'Élement ajouté !',
-            snackBarOpen: true}));
+            publicName:''
+        }));
     }
 
     render () {
@@ -106,32 +103,6 @@ export class EquipmentAddForm extends React.Component {
                         </IconButton>
                     </TableCell>
                 </TableRow>
-                <Snackbar
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    open={this.state.snackBarOpen}
-                    autoHideDuration={2000}
-                    onClose={this.handleClose}
-                    ContentProps={{
-                        'aria-describedby': 'message-id',
-                    }}
-                    message={<span id="message-id">{this.state.message}</span>}
-                    action={[
-                        // <Button key="undo" color="secondary" size="small" onClick={this.handleCloseSnackBar}>
-                        // UNDO
-                        // </Button>,
-                        <IconButton
-                        key="close"
-                        aria-label="Close"
-                        color="inherit"
-                        onClick={this.handleCloseSnackBar}
-                        >
-                        <CloseIcon />
-                        </IconButton>,
-                    ]}
-                />
                 </TableFooter>
         );
     }
@@ -150,4 +121,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EquipmentAddForm)
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(EquipmentAddForm))

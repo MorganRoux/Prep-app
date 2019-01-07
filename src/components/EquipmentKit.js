@@ -1,14 +1,12 @@
-import uuid from 'uuid'
 import React from 'react';
-import EquipmentListItem from './EquipmentListItem';
 import { connect } from 'react-redux';
 import { removeEquipment } from '../actions/equipment';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
-
 import {TableBody, TableRow, TableCell } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withSnackbar } from 'notistack';
 
 export class EquipmentKit extends React.Component{
     constructor(props) {
@@ -21,6 +19,7 @@ export class EquipmentKit extends React.Component{
     }
     onRemove = () => {
         this.props.removeEquipment(this.state.id);
+        this.props.enqueueSnackbar('Kit supprimé', {variant:'success'});
     }
 
     onExpand = () => {
@@ -67,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EquipmentKit)
+export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(EquipmentKit))
