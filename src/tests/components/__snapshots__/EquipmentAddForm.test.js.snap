@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EquipmentAddForm 1`] = `
+<WithStyles(TableFooter)>
+  <WithStyles(TableRow)
+    className="addForm-row"
+  >
+    <WithStyles(TableCell) />
+    <WithStyles(TableCell)
+      className="addForm-cell-1"
+    >
+      <input
+        autoFocus={true}
+        name="quantity"
+        onChange={[Function]}
+        placeholder=""
+        type="text"
+        value=""
+      />
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      className="addForm-cell-2"
+    >
+      <input
+        name="publicName"
+        onChange={[Function]}
+        placeholder=""
+        type="text"
+        value=""
+      />
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      className="addForm-cell-3"
+    />
+    <WithStyles(TableCell)
+      className="addForm-cell-4"
+    >
+      <WithStyles(IconButton)
+        aria-label="Add"
+        className="add-button"
+        onClick={[Function]}
+      >
+        <WithStyles(Icon)
+          color="primary"
+        >
+          add_circle
+        </WithStyles(Icon)>
+      </WithStyles(IconButton)>
+    </WithStyles(TableCell)>
+  </WithStyles(TableRow)>
+  <WithStyles(Snackbar)
+    ContentProps={
+      Object {
+        "aria-describedby": "message-id",
+      }
+    }
+    action={
+      Array [
+        <WithStyles(IconButton)
+          aria-label="Close"
+          color="inherit"
+          onClick={[Function]}
+      >
+          <pure(CloseIcon) />
+      </WithStyles(IconButton)>,
+      ]
+    }
+    anchorOrigin={
+      Object {
+        "horizontal": "left",
+        "vertical": "bottom",
+      }
+    }
+    autoHideDuration={2000}
+    message={
+      <span
+        id="message-id"
+      />
+    }
+    open={false}
+  />
+</WithStyles(TableFooter)>
+`;

@@ -69,11 +69,8 @@ export class EquipmentAddForm extends React.Component {
         this.setState( () => ({
             quantity: '',
             publicName:'', 
-            message: undefined}));
-        this.setState(() => ({
-                message: 'Élement ajouté !',
-                snackBarOpen: true
-            }))
+            message: 'Élement ajouté !',
+            snackBarOpen: true}));
     }
 
     render () {
@@ -102,7 +99,7 @@ export class EquipmentAddForm extends React.Component {
                     </TableCell>
                     <TableCell className= "addForm-cell-3"></TableCell>
                     <TableCell className= "addForm-cell-4">
-                        <IconButton aria-label="Add" onClick = {this.onAdd}>
+                        <IconButton className="add-button" aria-label="Add" onClick = {this.onAdd}>
                             <Icon color="primary">
                             add_circle
                             </Icon>
@@ -144,7 +141,6 @@ const mapStateToProps = (state) => {
     return {
         equipements: state.equipements,
         stocklist: state.stocklist,
-        kit: state.kits
     }
 }
 

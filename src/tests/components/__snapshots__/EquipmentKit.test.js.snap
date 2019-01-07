@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EquipmentKit 1`] = `
+<WithStyles(TableBody)
+  key="PIUTRELJJGFHD-body"
+>
+  <WithStyles(TableRow)
+    key="PIUTRELJJGFHD-row"
+  >
+    <WithStyles(TableCell)
+      key="PIUTRELJJGFHD-cell-1"
+    >
+      <WithStyles(Checkbox) />
+      <WithStyles(IconButton)
+        aria-label="Expand"
+        className="expand-button"
+        onClick={[Function]}
+      >
+        <WithStyles(Icon)
+          color="primary"
+        >
+          arrow_drop_down
+        </WithStyles(Icon)>
+      </WithStyles(IconButton)>
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="PIUTRELJJGFHD-cell-2"
+    >
+      1
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      colSpan="2"
+      key="PIUTRELJJGFHD-cell-3"
+    >
+      EquipmentKit
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="PIUTRELJJGFHD-cell-4"
+    >
+      <WithStyles(IconButton)
+        aria-label="Delete"
+        className="delbutton"
+        onClick={[Function]}
+      >
+        <pure(DeleteIcon) />
+      </WithStyles(IconButton)>
+    </WithStyles(TableCell)>
+  </WithStyles(TableRow)>
+</WithStyles(TableBody)>
+`;

@@ -35,7 +35,7 @@ export class EquipmentKit extends React.Component{
                 <TableRow key = {`${this.state.id}-row`}>
                     <TableCell key = {`${this.state.id}-cell-1`}>
                         <Checkbox />
-                        <IconButton aria-label="Expand" onClick = {this.onExpand}>
+                        <IconButton className="expand-button" aria-label="Expand" onClick = {this.onExpand}>
                             <Icon color="primary">
                             {this.state.expand ? 'arrow_drop_down' : 'arrow_right'}
                             </Icon>
@@ -44,7 +44,7 @@ export class EquipmentKit extends React.Component{
                     <TableCell key = {`${this.state.id}-cell-2`}>{this.state.quantity}</TableCell>
                     <TableCell key = {`${this.state.id}-cell-3`} colSpan="2">EquipmentKit</TableCell>
                     <TableCell key = {`${this.state.id}-cell-4`}>
-                        <IconButton aria-label="Delete" onClick = {this.onRemove}>
+                        <IconButton className="delbutton" aria-label="Delete" onClick = {this.onRemove}>
                         <DeleteIcon />
                         </IconButton>
                     </TableCell>

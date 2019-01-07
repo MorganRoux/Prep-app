@@ -1,13 +1,12 @@
 import equipments from '../tests/fixtures/equipment';
-const equipmentReducerDefaultState = equipments;
 import uuid from 'uuid'
 
+const equipmentReducerDefaultState = equipments;
 
 const addEquipment = ({category, stockName, quantity, list}, state) => {
     
     let newState = [...state];
     //item is not a kit
-    console.log(category, stockName,quantity, list )
     if(category !== 'kit')
     {
         newState.push({

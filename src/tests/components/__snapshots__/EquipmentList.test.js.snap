@@ -11,14 +11,56 @@ exports[`should render Equipment List 1`] = `
         <WithStyles(TableCell)>
           <WithStyles(Checkbox) />
         </WithStyles(TableCell)>
-        <WithStyles(TableCell)>
-          Quantité
+        <WithStyles(TableCell)
+          key="quantity"
+        >
+          <WithStyles(Tooltip)
+            enterDelay={300}
+            placement="bottom-end"
+            title="Trier"
+          >
+            <WithStyles(TableSortLabel)
+              active={false}
+              direction="asc"
+              onClick={[Function]}
+            >
+              Quantité
+            </WithStyles(TableSortLabel)>
+          </WithStyles(Tooltip)>
         </WithStyles(TableCell)>
-        <WithStyles(TableCell)>
-          Nom
+        <WithStyles(TableCell)
+          key="name"
+        >
+          <WithStyles(Tooltip)
+            enterDelay={300}
+            placement="bottom-end"
+            title="Trier"
+          >
+            <WithStyles(TableSortLabel)
+              active={false}
+              direction="asc"
+              onClick={[Function]}
+            >
+              Nom
+            </WithStyles(TableSortLabel)>
+          </WithStyles(Tooltip)>
         </WithStyles(TableCell)>
-        <WithStyles(TableCell)>
-          Description
+        <WithStyles(TableCell)
+          key="description"
+        >
+          <WithStyles(Tooltip)
+            enterDelay={300}
+            placement="bottom-end"
+            title="Trier"
+          >
+            <WithStyles(TableSortLabel)
+              active={false}
+              direction="asc"
+              onClick={[Function]}
+            >
+              Description
+            </WithStyles(TableSortLabel)>
+          </WithStyles(Tooltip)>
         </WithStyles(TableCell)>
         <WithStyles(TableCell) />
       </WithStyles(TableRow)>
