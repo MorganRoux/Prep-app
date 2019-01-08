@@ -8,7 +8,7 @@ const equipments = [{
     parentId: null,                // key in the database of the parent
     parentName: null
 }, {
-    category: 'microphone',
+    category: 'other',
     quantity: 1,
     stockName: 'B91',
     id: 'OIJZUZKXKZ',
@@ -43,7 +43,7 @@ const equipments = [{
     parentId: 'PIUTRELJJGFHD',
     parentName: 'kit1'
 },{
-    category: 'microphone',
+    category: 'other',
     quantity: 5,
     stockName: 'B91',
     id: 'POIAYLKJSDB',

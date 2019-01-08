@@ -1,225 +1,171 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render EquipmentList 1`] = `
-<div
+<WithStyles(Table)
   style={
     Object {
-      "display": "flex",
-      "justifyContent": "center",
+      "width": 1200,
     }
   }
 >
-  <WithStyles(Paper)>
-    <div
-      style={
+  <WithStyles(TableHead)>
+    <WithStyles(TableRow)>
+      <WithStyles(TableCell)>
+        <WithStyles(Checkbox) />
+      </WithStyles(TableCell)>
+      <WithStyles(TableCell)
+        key="quantity"
+      >
+        <WithStyles(Tooltip)
+          enterDelay={300}
+          placement="bottom-end"
+          title="Trier"
+        >
+          <WithStyles(TableSortLabel)
+            active={false}
+            direction="asc"
+            onClick={[Function]}
+          >
+            Quantité
+          </WithStyles(TableSortLabel)>
+        </WithStyles(Tooltip)>
+      </WithStyles(TableCell)>
+      <WithStyles(TableCell)
+        key="name"
+      >
+        <WithStyles(Tooltip)
+          enterDelay={300}
+          placement="bottom-end"
+          title="Trier"
+        >
+          <WithStyles(TableSortLabel)
+            active={false}
+            direction="asc"
+            onClick={[Function]}
+          >
+            Nom
+          </WithStyles(TableSortLabel)>
+        </WithStyles(Tooltip)>
+      </WithStyles(TableCell)>
+      <WithStyles(TableCell)
+        key="description"
+      >
+        <WithStyles(Tooltip)
+          enterDelay={300}
+          placement="bottom-end"
+          title="Trier"
+        >
+          <WithStyles(TableSortLabel)
+            active={false}
+            direction="asc"
+            onClick={[Function]}
+          >
+            Description
+          </WithStyles(TableSortLabel)>
+        </WithStyles(Tooltip)>
+      </WithStyles(TableCell)>
+      <WithStyles(TableCell) />
+    </WithStyles(TableRow)>
+  </WithStyles(TableHead)>
+  <Connect(Component)
+    equipment={
+      Object {
+        "category": "microphone",
+        "id": "OJZIJDOIJAOD",
+        "parentId": null,
+        "parentName": null,
+        "quantity": 1,
+        "stockName": "sm57",
+      }
+    }
+    index={0}
+    key="OJZIJDOIJAOD"
+  />
+  <Connect(Component)
+    equipment={
+      Object {
+        "category": "other",
+        "id": "OIJZUZKXKZ",
+        "parentId": null,
+        "parentName": null,
+        "quantity": 1,
+        "stockName": "B91",
+      }
+    }
+    index={1}
+    key="OIJZUZKXKZ"
+  />
+  <Connect(Component)
+    equipment={
+      Object {
+        "category": "microphone",
+        "id": "POIUYNBVBCFD",
+        "parentId": null,
+        "parentName": null,
+        "quantity": 5,
+        "stockName": "B52",
+      }
+    }
+    index={2}
+    key="POIUYNBVBCFD"
+  />
+  <sortableElement(Connect(Component))
+    collection={0}
+    index={3}
+    key="PIUTRELJJGFHD"
+    kit={
+      Object {
+        "category": "kit",
+        "id": "PIUTRELJJGFHD",
+        "parentId": null,
+        "parentName": null,
+        "quantity": 1,
+        "stockName": "kit1",
+      }
+    }
+  >
+    <Connect(Component)
+      equipment={
         Object {
-          "display": "flex",
-          "justifyContent": "space-between",
+          "category": "microphone",
+          "id": "JHDJZJNZOCN",
+          "parentId": "PIUTRELJJGFHD",
+          "parentName": "kit1",
+          "quantity": 3,
+          "stockName": "sm57",
         }
       }
-    >
-      <div
-        style={
-          Object {
-            "display": "flex",
-            "justifyContent": "flex-start",
-          }
-        }
-      >
-        <WithStyles(IconButton)>
-          <pure(MenuIcon) />
-        </WithStyles(IconButton)>
-        <h1>
-          Equipment List
-        </h1>
-      </div>
-      <div
-        style={
-          Object {
-            "display": "flex",
-            "justifyContent": "flex-end",
-          }
-        }
-      >
-        <WithStyles(WithFormControlContext(InputBase))
-          fullWidth={false}
-          inputComponent="input"
-          multiline={false}
-          placeholder="Rechercher"
-          type="text"
-        />
-        <WithStyles(IconButton)>
-          <pure(SearchIcon) />
-        </WithStyles(IconButton)>
-      </div>
-    </div>
-    <WithStyles(Table)
-      style={
+      key="JHDJZJNZOCN"
+    />
+    <Connect(Component)
+      equipment={
         Object {
-          "width": 1200,
+          "category": "microphone",
+          "id": "UATEREGEBDNK",
+          "parentId": "PIUTRELJJGFHD",
+          "parentName": "kit1",
+          "quantity": 10,
+          "stockName": "B52",
         }
       }
-    >
-      <WithStyles(TableHead)>
-        <WithStyles(TableRow)>
-          <WithStyles(TableCell)>
-            <WithStyles(Checkbox) />
-          </WithStyles(TableCell)>
-          <WithStyles(TableCell)
-            key="quantity"
-          >
-            <WithStyles(Tooltip)
-              enterDelay={300}
-              placement="bottom-end"
-              title="Trier"
-            >
-              <WithStyles(TableSortLabel)
-                active={false}
-                direction="asc"
-                onClick={[Function]}
-              >
-                Quantité
-              </WithStyles(TableSortLabel)>
-            </WithStyles(Tooltip)>
-          </WithStyles(TableCell)>
-          <WithStyles(TableCell)
-            key="name"
-          >
-            <WithStyles(Tooltip)
-              enterDelay={300}
-              placement="bottom-end"
-              title="Trier"
-            >
-              <WithStyles(TableSortLabel)
-                active={false}
-                direction="asc"
-                onClick={[Function]}
-              >
-                Nom
-              </WithStyles(TableSortLabel)>
-            </WithStyles(Tooltip)>
-          </WithStyles(TableCell)>
-          <WithStyles(TableCell)
-            key="description"
-          >
-            <WithStyles(Tooltip)
-              enterDelay={300}
-              placement="bottom-end"
-              title="Trier"
-            >
-              <WithStyles(TableSortLabel)
-                active={false}
-                direction="asc"
-                onClick={[Function]}
-              >
-                Description
-              </WithStyles(TableSortLabel)>
-            </WithStyles(Tooltip)>
-          </WithStyles(TableCell)>
-          <WithStyles(TableCell) />
-        </WithStyles(TableRow)>
-      </WithStyles(TableHead)>
-      <Connect(Component)
-        equipment={
-          Object {
-            "category": "microphone",
-            "id": "OJZIJDOIJAOD",
-            "parentId": null,
-            "parentName": null,
-            "quantity": 1,
-            "stockName": "sm57",
-          }
+      key="UATEREGEBDNK"
+    />
+    <Connect(Component)
+      equipment={
+        Object {
+          "category": "other",
+          "id": "POIAYLKJSDB",
+          "parentId": "PIUTRELJJGFHD",
+          "parentName": "kit1",
+          "quantity": 5,
+          "stockName": "B91",
         }
-        index={0}
-        key="OJZIJDOIJAOD"
-      />
-      <Connect(Component)
-        equipment={
-          Object {
-            "category": "microphone",
-            "id": "OIJZUZKXKZ",
-            "parentId": null,
-            "parentName": null,
-            "quantity": 1,
-            "stockName": "B91",
-          }
-        }
-        index={1}
-        key="OIJZUZKXKZ"
-      />
-      <Connect(Component)
-        equipment={
-          Object {
-            "category": "microphone",
-            "id": "POIUYNBVBCFD",
-            "parentId": null,
-            "parentName": null,
-            "quantity": 5,
-            "stockName": "B52",
-          }
-        }
-        index={2}
-        key="POIUYNBVBCFD"
-      />
-      <sortableElement(Connect(Component))
-        collection={0}
-        index={3}
-        key="PIUTRELJJGFHD"
-        kit={
-          Object {
-            "category": "kit",
-            "id": "PIUTRELJJGFHD",
-            "parentId": null,
-            "parentName": null,
-            "quantity": 1,
-            "stockName": "kit1",
-          }
-        }
-      >
-        <Connect(Component)
-          equipment={
-            Object {
-              "category": "microphone",
-              "id": "JHDJZJNZOCN",
-              "parentId": "PIUTRELJJGFHD",
-              "parentName": "kit1",
-              "quantity": 3,
-              "stockName": "sm57",
-            }
-          }
-          key="JHDJZJNZOCN"
-        />
-        <Connect(Component)
-          equipment={
-            Object {
-              "category": "microphone",
-              "id": "UATEREGEBDNK",
-              "parentId": "PIUTRELJJGFHD",
-              "parentName": "kit1",
-              "quantity": 10,
-              "stockName": "B52",
-            }
-          }
-          key="UATEREGEBDNK"
-        />
-        <Connect(Component)
-          equipment={
-            Object {
-              "category": "microphone",
-              "id": "POIAYLKJSDB",
-              "parentId": "PIUTRELJJGFHD",
-              "parentName": "kit1",
-              "quantity": 5,
-              "stockName": "B91",
-            }
-          }
-          key="POIAYLKJSDB"
-        />
-      </sortableElement(Connect(Component))>
-      <Connect(Component) />
-    </WithStyles(Table)>
-  </WithStyles(Paper)>
-</div>
+      }
+      key="POIAYLKJSDB"
+    />
+  </sortableElement(Connect(Component))>
+  <Connect(Component) />
+</WithStyles(Table)>
 `;
 
 exports[`should render SortableComponent 1`] = `

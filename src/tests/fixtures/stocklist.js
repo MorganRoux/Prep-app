@@ -6,7 +6,7 @@ const stocklist = [{
     stockName: 'sm57',
     id: 1                       // id in the database (unique)
 }, {
-    category: 'microphone',
+    category: 'other',
     brand: 'shure',
     description:'micro grosse caisse',
     publicName: 'Beta91',
@@ -33,7 +33,7 @@ const stocklist = [{
         quantity: 10,
         stockName: 'B52'
     },{
-        category: 'microphone',
+        category: 'other',
         quantity: 5,
         stockName: 'B91'
     }],

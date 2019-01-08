@@ -1,8 +1,7 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import equipmentsReducer from '../reducers/equipment';
-import filtersReducer from '../reducers/filter';
+import filtersReducer from '../reducers/filters';
 import stocklistReducer from '../reducers/stocklist';
-// import snackbarReducer from '../reducers/snackbar';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTESION_COMPOSE__ || compose;

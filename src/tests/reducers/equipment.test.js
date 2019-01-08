@@ -71,7 +71,7 @@ test('should add equipement if it\'s a kit', () => {
         parentId: expect.any(String),
         parentName: 'kit1'
     }, {
-        category: 'microphone',
+        category: 'other',
         quantity: 5,
         stockName: 'B91',
         id: expect.any(String),

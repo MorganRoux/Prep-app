@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EquipmentHeader 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <WithStyles(IconButton)>
+      <pure(MenuIcon) />
+    </WithStyles(IconButton)>
+    <h1>
+      Equipment List
+    </h1>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "flex-end",
+      }
+    }
+  >
+    <WithStyles(WithFormControlContext(InputBase))
+      className="search-field"
+      onChange={[Function]}
+      placeholder="Rechercher"
+      value=""
+    />
+    <WithStyles(IconButton)>
+      <pure(SearchIcon) />
+    </WithStyles(IconButton)>
+  </div>
+</div>
+`;

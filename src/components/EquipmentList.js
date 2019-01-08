@@ -3,15 +3,12 @@ import { EquipmentKitItem, EquipmentListItemSortable } from './EquipmentItem';
 import  EquipmentKitSortable from './EquipmentKit';
 import EquipmentAddForm from './EquipmentAddForm';
 import { moveEquipment } from '../actions/equipment'
+import { getVisibleEquipments } from '../selectors/equipment';
 import { connect } from 'react-redux'
 import Table from '@material-ui/core/Table';
 import { Paper, TableRow, TableCell, TableHead, TableSortLabel } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import Checkbox from '@material-ui/core/Checkbox';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import { SortableContainer } from 'react-sortable-hoc';
 
 
@@ -87,22 +84,6 @@ export class EquipmentList extends React.Component {
 
     render() {
         return (
-            <div style = {{display: 'flex', justifyContent: 'center'}}>
-            <Paper>
-                <div style = {{display: 'flex', justifyContent: 'space-between'}}>
-                <div style = {{display: 'flex', justifyContent: 'flex-start'}}>
-                    <IconButton>
-                        <MenuIcon />
-                    </IconButton>
-                    <h1>Equipment List</h1>
-                </div>
-                <div style = {{display: 'flex', justifyContent: 'flex-end'}}>
-                    <InputBase placeholder="Rechercher" />
-                    <IconButton>
-                        <SearchIcon />
-                    </IconButton>
-                </div>
-                </div>
                 <Table style ={{width: 1200}}>
                     {this.renderHeader()}
                     
@@ -119,15 +100,13 @@ export class EquipmentList extends React.Component {
                     })} 
                     <EquipmentAddForm /> 
                 </Table>
-            </Paper> 
-            </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        equipments: state.equipments
+        equipments: getVisibleEquipments(state.equipments, state.filters)
     }
 };
 
