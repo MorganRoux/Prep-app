@@ -1,6 +1,18 @@
-
-import { removeEquipment, addEquipment, moveEquipment } from '../../actions/equipment';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { 
+    removeEquipment, 
+    addEquipment, 
+    moveEquipment, 
+    startFetchEquipmentList, 
+    setEquipmentList 
+} from '../../actions/equipment';
 import stocklist from '../fixtures/stocklist';
+import equipments from '../fixtures/equipment';
+
+
+const createMockStore = configureMockStore([thunk]);
+
 
 test('should setup removeEquipment action object', () => {
     const id = 2
@@ -41,5 +53,22 @@ test('should setup moveEquipment action object', () => {
         type: 'MOVE_EQUIPMENT',
         oldIndex,
         newIndex
+    });
+})
+
+test('should setup setEquipmentList object', () => {
+    const action = setEquipmentList(equipments);
+    expect(action).toEqual({
+        type: 'SET_EQUIPMENT_LIST',
+        equipments
+    });
+});
+
+test('should fetch equipment list from the database', (done) => {
+    const store = createMockStore();
+    store.dispatch(startFetchEquipmentList()).then( () => {
+        const action = store.getActions();
+        expect(action[0]).toEqual(setEquipmentList(equipments));
+        done();
     });
 })

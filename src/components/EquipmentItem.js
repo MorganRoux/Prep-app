@@ -76,13 +76,14 @@ const mapDispatchToProps = (dispatch, props) => {
     };
 }
 
-const EquipmentItemWithBody = (props) => (
+const WithBody = (WrappedComponent) => {
+    return (props) => (
     <TableBody>
-        <EquipmentItem {...props} />
+        <WrappedComponent {...props} />
     </TableBody>
-);
+    );
+};
 
-// export default connect(mapStateToProps,mapDispatchToProps)(withSnackbar(EquipmentItem));
 
 export const EquipmentKitItem = connect(mapStateToProps,mapDispatchToProps)(withSnackbar(EquipmentItem));
-export const EquipmentListItemSortable = connect(mapStateToProps,mapDispatchToProps)(withSnackbar(SortableElement(EquipmentItemWithBody)));
+export const EquipmentListItemSortable = connect(mapStateToProps,mapDispatchToProps)(SortableElement(withSnackbar(WithBody(EquipmentItem))));

@@ -2,7 +2,7 @@ import equipments from '../tests/fixtures/equipment';
 import uuid from 'uuid'
 import { arrayMove } from 'react-sortable-hoc';
 
-const equipmentReducerDefaultState = equipments;
+const equipmentReducerDefaultState = []; // equipments;
 
 const addEquipment = ({category, stockName, quantity, list}, state) => {
     
@@ -57,12 +57,16 @@ const equipmentsReducer = (state = equipmentReducerDefaultState, action) => {
         return newState;
 
     case 'EDIT_EQUIPMENT' :
+
     case 'ADD_EQUIPMENT' :
         return addEquipment(action.item, state);
 
     case 'MOVE_EQUIPMENT' :
         return arrayMove(state, action.oldIndex, action.newIndex);
     
+    case 'SET_EQUIPMENT_LIST':
+        return action.equipments;
+
     default:
         return state;
     }

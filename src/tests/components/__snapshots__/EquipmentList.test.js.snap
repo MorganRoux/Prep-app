@@ -67,58 +67,50 @@ exports[`should render EquipmentList 1`] = `
       <WithStyles(TableCell) />
     </WithStyles(TableRow)>
   </WithStyles(TableHead)>
-  <Connect(Component)
+  <Connect(sortableElement)
     equipment={
       Object {
         "category": "microphone",
-        "id": "OJZIJDOIJAOD",
-        "parentId": null,
-        "parentName": null,
+        "id": "-LVhrOS0O7i51j-Ky3g0",
         "quantity": 1,
         "stockName": "sm57",
       }
     }
     index={0}
-    key="OJZIJDOIJAOD"
+    key="-LVhrOS0O7i51j-Ky3g0"
   />
-  <Connect(Component)
+  <Connect(sortableElement)
     equipment={
       Object {
         "category": "other",
-        "id": "OIJZUZKXKZ",
-        "parentId": null,
-        "parentName": null,
+        "id": "-LVhrOS3pN-TfKOHWawV",
         "quantity": 1,
         "stockName": "B91",
       }
     }
     index={1}
-    key="OIJZUZKXKZ"
+    key="-LVhrOS3pN-TfKOHWawV"
   />
-  <Connect(Component)
+  <Connect(sortableElement)
     equipment={
       Object {
         "category": "microphone",
-        "id": "POIUYNBVBCFD",
-        "parentId": null,
-        "parentName": null,
+        "id": "-LVhrOS3pN-TfKOHWawW",
         "quantity": 5,
         "stockName": "B52",
       }
     }
     index={2}
-    key="POIUYNBVBCFD"
+    key="-LVhrOS3pN-TfKOHWawW"
   />
   <sortableElement(Connect(Component))
     collection={0}
     index={3}
-    key="PIUTRELJJGFHD"
+    key="-LVhrOS4ykvYnzhPZ-1c"
     kit={
       Object {
         "category": "kit",
-        "id": "PIUTRELJJGFHD",
-        "parentId": null,
-        "parentName": null,
+        "id": "-LVhrOS4ykvYnzhPZ-1c",
         "quantity": 1,
         "stockName": "kit1",
       }
@@ -128,40 +120,40 @@ exports[`should render EquipmentList 1`] = `
       equipment={
         Object {
           "category": "microphone",
-          "id": "JHDJZJNZOCN",
-          "parentId": "PIUTRELJJGFHD",
+          "id": "-LVhrOS4ykvYnzhPZ-1d",
+          "parentId": "-LVhrOS4ykvYnzhPZ-1c",
           "parentName": "kit1",
           "quantity": 3,
           "stockName": "sm57",
         }
       }
-      key="JHDJZJNZOCN"
+      key="-LVhrOS4ykvYnzhPZ-1d"
     />
     <Connect(Component)
       equipment={
         Object {
           "category": "microphone",
-          "id": "UATEREGEBDNK",
-          "parentId": "PIUTRELJJGFHD",
+          "id": "-LVhrOS4ykvYnzhPZ-1e",
+          "parentId": "-LVhrOS4ykvYnzhPZ-1c",
           "parentName": "kit1",
           "quantity": 10,
           "stockName": "B52",
         }
       }
-      key="UATEREGEBDNK"
+      key="-LVhrOS4ykvYnzhPZ-1e"
     />
     <Connect(Component)
       equipment={
         Object {
           "category": "other",
-          "id": "POIAYLKJSDB",
-          "parentId": "PIUTRELJJGFHD",
+          "id": "-LVhrOS5eP1jImz3DntV",
+          "parentId": "-LVhrOS4ykvYnzhPZ-1c",
           "parentName": "kit1",
           "quantity": 5,
           "stockName": "B91",
         }
       }
-      key="POIAYLKJSDB"
+      key="-LVhrOS5eP1jImz3DntV"
     />
   </sortableElement(Connect(Component))>
   <Connect(Component) />

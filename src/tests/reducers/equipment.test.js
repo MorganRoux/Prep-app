@@ -6,7 +6,7 @@ import stocklist from '../fixtures/stocklist';
 
 test('should set default state', ()=>{
     const state = equipmentsReducer(undefined, '@@INIT');
-    expect(state).toEqual(equipments);
+    expect(state).toEqual([]);
 });
 
 test('should remove equipement by id', ()=>{
@@ -112,4 +112,14 @@ test('should move equipment in the state', () => {
         equipments[3]
     ]);
 
+});
+
+test('should set equipment list', () => {
+    const prevState = [];
+    const action = {
+        type :'SET_EQUIPMENT_LIST',
+        equipments
+    }
+    const state = equipmentsReducer(prevState, action);
+    expect(state).toEqual(equipments);
 })

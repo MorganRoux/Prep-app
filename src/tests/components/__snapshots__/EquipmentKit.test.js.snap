@@ -2,13 +2,13 @@
 
 exports[`should render EquipmentKit 1`] = `
 <WithStyles(TableBody)
-  key="PIUTRELJJGFHD-body"
+  key="-LVhrOS4ykvYnzhPZ-1c-body"
 >
   <WithStyles(TableRow)
-    key="PIUTRELJJGFHD-row"
+    key="-LVhrOS4ykvYnzhPZ-1c-row"
   >
     <WithStyles(TableCell)
-      key="PIUTRELJJGFHD-cell-1"
+      key="-LVhrOS4ykvYnzhPZ-1c-cell-1"
     >
       <WithStyles(Checkbox) />
       <WithStyles(IconButton)
@@ -24,18 +24,18 @@ exports[`should render EquipmentKit 1`] = `
       </WithStyles(IconButton)>
     </WithStyles(TableCell)>
     <WithStyles(TableCell)
-      key="PIUTRELJJGFHD-cell-2"
+      key="-LVhrOS4ykvYnzhPZ-1c-cell-2"
     >
       1
     </WithStyles(TableCell)>
     <WithStyles(TableCell)
       colSpan="2"
-      key="PIUTRELJJGFHD-cell-3"
+      key="-LVhrOS4ykvYnzhPZ-1c-cell-3"
     >
       EquipmentKit
     </WithStyles(TableCell)>
     <WithStyles(TableCell)
-      key="PIUTRELJJGFHD-cell-4"
+      key="-LVhrOS4ykvYnzhPZ-1c-cell-4"
     >
       <WithStyles(IconButton)
         aria-label="Delete"
