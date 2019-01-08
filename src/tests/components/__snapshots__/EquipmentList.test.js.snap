@@ -173,6 +173,7 @@ exports[`should render SortableComponent 1`] = `
   <Connect(sortableList(EquipmentList))
     distance={10}
     onSortEnd={[Function]}
+    shouldCancelStart={[Function]}
   />
 </div>
 `;

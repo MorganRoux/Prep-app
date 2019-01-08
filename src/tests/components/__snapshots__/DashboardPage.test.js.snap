@@ -1,17 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render dashboardPage 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-      "justifyContent": "center",
+<div>
+  <div
+    style={
+      Object {
+        "height": "100px",
+      }
     }
-  }
->
-  <WithStyles(Paper)>
-    <Connect(EquipmentHeader) />
-    <Connect(SortableComponent) />
-  </WithStyles(Paper)>
+  />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <WithStyles(Paper)>
+      <Connect(EquipmentHeader) />
+      <Connect(SortableComponent) />
+    </WithStyles(Paper)>
+  </div>
 </div>
 `;

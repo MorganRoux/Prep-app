@@ -47,12 +47,8 @@ export class EquipmentHeader extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
-    
-}
-
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter : (text) =>  {dispatch(setTextFilter(text))}
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EquipmentHeader)
+export default connect(null, mapDispatchToProps)(EquipmentHeader)

@@ -104,9 +104,31 @@ export class EquipmentList extends React.Component {
     }
 }
 
+
+export class SortableComponent extends React.Component {
+  
+    onSortEnd = ({oldIndex, newIndex}) => {
+      this.props.moveEquipment(oldIndex, newIndex);
+    };
+
+    cancelSorting = () => (!!this.props.filters.text)
+    
+    render() {
+        return (
+        <div>
+            <EquipmentListSortable 
+                onSortEnd={this.onSortEnd} 
+                distance = {10}
+                shouldCancelStart = {this.cancelSorting}/>
+        </div>
+        );
+    }
+}
+
 const mapStateToProps = (state) => {
     return {
-        equipments: getVisibleEquipments(state.equipments, state.filters)
+        equipments: getVisibleEquipments(state.equipments, state.filters),
+        filters: state.filters
     }
 };
 
@@ -115,21 +137,6 @@ const mapDispatchToProps = (dispatch, props) => {
         moveEquipment: (oldIndex, newIndex) => dispatch(moveEquipment(oldIndex, newIndex))
     };
 }
-
-
-export class SortableComponent extends React.Component {
-  
-    onSortEnd = ({oldIndex, newIndex}) => {
-      this.props.moveEquipment(oldIndex, newIndex);
-    };
-    render() {
-      return (
-          <div>
-          <EquipmentListSortable onSortEnd={this.onSortEnd} distance = {10}/>
-          </div>
-      );
-     }
-  }
 
 
   
