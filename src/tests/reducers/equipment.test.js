@@ -87,3 +87,29 @@ test('should add equipement if it\'s a kit', () => {
     const state = equipmentsReducer(prevState, action);
     expect(state).toEqual([...prevState, ...newItem])
 });
+
+
+test('should move equipment in the state', () => {
+    const prevState = [
+        equipments[0],
+        equipments[1],
+        equipments[2],
+        equipments[3]
+    ];
+    const oldIndex = 2;
+    const newIndex = 1;
+    const action = {
+        type: 'MOVE_EQUIPMENT',
+        oldIndex,
+        newIndex
+    }
+
+    const state = equipmentsReducer(prevState, action);
+    expect(state).toEqual([
+        equipments[0],
+        equipments[2],
+        equipments[1],
+        equipments[3]
+    ]);
+
+})

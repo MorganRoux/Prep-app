@@ -1,12 +1,10 @@
 import React from 'react';
-import EquipmentList from './EquipmentList';
+import { TableSortable } from './EquipmentList'
 
 const DashboardPage = () => {
     return (
-        <div>
-            <h1>Dashboard Page</h1>
-            <EquipmentList />
-        </div>
+        
+            <TableSortable/>
         
     );
 };

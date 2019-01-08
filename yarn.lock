@@ -5961,7 +5961,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -6259,6 +6259,14 @@ react-router@^4.2.0:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-sortable-hoc@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-sortable-hoc/-/react-sortable-hoc-1.1.0.tgz#5486e600feb66a76d8e1c830856ed38eb7e986e8"
+  integrity sha512-h/yJkGwQ+dnBzUIVmf8tUvbbJhOEWrAwcbQfYvdPOGjh2lr5ztHsf4q8YRQsP+R3O/g2lhYRkO1mA5PXcQ3bZQ==
+  dependencies:
+    invariant "^2.2.1"
+    prop-types "^15.5.7"
 
 react-test-renderer@16.0.0:
   version "16.0.0"

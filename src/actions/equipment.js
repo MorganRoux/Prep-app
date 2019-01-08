@@ -13,3 +13,10 @@ export const addEquipment = (item) => ({
     type: 'ADD_EQUIPMENT',
     item
 })
+
+export const moveEquipment = (oldIndex, newIndex) => {
+    return {
+    type : 'MOVE_EQUIPMENT',
+    oldIndex,
+    newIndex
+}}

@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import {TableBody, TableRow, TableCell } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withSnackbar } from 'notistack';
+import { SortableElement } from 'react-sortable-hoc';
 
 export class EquipmentKit extends React.Component{
     constructor(props) {
@@ -66,4 +67,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(EquipmentKit))
+
+export default SortableElement(connect(mapStateToProps, mapDispatchToProps)(withSnackbar(EquipmentKit)));

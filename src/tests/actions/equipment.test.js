@@ -1,6 +1,5 @@
 
-import { removeEquipment } from '../../actions/equipment';
-import { addEquipment } from '../../actions/equipment';
+import { removeEquipment, addEquipment, moveEquipment } from '../../actions/equipment';
 import stocklist from '../fixtures/stocklist';
 
 test('should setup removeEquipment action object', () => {
@@ -32,3 +31,15 @@ test('should setup addEquipment action object', () => {
         item
     });
 });
+
+test('should setup moveEquipment action object', () => {
+    const oldIndex = 5;
+    const newIndex = 2;
+
+    const action = moveEquipment(oldIndex, newIndex);
+    expect(action).toEqual({
+        type: 'MOVE_EQUIPMENT',
+        oldIndex,
+        newIndex
+    });
+})

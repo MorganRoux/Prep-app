@@ -1,73 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Equipment List 1`] = `
-<WithStyles(Paper)>
-  <h3>
-    EquipmentList
-  </h3>
-  <WithStyles(Table)>
-    <WithStyles(TableHead)>
-      <WithStyles(TableRow)>
-        <WithStyles(TableCell)>
-          <WithStyles(Checkbox) />
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          key="quantity"
-        >
-          <WithStyles(Tooltip)
-            enterDelay={300}
-            placement="bottom-end"
-            title="Trier"
-          >
-            <WithStyles(TableSortLabel)
-              active={false}
-              direction="asc"
-              onClick={[Function]}
-            >
-              Quantité
-            </WithStyles(TableSortLabel)>
-          </WithStyles(Tooltip)>
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          key="name"
-        >
-          <WithStyles(Tooltip)
-            enterDelay={300}
-            placement="bottom-end"
-            title="Trier"
-          >
-            <WithStyles(TableSortLabel)
-              active={false}
-              direction="asc"
-              onClick={[Function]}
-            >
-              Nom
-            </WithStyles(TableSortLabel)>
-          </WithStyles(Tooltip)>
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell)
-          key="description"
-        >
-          <WithStyles(Tooltip)
-            enterDelay={300}
-            placement="bottom-end"
-            title="Trier"
-          >
-            <WithStyles(TableSortLabel)
-              active={false}
-              direction="asc"
-              onClick={[Function]}
-            >
-              Description
-            </WithStyles(TableSortLabel)>
-          </WithStyles(Tooltip)>
-        </WithStyles(TableCell)>
-        <WithStyles(TableCell) />
-      </WithStyles(TableRow)>
-    </WithStyles(TableHead)>
-    <WithStyles(TableBody)
-      key="OJZIJDOIJAOD-body"
+exports[`should render EquipmentList 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
+>
+  <WithStyles(Paper)>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "space-between",
+        }
+      }
     >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <WithStyles(IconButton)>
+          <pure(MenuIcon) />
+        </WithStyles(IconButton)>
+        <h1>
+          Equipment List
+        </h1>
+      </div>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "justifyContent": "flex-end",
+          }
+        }
+      >
+        <WithStyles(WithFormControlContext(InputBase))
+          fullWidth={false}
+          inputComponent="input"
+          multiline={false}
+          placeholder="Rechercher"
+          type="text"
+        />
+        <WithStyles(IconButton)>
+          <pure(SearchIcon) />
+        </WithStyles(IconButton)>
+      </div>
+    </div>
+    <WithStyles(Table)
+      style={
+        Object {
+          "width": 1200,
+        }
+      }
+    >
+      <WithStyles(TableHead)>
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            <WithStyles(Checkbox) />
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="quantity"
+          >
+            <WithStyles(Tooltip)
+              enterDelay={300}
+              placement="bottom-end"
+              title="Trier"
+            >
+              <WithStyles(TableSortLabel)
+                active={false}
+                direction="asc"
+                onClick={[Function]}
+              >
+                Quantité
+              </WithStyles(TableSortLabel)>
+            </WithStyles(Tooltip)>
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="name"
+          >
+            <WithStyles(Tooltip)
+              enterDelay={300}
+              placement="bottom-end"
+              title="Trier"
+            >
+              <WithStyles(TableSortLabel)
+                active={false}
+                direction="asc"
+                onClick={[Function]}
+              >
+                Nom
+              </WithStyles(TableSortLabel)>
+            </WithStyles(Tooltip)>
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="description"
+          >
+            <WithStyles(Tooltip)
+              enterDelay={300}
+              placement="bottom-end"
+              title="Trier"
+            >
+              <WithStyles(TableSortLabel)
+                active={false}
+                direction="asc"
+                onClick={[Function]}
+              >
+                Description
+              </WithStyles(TableSortLabel)>
+            </WithStyles(Tooltip)>
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell) />
+        </WithStyles(TableRow)>
+      </WithStyles(TableHead)>
       <Connect(Component)
         equipment={
           Object {
@@ -79,12 +130,9 @@ exports[`should render Equipment List 1`] = `
             "stockName": "sm57",
           }
         }
+        index={0}
         key="OJZIJDOIJAOD"
       />
-    </WithStyles(TableBody)>
-    <WithStyles(TableBody)
-      key="OIJZUZKXKZ-body"
-    >
       <Connect(Component)
         equipment={
           Object {
@@ -96,12 +144,9 @@ exports[`should render Equipment List 1`] = `
             "stockName": "B91",
           }
         }
+        index={1}
         key="OIJZUZKXKZ"
       />
-    </WithStyles(TableBody)>
-    <WithStyles(TableBody)
-      key="POIUYNBVBCFD-body"
-    >
       <Connect(Component)
         equipment={
           Object {
@@ -113,63 +158,75 @@ exports[`should render Equipment List 1`] = `
             "stockName": "B52",
           }
         }
+        index={2}
         key="POIUYNBVBCFD"
       />
-    </WithStyles(TableBody)>
-    <Connect(Component)
-      key="PIUTRELJJGFHD"
-      kit={
-        Object {
-          "category": "kit",
-          "id": "PIUTRELJJGFHD",
-          "parentId": null,
-          "parentName": null,
-          "quantity": 1,
-          "stockName": "kit1",
-        }
-      }
-    >
-      <Connect(Component)
-        equipment={
+      <sortableElement(Connect(Component))
+        collection={0}
+        index={3}
+        key="PIUTRELJJGFHD"
+        kit={
           Object {
-            "category": "microphone",
-            "id": "JHDJZJNZOCN",
-            "parentId": "PIUTRELJJGFHD",
-            "parentName": "kit1",
-            "quantity": 3,
-            "stockName": "sm57",
+            "category": "kit",
+            "id": "PIUTRELJJGFHD",
+            "parentId": null,
+            "parentName": null,
+            "quantity": 1,
+            "stockName": "kit1",
           }
         }
-        key="JHDJZJNZOCN"
-      />
-      <Connect(Component)
-        equipment={
-          Object {
-            "category": "microphone",
-            "id": "UATEREGEBDNK",
-            "parentId": "PIUTRELJJGFHD",
-            "parentName": "kit1",
-            "quantity": 10,
-            "stockName": "B52",
+      >
+        <Connect(Component)
+          equipment={
+            Object {
+              "category": "microphone",
+              "id": "JHDJZJNZOCN",
+              "parentId": "PIUTRELJJGFHD",
+              "parentName": "kit1",
+              "quantity": 3,
+              "stockName": "sm57",
+            }
           }
-        }
-        key="UATEREGEBDNK"
-      />
-      <Connect(Component)
-        equipment={
-          Object {
-            "category": "microphone",
-            "id": "POIAYLKJSDB",
-            "parentId": "PIUTRELJJGFHD",
-            "parentName": "kit1",
-            "quantity": 5,
-            "stockName": "B91",
+          key="JHDJZJNZOCN"
+        />
+        <Connect(Component)
+          equipment={
+            Object {
+              "category": "microphone",
+              "id": "UATEREGEBDNK",
+              "parentId": "PIUTRELJJGFHD",
+              "parentName": "kit1",
+              "quantity": 10,
+              "stockName": "B52",
+            }
           }
-        }
-        key="POIAYLKJSDB"
-      />
-    </Connect(Component)>
-    <Connect(Component) />
-  </WithStyles(Table)>
-</WithStyles(Paper)>
+          key="UATEREGEBDNK"
+        />
+        <Connect(Component)
+          equipment={
+            Object {
+              "category": "microphone",
+              "id": "POIAYLKJSDB",
+              "parentId": "PIUTRELJJGFHD",
+              "parentName": "kit1",
+              "quantity": 5,
+              "stockName": "B91",
+            }
+          }
+          key="POIAYLKJSDB"
+        />
+      </sortableElement(Connect(Component))>
+      <Connect(Component) />
+    </WithStyles(Table)>
+  </WithStyles(Paper)>
+</div>
+`;
+
+exports[`should render SortableComponent 1`] = `
+<div>
+  <Connect(sortableList(EquipmentList))
+    distance={10}
+    onSortEnd={[Function]}
+  />
+</div>
 `;

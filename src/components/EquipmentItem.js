@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import {TableRow, TableCell } from '@material-ui/core';
+import {TableBody, TableRow, TableCell } from '@material-ui/core';
 import { removeEquipment } from '../actions/equipment';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withSnackbar } from 'notistack';
+import { SortableElement } from 'react-sortable-hoc';
 
-export class EquipmentListItem extends React.Component {
+export class EquipmentItem extends React.Component {
     constructor(props) {
         super(props);
         const stockItem = props.stocklist.find((item) => {
@@ -26,6 +27,7 @@ export class EquipmentListItem extends React.Component {
         this.props.removeEquipment(this.state.id);
         this.props.enqueueSnackbar('Item supprimé', {variant:'success'});
     }
+    
     onQuantityChange = () => {
 
     }
@@ -74,5 +76,13 @@ const mapDispatchToProps = (dispatch, props) => {
     };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withSnackbar(EquipmentListItem))
+const EquipmentItemWithBody = (props) => (
+    <TableBody>
+        <EquipmentItem {...props} />
+    </TableBody>
+);
 
+// export default connect(mapStateToProps,mapDispatchToProps)(withSnackbar(EquipmentItem));
+
+export const EquipmentKitItem = connect(mapStateToProps,mapDispatchToProps)(withSnackbar(EquipmentItem));
+export const EquipmentListItemSortable = connect(mapStateToProps,mapDispatchToProps)(withSnackbar(SortableElement(EquipmentItemWithBody)));

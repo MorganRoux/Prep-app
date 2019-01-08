@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { EquipmentListItem } from '../../components/EquipmentListItem';
+import { EquipmentItem } from '../../components/EquipmentItem';
 import equipments from '../fixtures/equipment'
 import stocklist from '../fixtures/equipment'
 
@@ -9,7 +9,7 @@ let wrapper, removeEquipment, enqueueSnackbar
 beforeEach( () => {
     removeEquipment = jest.fn();
     enqueueSnackbar = jest.fn();
-    wrapper = shallow(<EquipmentListItem 
+    wrapper = shallow(<EquipmentItem 
                             equipment = {equipments[0]}
                             stocklist = {stocklist}
                             removeEquipment = {removeEquipment}
