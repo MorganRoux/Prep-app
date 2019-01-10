@@ -1,4 +1,4 @@
-const addKitActions = [{
+export const addKitActions = [{
     type: 'ADD_EQUIPMENT',
     item: {
         category: 'kit',
@@ -40,4 +40,16 @@ const addKitActions = [{
     }
 }];
 
-export default addKitActions;
+export const removeKitActions = [{
+    type: 'REMOVE_EQUIPMENT',
+    id: expect.any(String)
+},{
+    type: 'REMOVE_EQUIPMENT',
+    id: expect.any(String)
+},{
+    type: 'REMOVE_EQUIPMENT',
+    id: expect.any(String)
+},{
+    type: 'REMOVE_EQUIPMENT',
+    id: expect.any(String)
+}];

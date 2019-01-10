@@ -1,10 +1,51 @@
 import database from '../firebase/firebase';
-import { validateItem } from '../selectors/equipment';
 
 export const removeEquipment = (id) => ({
     type: 'REMOVE_EQUIPMENT',
     id
 }); 
+
+export const startRemoveEquipment = (id) => {
+
+    return (dispatch, getState) => {
+        // get the equipment description
+        const equipments = getState().equipments;
+        const {category} = equipments.find((equipment) => (equipment.id === id));
+
+        // item is not a kit
+        if (category !== 'kit') {
+            // delete from the database
+            return database.ref(`equipments/${id}`).remove()
+            .then( () => {
+                // delete from the reducer
+                dispatch(removeEquipment(id));
+            });
+        }
+
+        //item is a kit
+        else {
+            // remove the kit header from the database
+            return database.ref(`equipments/${id}`).remove()
+            .then( () => {
+                // delete from the reducer
+                dispatch(removeEquipment(id));
+
+                // scan the equipment list and delete all the items with corresponding
+                // parentId
+                return Promise.all(equipments.map( ({parentId = null, id: itemId}) => {
+                    if (parentId === id) {
+                        // delete from the database
+                        return database.ref(`equipments/${itemId}`).remove()
+                        .then(() => {
+                            // delete from the reducer
+                            dispatch(removeEquipment(itemId));
+                        });
+                    }
+                }));
+            });
+        }
+    }
+}
 
 export const editEquipment = () => ({
     type: 'EDIT_EQUIPMENT'
@@ -45,13 +86,11 @@ export const startAddEquipment = ({category, stockName, quantity, list}) => {
     }
 
     //item is a kit
-    else if (category === 'kit') {
+    else {
         
         const kitName = stockName;
 
         return (dispatch) => {
-            const promiseList=[];
-            //build up the list of all the item to add
             // add the kit to the database
             return database.ref('equipments')
             .push({

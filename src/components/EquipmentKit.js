@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeEquipment } from '../actions/equipment';
+import { startRemoveEquipment} from '../actions/equipment';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -19,7 +19,7 @@ export class EquipmentKit extends React.Component{
         }
     }
     onRemove = () => {
-        this.props.removeEquipment(this.state.id);
+        this.props.startRemoveEquipment(this.state.id);
         this.props.enqueueSnackbar('Kit supprimé', {variant:'success'});
     }
 
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeEquipment: (key) => dispatch(removeEquipment(key))
+        startRemoveEquipment: (key) => dispatch(startRemoveEquipment(key))
     }
 }
 

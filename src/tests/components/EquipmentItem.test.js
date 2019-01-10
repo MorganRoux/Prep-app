@@ -4,15 +4,15 @@ import { EquipmentItem } from '../../components/EquipmentItem';
 import equipments from '../fixtures/equipment'
 import stocklist from '../fixtures/equipment'
 
-let wrapper, removeEquipment, enqueueSnackbar
+let wrapper, startRemoveEquipment, enqueueSnackbar
 
 beforeEach( () => {
-    removeEquipment = jest.fn();
+    startRemoveEquipment = jest.fn();
     enqueueSnackbar = jest.fn();
     wrapper = shallow(<EquipmentItem 
                             equipment = {equipments[0]}
                             stocklist = {stocklist}
-                            removeEquipment = {removeEquipment}
+                            startRemoveEquipment = {startRemoveEquipment}
                             enqueueSnackbar = {enqueueSnackbar}
                         />);
 });
@@ -24,7 +24,7 @@ test('should render EquipmentListItem', () => {
 
 test('should handle onRemove', () => {
     wrapper.find('.delbutton').simulate('click');
-    expect(removeEquipment).toHaveBeenCalledWith(equipments[0].id);
+    expect(startRemoveEquipment).toHaveBeenCalledWith(equipments[0].id);
     expect(enqueueSnackbar).toHaveBeenCalledWith('Item supprimé', {variant:'success'});
 
 });

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {TableBody, TableRow, TableCell } from '@material-ui/core';
-import { removeEquipment } from '../actions/equipment';
+import { startRemoveEquipment } from '../actions/equipment';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -24,7 +24,7 @@ export class EquipmentItem extends React.Component {
     }
     
     onRemove = () => {
-        this.props.removeEquipment(this.state.id);
+        this.props.startRemoveEquipment(this.state.id);
         this.props.enqueueSnackbar('Item supprimé', {variant:'success'});
     }
     
@@ -70,9 +70,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        removeEquipment: (id) => dispatch(removeEquipment(id)),
-        editEquipment: () => dispatch(editEquipment()),
-        addEquipment: () => dispatch(addEquipment())
+        startRemoveEquipment: (id) => dispatch(startRemoveEquipment(id)),
+        editEquipment: () => dispatch(editEquipment())
     };
 }
 
