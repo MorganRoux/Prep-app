@@ -87,7 +87,6 @@ export class EquipmentAddForm extends React.Component {
                         onChange = {this.onQuantityChange}
                         />
                  
-                    
                         <input 
                         type="text"
                         name= "publicName"

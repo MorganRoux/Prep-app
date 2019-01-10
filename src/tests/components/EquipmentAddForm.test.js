@@ -52,7 +52,7 @@ test('should render EquipmentAddForm', () => {
 });
 
 test('OnAdd : should display error message if fields empty on add', () => {
-    wrapper.find('.add-button').simulate('click');
+    wrapper.find('form').simulate('submit',{preventDefault: () => {}});
     expect(enqueueSnackbar).toHaveBeenLastCalledWith('Informations erronnées', {variant:'error'});
 });
 
@@ -61,7 +61,7 @@ test('OnAdd : should display error message if item not found', () => {
     const publicName = 'notfounditem';
 
     wrapper.setState(()=>({quantity, publicName}));
-    wrapper.find('.add-button').simulate('click');
+    wrapper.find('form').simulate('submit', {preventDefault: () => {}});
     expect(enqueueSnackbar).toHaveBeenLastCalledWith('Élement introuvable', {variant:'error'});
 });
 
@@ -74,7 +74,7 @@ test('onAdd : should add an item', () => {
         publicName:'', 
     }
     wrapper.setState(()=>({quantity, publicName: stocklist[0].publicName}));
-    wrapper.find('.add-button').simulate('click');
+    wrapper.find('form').simulate('submit',{preventDefault: () => {}});
 
     expect(startAddEquipment).toHaveBeenCalledWith(arg);
     expect(wrapper.state()).toEqual(newState);

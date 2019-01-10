@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { setTextFilter } from '../actions/filters';
+import { startLogout } from '../actions/auth';
 
 export class EquipmentHeader extends React.Component {
 
@@ -41,6 +42,7 @@ export class EquipmentHeader extends React.Component {
                     <IconButton>
                         <SearchIcon />
                     </IconButton>
+                    <button className = "logout-button" onClick={this.props.startLogout}>Logout</button>
                 </div>
             </div>
     )};
@@ -48,7 +50,8 @@ export class EquipmentHeader extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    setTextFilter : (text) =>  {dispatch(setTextFilter(text))}
+    setTextFilter : (text) =>  dispatch(setTextFilter(text)),
+    startLogout : () => dispatch(startLogout())
 });
 
 export default connect(null, mapDispatchToProps)(EquipmentHeader)

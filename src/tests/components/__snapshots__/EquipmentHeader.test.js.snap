@@ -41,6 +41,12 @@ exports[`should render EquipmentHeader 1`] = `
     <WithStyles(IconButton)>
       <pure(SearchIcon) />
     </WithStyles(IconButton)>
+    <button
+      className="logout-button"
+      onClick={[MockFunction]}
+    >
+      Logout
+    </button>
   </div>
 </div>
 `;

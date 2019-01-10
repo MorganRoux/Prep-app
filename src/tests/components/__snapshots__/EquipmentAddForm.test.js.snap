@@ -7,45 +7,38 @@ exports[`should render EquipmentAddForm 1`] = `
   >
     <WithStyles(TableCell) />
     <WithStyles(TableCell)
-      className="addForm-cell-1"
+      colSpan="4"
     >
-      <input
-        autoFocus={true}
-        name="quantity"
-        onChange={[Function]}
-        placeholder=""
-        type="text"
-        value=""
-      />
-    </WithStyles(TableCell)>
-    <WithStyles(TableCell)
-      className="addForm-cell-2"
-    >
-      <input
-        name="publicName"
-        onChange={[Function]}
-        placeholder=""
-        type="text"
-        value=""
-      />
-    </WithStyles(TableCell)>
-    <WithStyles(TableCell)
-      className="addForm-cell-3"
-    />
-    <WithStyles(TableCell)
-      className="addForm-cell-4"
-    >
-      <WithStyles(IconButton)
-        aria-label="Add"
-        className="add-button"
-        onClick={[Function]}
+      <form
+        onSubmit={[Function]}
       >
-        <WithStyles(Icon)
-          color="primary"
+        <input
+          autoFocus={true}
+          name="quantity"
+          onChange={[Function]}
+          placeholder=""
+          type="text"
+          value=""
+        />
+        <input
+          name="publicName"
+          onChange={[Function]}
+          placeholder=""
+          type="text"
+          value=""
+        />
+        <WithStyles(IconButton)
+          aria-label="Add"
+          className="add-button"
+          type="submit"
         >
-          add_circle
-        </WithStyles(Icon)>
-      </WithStyles(IconButton)>
+          <WithStyles(Icon)
+            color="primary"
+          >
+            add_circle
+          </WithStyles(Icon)>
+        </WithStyles(IconButton)>
+      </form>
     </WithStyles(TableCell)>
   </WithStyles(TableRow)>
 </WithStyles(TableFooter)>
