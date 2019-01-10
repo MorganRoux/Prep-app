@@ -1,0 +1,119 @@
+{"users" : {
+    "uid1" : {
+        "profile" : {
+            "name" : "M"
+            "email"
+        },
+
+        "verified" : true,
+        "projects" : {
+            "project1": {
+                "name"
+                "role"
+            }
+            "project2" : {
+                "name"
+                "role"
+            }
+        }
+    },
+    "uid2" : {
+        ...
+    }
+}
+
+"projects" : {
+    "projet1" : {
+        "about" : {
+            "name"
+            "createdAt"
+        },
+        "staff" : {
+            "staffid1" : {
+                "name"
+                "role"
+                "email"
+            }
+            "staffid2" : {
+                ...
+            }
+        }
+        "stocklist":  {
+            "stockItem1" : {
+                "name"
+                "description"
+            }
+            "stockItem2" : {
+                "name"
+                "description"
+            }
+        },
+        "equipments" : {
+            "item1" : {
+                "name" :
+                "quantity" :
+                "description":
+            },
+            "item2" : {
+                "name" :
+                "quantity" :
+                "description":
+            }
+        }
+    }
+    "projet2" : {
+        ...
+    }
+}
+}
+
+
+
+//========= Rules =========//
+
+{
+"rules" : {
+    ".read" : false,
+    ".write" : false,
+
+    "users" : {
+        "$userid" : {
+            "profile" : {
+                "name" : "(auth != null) && ($userId === auth.uid)",
+                "email" "(auth != null) && ($userId === auth.uid)"
+            },
+
+            "projects" : {
+                ".read": "(auth != null) && ($userId === auth.uid)",
+                ".write" : false,
+            }
+        }
+    },
+
+    "projects" : {
+        "$projectid" : {
+            "about" : {
+                ".read": "root.child('users').child(auth.uid).child('projects').hasChildren([$projectid])",
+                ".write": "root.child('users').child(auth.uid).child('projects').child($projectid).child('role').val() === 5"
+            },
+            "staff" : {
+                "$staffId": {
+                    ".read": "root.child('users').child(auth.uid).child('projects').child($projectid).child('role').val() === 5",
+                    ".write": "root.child('users').child(auth.uid).child('projects').child($projectid).child('role').val() === 5"
+                  }
+
+            },
+            "stocklist":  {
+                ".read": "root.child('users').child(auth.uid).child('projects').hasChildren([$projectid])",
+                ".write": "root.child('users').child(auth.uid).child('projects').child($projectid).child('role').val() === 5"
+            },
+
+            "equipments" : {
+                ".read": "root.child('users').child(auth.uid).child('projects').hasChildren([$projectid])",
+                ".write": "root.child('users').child(auth.uid).child('projects').hasChildren([$projectid])"
+                }
+            }
+        }
+    }
+}
+}

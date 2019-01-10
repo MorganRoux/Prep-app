@@ -4,7 +4,7 @@ import filtersReducer from '../reducers/filters';
 import stocklistReducer from '../reducers/stocklist';
 import thunk from 'redux-thunk';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTESION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const configureStore = () => {
 

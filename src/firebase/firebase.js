@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+//import equipments from '../tests/fixtures/equipment'
 
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -12,5 +13,24 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+
+// const resetDatabase = () => {
+
+
+//     database.ref().set({});
+//     equipments.forEach( ({category, quantity, parentId=null, parentName=null, stockName}) => {
+//         database.ref('equipments').push({
+//             category,
+//             quantity,
+//             stockName,
+//             parentId,
+//             parentName
+//         }).then(() => {
+//             console.log('data saved');
+//         }).catch((e) => {
+//             console.log('error : ', e);
+//         })
+//     });
+// }
 
 export {firebase, database as default};

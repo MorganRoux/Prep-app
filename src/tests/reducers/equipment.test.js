@@ -22,6 +22,26 @@ test('should remove equipement by id', ()=>{
 
 });
 
+test('should add equipment to the expense list', () => {
+    const item = {
+        category: 'microphone',
+        quantity : '2',
+        stockName: 'sm57',        
+        id: expect.any(String),           
+        parentId: null,       
+        parentName: null
+    }
+
+    const action = {
+        type: 'ADD_EQUIPMENT',
+        item
+    }
+    const prevState = equipments;
+    const state = equipmentsReducer(prevState, action);
+    expect(state).toEqual([...prevState, item])
+});
+
+/*
 test('should add equipment if not a kit', () => {
     const quantity= '2';
     const item = {...stocklist[1], quantity};
@@ -88,6 +108,7 @@ test('should add equipement if it\'s a kit', () => {
     expect(state).toEqual([...prevState, ...newItem])
 });
 
+*/
 
 test('should move equipment in the state', () => {
     const prevState = [

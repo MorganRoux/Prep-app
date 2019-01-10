@@ -2,13 +2,13 @@
 
 exports[`should render EquipmentKit 1`] = `
 <WithStyles(TableBody)
-  key="-LVhrOS4ykvYnzhPZ-1c-body"
+  key="4-body"
 >
   <WithStyles(TableRow)
-    key="-LVhrOS4ykvYnzhPZ-1c-row"
+    key="4-row"
   >
     <WithStyles(TableCell)
-      key="-LVhrOS4ykvYnzhPZ-1c-cell-1"
+      key="4-cell-1"
     >
       <WithStyles(Checkbox) />
       <WithStyles(IconButton)
@@ -24,18 +24,18 @@ exports[`should render EquipmentKit 1`] = `
       </WithStyles(IconButton)>
     </WithStyles(TableCell)>
     <WithStyles(TableCell)
-      key="-LVhrOS4ykvYnzhPZ-1c-cell-2"
+      key="4-cell-2"
     >
       1
     </WithStyles(TableCell)>
     <WithStyles(TableCell)
       colSpan="2"
-      key="-LVhrOS4ykvYnzhPZ-1c-cell-3"
+      key="4-cell-3"
     >
       EquipmentKit
     </WithStyles(TableCell)>
     <WithStyles(TableCell)
-      key="-LVhrOS4ykvYnzhPZ-1c-cell-4"
+      key="4-cell-4"
     >
       <WithStyles(IconButton)
         aria-label="Delete"

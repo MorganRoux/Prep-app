@@ -37,7 +37,7 @@ const stocklist = [{
         quantity: 5,
         stockName: 'B91'
     }],
-    id: 1                
+    id: 4                
 }];
 
 export default stocklist

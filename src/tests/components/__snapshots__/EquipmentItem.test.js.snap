@@ -2,26 +2,26 @@
 
 exports[`should render EquipmentListItem 1`] = `
 <WithStyles(TableRow)
-  key="-LVhrOS0O7i51j-Ky3g0-row"
+  key="1-row"
 >
   <WithStyles(TableCell)>
     <WithStyles(Checkbox) />
   </WithStyles(TableCell)>
   <WithStyles(TableCell)
-    key="-LVhrOS0O7i51j-Ky3g0-cell-1"
+    key="1-cell-1"
   >
     1
   </WithStyles(TableCell)>
   <WithStyles(TableCell)
-    key="-LVhrOS0O7i51j-Ky3g0-cell-2"
+    key="1-cell-2"
   />
   <WithStyles(TableCell)
-    key="-LVhrOS0O7i51j-Ky3g0-cell-3"
+    key="1-cell-3"
   >
     sm57
   </WithStyles(TableCell)>
   <WithStyles(TableCell)
-    key="-LVhrOS0O7i51j-Ky3g0-cell-4"
+    key="1-cell-4"
   >
     <WithStyles(IconButton)
       aria-label="Delete"

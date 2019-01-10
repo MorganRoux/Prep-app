@@ -71,46 +71,54 @@ exports[`should render EquipmentList 1`] = `
     equipment={
       Object {
         "category": "microphone",
-        "id": "-LVhrOS0O7i51j-Ky3g0",
+        "id": "1",
+        "parentId": null,
+        "parentName": null,
         "quantity": 1,
         "stockName": "sm57",
       }
     }
     index={0}
-    key="-LVhrOS0O7i51j-Ky3g0"
+    key="1"
   />
   <Connect(sortableElement)
     equipment={
       Object {
         "category": "other",
-        "id": "-LVhrOS3pN-TfKOHWawV",
+        "id": "2",
+        "parentId": null,
+        "parentName": null,
         "quantity": 1,
         "stockName": "B91",
       }
     }
     index={1}
-    key="-LVhrOS3pN-TfKOHWawV"
+    key="2"
   />
   <Connect(sortableElement)
     equipment={
       Object {
         "category": "microphone",
-        "id": "-LVhrOS3pN-TfKOHWawW",
+        "id": "3",
+        "parentId": null,
+        "parentName": null,
         "quantity": 5,
         "stockName": "B52",
       }
     }
     index={2}
-    key="-LVhrOS3pN-TfKOHWawW"
+    key="3"
   />
   <sortableElement(Connect(Component))
     collection={0}
     index={3}
-    key="-LVhrOS4ykvYnzhPZ-1c"
+    key="4"
     kit={
       Object {
         "category": "kit",
-        "id": "-LVhrOS4ykvYnzhPZ-1c",
+        "id": "4",
+        "parentId": null,
+        "parentName": null,
         "quantity": 1,
         "stockName": "kit1",
       }
@@ -120,40 +128,40 @@ exports[`should render EquipmentList 1`] = `
       equipment={
         Object {
           "category": "microphone",
-          "id": "-LVhrOS4ykvYnzhPZ-1d",
-          "parentId": "-LVhrOS4ykvYnzhPZ-1c",
+          "id": "5",
+          "parentId": "4",
           "parentName": "kit1",
           "quantity": 3,
           "stockName": "sm57",
         }
       }
-      key="-LVhrOS4ykvYnzhPZ-1d"
+      key="5"
     />
     <Connect(Component)
       equipment={
         Object {
           "category": "microphone",
-          "id": "-LVhrOS4ykvYnzhPZ-1e",
-          "parentId": "-LVhrOS4ykvYnzhPZ-1c",
+          "id": "6",
+          "parentId": "4",
           "parentName": "kit1",
           "quantity": 10,
           "stockName": "B52",
         }
       }
-      key="-LVhrOS4ykvYnzhPZ-1e"
+      key="6"
     />
     <Connect(Component)
       equipment={
         Object {
           "category": "other",
-          "id": "-LVhrOS5eP1jImz3DntV",
-          "parentId": "-LVhrOS4ykvYnzhPZ-1c",
+          "id": "7",
+          "parentId": "4",
           "parentName": "kit1",
           "quantity": 5,
           "stockName": "B91",
         }
       }
-      key="-LVhrOS5eP1jImz3DntV"
+      key="7"
     />
   </sortableElement(Connect(Component))>
   <Connect(Component) />

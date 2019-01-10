@@ -5,14 +5,14 @@ import equipments from '../fixtures/equipment';
 import stocklist from '../fixtures/stocklist';
 
 
-let wrapper, addEquipment, enqueueSnackbar;
+let wrapper, startAddEquipment, enqueueSnackbar;
 
 beforeEach(() => {
-    addEquipment = jest.fn();
+    startAddEquipment = jest.fn();
     enqueueSnackbar = jest.fn();
     wrapper = shallow(<EquipmentAddForm 
         kit = {equipments[3]}
-        addEquipment = {addEquipment}
+        startAddEquipment = {startAddEquipment}
         enqueueSnackbar = {enqueueSnackbar}
         equipments= {equipments}
         stocklist = {stocklist}
@@ -76,7 +76,7 @@ test('onAdd : should add an item', () => {
     wrapper.setState(()=>({quantity, publicName: stocklist[0].publicName}));
     wrapper.find('.add-button').simulate('click');
 
-    expect(addEquipment).toHaveBeenCalledWith(arg);
+    expect(startAddEquipment).toHaveBeenCalledWith(arg);
     expect(wrapper.state()).toEqual(newState);
     expect(enqueueSnackbar).toHaveBeenLastCalledWith('3x sm57 ajoutés', {variant:'success'});
 });

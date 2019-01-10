@@ -1,13 +1,14 @@
-import equipments from '../tests/fixtures/equipment';
 import uuid from 'uuid'
 import { arrayMove } from 'react-sortable-hoc';
 
 const equipmentReducerDefaultState = []; // equipments;
 
-const addEquipment = ({category, stockName, quantity, list}, state) => {
+const addEquipment = (item, state) => {
     
     let newState = [...state];
-    //item is not a kit
+    newState.push(item);
+   
+   /* //item is not a kit
     if(category !== 'kit')
     {
         newState.push({
@@ -43,7 +44,7 @@ const addEquipment = ({category, stockName, quantity, list}, state) => {
                 parentName: stockName
             })
         );
-    }
+    }*/
     
     return newState;
 }

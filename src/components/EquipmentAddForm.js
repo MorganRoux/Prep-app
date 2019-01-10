@@ -3,7 +3,8 @@ import { Paper, TableBody, TableRow, TableCell, TableFooter } from '@material-ui
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 
-import { addEquipment } from '../actions/equipment'
+import { startAddEquipment } from '../actions/equipment'
+
 import { connect } from 'react-redux'
 import { withSnackbar } from 'notistack'
 
@@ -56,7 +57,7 @@ export class EquipmentAddForm extends React.Component {
         }
 
         // add item
-        this.props.addEquipment({
+        this.props.startAddEquipment({
             ...itemToAdd,
             quantity: this.state.quantity
         });
@@ -117,7 +118,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addEquipment: (item) => dispatch(addEquipment(item))
+        startAddEquipment: (item) => dispatch(startAddEquipment(item))
     }
 }
 
