@@ -39,8 +39,8 @@ export class EquipmentAddForm extends React.Component {
         this.setState( () => ({publicName}));
     }
 
-    onAdd = () => {
-
+    onAdd = (e) => {
+        e.preventDefault()
         // test the inputs
         if(!this.state.publicName || !this.state.quantity) {
             this.props.enqueueSnackbar('Informations erronnées', {variant:'error'});
@@ -75,8 +75,9 @@ export class EquipmentAddForm extends React.Component {
         return (
             <TableFooter>
                 <TableRow className = "addForm-row">
-                    <TableCell></TableCell>
-                    <TableCell className= "addForm-cell-1">
+                    <TableCell />
+                    <TableCell colSpan="4">
+                        <form onSubmit={this.onAdd}>
                         <input 
                         type="text"
                         name= "quantity"
@@ -85,8 +86,8 @@ export class EquipmentAddForm extends React.Component {
                         value={this.state.quantity}
                         onChange = {this.onQuantityChange}
                         />
-                    </TableCell>
-                    <TableCell className= "addForm-cell-2">
+                 
+                    
                         <input 
                         type="text"
                         name= "publicName"
@@ -94,14 +95,13 @@ export class EquipmentAddForm extends React.Component {
                         value={this.state.publicName}
                         onChange = {this.onPublicNameChange}
                         />
-                    </TableCell>
-                    <TableCell className= "addForm-cell-3"></TableCell>
-                    <TableCell className= "addForm-cell-4">
-                        <IconButton className="add-button" aria-label="Add" onClick = {this.onAdd}>
+                    
+                        <IconButton className="add-button" aria-label="Add" type="submit">
                             <Icon color="primary">
                             add_circle
                             </Icon>
                         </IconButton>
+                        </form>
                     </TableCell>
                 </TableRow>
                 </TableFooter>

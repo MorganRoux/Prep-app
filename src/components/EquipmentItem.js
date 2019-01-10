@@ -70,8 +70,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        startRemoveEquipment: (id) => dispatch(startRemoveEquipment(id)),
-        editEquipment: () => dispatch(editEquipment())
+        startRemoveEquipment: (id) => dispatch(startRemoveEquipment(id))
     };
 }
 

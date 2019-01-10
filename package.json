@@ -27,6 +27,7 @@
     "express": "4.15.4",
     "extract-text-webpack-plugin": "3.0.0",
     "firebase": "4.8.0",
+    "history": "^4.7.2",
     "jest": "^23.6.0",
     "moment": "2.18.1",
     "node-gyp": "3.8.0",
