@@ -2,7 +2,8 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import equipmentsReducer from '../reducers/equipment';
 import filtersReducer from '../reducers/filters';
 import stocklistReducer from '../reducers/stocklist';
-import authReducer from '../reducers/auth';
+import userReducer from '../reducers/user';
+import projectsReducer from '../reducers/projects';
 
 import thunk from 'redux-thunk';
 
@@ -15,7 +16,8 @@ const configureStore = () => {
             equipments: equipmentsReducer,
             filters: filtersReducer,
             stocklist: stocklistReducer,
-            auth: authReducer
+            user: userReducer,
+            projects: projectsReducer
         }), composeEnhancers(applyMiddleware(thunk))
     );
     return store;

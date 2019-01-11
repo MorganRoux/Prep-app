@@ -21,7 +21,7 @@ export const PrivateRoute = ({
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: !!state.auth.uid
+        isAuthenticated: !!state.user.uid
     }
 }
 

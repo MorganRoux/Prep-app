@@ -27,3 +27,10 @@ export const logout = (uid) => {
         type: 'LOGOUT'
     }
 }
+
+export const setCurrentProject = (id) => {
+    return {
+        type: 'SET_CURRENT_PROJECT',
+        id
+    }
+}

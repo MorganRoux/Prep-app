@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { setTextFilter } from '../actions/filters';
-import { startLogout } from '../actions/auth';
+import { startLogout } from '../actions/user';
 
 export class EquipmentHeader extends React.Component {
 

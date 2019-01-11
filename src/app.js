@@ -12,7 +12,7 @@ import './firebase/firebase';
 import { startFetchEquipmentList } from './actions/equipment';
 import { firebase } from './firebase/firebase';
 
-import { login, logout } from './actions/auth';
+import { login, logout } from './actions/user';
 
 const store = configureStore();
 
@@ -40,7 +40,6 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
     //if authenticated 
-    console.log('hey');
     if(user) {
         // update login to the reducer
         store.dispatch(login(user.uid));

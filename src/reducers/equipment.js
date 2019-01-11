@@ -7,45 +7,6 @@ const addEquipment = (item, state) => {
     
     let newState = [...state];
     newState.push(item);
-   
-   /* //item is not a kit
-    if(category !== 'kit')
-    {
-        newState.push({
-                category,
-                quantity,
-                stockName,             // stockName of the corresponding element in stocklist
-                id: uuid(),            // key in the database (unique) => represent this element
-                parentId: null,        // key in the database of the parent
-                parentName: null
-            }
-        );
-        
-    }
-
-    //item is a kit
-    else if (category === 'kit') {
-        const id = uuid();
-        newState.push({
-            category,
-            quantity,
-            stockName,
-            id,
-            parentId: null,
-            parentName: null
-        });
-        
-        list.forEach((item) => newState.push({
-                category: item.category,
-                quantity: item.quantity,
-                stockName: item. stockName,
-                id: uuid(),
-                parentId: id,
-                parentName: stockName
-            })
-        );
-    }*/
-    
     return newState;
 }
 

@@ -34,6 +34,10 @@ exports[`should render AppRouter 1`] = `
         component={[Function]}
         path="/dashboard"
       />
+      <Connect(PrivateRoute)
+        component={[Function]}
+        path="/profile"
+      />
     </Switch>
   </div>
 </Router>
