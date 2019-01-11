@@ -9,8 +9,7 @@ export class ProfilePage extends React.Component {
         this.props.setCurrentProject(e.target.value);
     }
 
-    render() {
-        console.log(this.props.projects);
+    render() {    
         return (
             <div>
                 <h1>ProfilePage</h1>
@@ -19,10 +18,17 @@ export class ProfilePage extends React.Component {
                     <Select
                         native
                         onChange={this.onChange}
+                        value={this.props.user.currentProject}
                     >
-                    { this.props.projects.map( (project) => {
-                        <option value={project.id}>{project.name}</option>
-                    })}
+                    <option value="">Selectionner</option>
+                    { this.props.projects.map( (project) => (
+                        <option 
+                            key = {project.id} 
+                            value={project.id}
+                        >
+                        {project.name}
+                        </option>
+                    ))}
                         
                     </Select>
             </div>
