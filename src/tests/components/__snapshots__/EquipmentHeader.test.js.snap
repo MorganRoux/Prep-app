@@ -32,10 +32,15 @@ exports[`should render EquipmentHeader 1`] = `
       }
     }
   >
+    <Connect(ProjectPicker) />
     <WithStyles(WithFormControlContext(InputBase))
       className="search-field"
+      fullWidth={false}
+      inputComponent="input"
+      multiline={false}
       onChange={[Function]}
       placeholder="Rechercher"
+      type="text"
       value=""
     />
     <WithStyles(IconButton)>

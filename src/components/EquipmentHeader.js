@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import ProjectPicker from './ProjectPicker'
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -33,6 +34,7 @@ export class EquipmentHeader extends React.Component {
                     <h1>Equipment List</h1>
                 </div>
                 <div style = {{display: 'flex', justifyContent: 'flex-end'}}>
+                <ProjectPicker />
                     <InputBase 
                         className="search-field"
                         placeholder="Rechercher" 

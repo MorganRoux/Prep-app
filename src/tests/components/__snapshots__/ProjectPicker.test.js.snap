@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ProjectPicker 1`] = `
+<WithStyles(WithFormControlContext(Select))
+  native={true}
+  onChange={[Function]}
+  value="1"
+>
+  <option
+    value=""
+  >
+    Selectionner
+  </option>
+  <option
+    key="1"
+    value="1"
+  >
+    projet1
+  </option>
+  <option
+    key="2"
+    value="2"
+  >
+    projet2
+  </option>
+</WithStyles(WithFormControlContext(Select))>
+`;
