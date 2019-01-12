@@ -50,7 +50,6 @@ export class EquipmentHeader extends React.Component {
     )};
 
 }
-
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter : (text) =>  dispatch(setTextFilter(text)),
     startLogout : () => dispatch(startLogout())

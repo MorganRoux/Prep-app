@@ -26,3 +26,7 @@ test('should handle currentproject action object', () => {
     });
 });
 
+test('should fetch user data',() => {
+    expect(true).toBeFalsy();
+
+})

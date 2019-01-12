@@ -10,3 +10,7 @@ export const removeProject = (id) => ({
     type: 'REMOVE_PROJECT',
     id
 });
+
+export const startFetchProjectsData = () => {
+
+}

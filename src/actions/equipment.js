@@ -10,22 +10,25 @@ export const startRemoveEquipment = (id) => {
     return (dispatch, getState) => {
         // get the equipment description
         const equipments = getState().equipments;
+        const projectId = getState().user.currentProject;
         const {category} = equipments.find((equipment) => (equipment.id === id));
 
         // item is not a kit
         if (category !== 'kit') {
             // delete from the database
-            return database.ref(`equipments/${id}`).remove()
+
+            return database.ref(`projects/${projectId}/equipments/${id}`).remove()
             .then( () => {
                 // delete from the reducer
                 dispatch(removeEquipment(id));
-            });
+            })
+            .catch('error remove');
         }
 
         //item is a kit
         else {
             // remove the kit header from the database
-            return database.ref(`equipments/${id}`).remove()
+            return database.ref(`projects/${projectId}/equipments/${id}`).remove()
             .then( () => {
                 // delete from the reducer
                 dispatch(removeEquipment(id));
@@ -35,7 +38,7 @@ export const startRemoveEquipment = (id) => {
                 return Promise.all(equipments.map( ({parentId = null, id: itemId}) => {
                     if (parentId === id) {
                         // delete from the database
-                        return database.ref(`equipments/${itemId}`).remove()
+                        return database.ref(`projects/${projectId}/equipments/${itemId}`).remove()
                         .then(() => {
                             // delete from the reducer
                             dispatch(removeEquipment(itemId));
@@ -62,8 +65,10 @@ export const startAddEquipment = ({category, stockName, quantity, list}) => {
     if(category !== 'kit')
     {
         // update the database
-        return (dispatch) => {
-            return database.ref('equipments')
+        return (dispatch, getState) => {
+            const projectId = getState().user.currentProject;
+
+            return database.ref(`projects/${projectId}/equipments`)
             .push({
                 category,
                 quantity,
@@ -90,9 +95,10 @@ export const startAddEquipment = ({category, stockName, quantity, list}) => {
         
         const kitName = stockName;
 
-        return (dispatch) => {
+        return (dispatch, getState) => {
+            const projectId = getState().user.currentProject;
             // add the kit to the database
-            return database.ref('equipments')
+            return database.ref(`projects/${projectId}/equipments`)
             .push({
                 category,
                 quantity,
@@ -117,7 +123,7 @@ export const startAddEquipment = ({category, stockName, quantity, list}) => {
                 // add the kit items to the database
                 return Promise.all(
                     list.map( ({category, quantity, stockName}) => {
-                        return database.ref('equipments').push({
+                        return database.ref(`projects/${projectId}/equipments`).push({
                             category,
                             quantity,
                             stockName,             
@@ -154,8 +160,10 @@ export const setEquipmentList = (equipments) => ({
 });
 
 export const startFetchEquipmentList = () => {
-    return (dispatch) => {
-        return database.ref('equipments')
+    return (dispatch, getState) => {
+        const projectId = getState().user.currentProject;
+
+        return database.ref(`projects/${projectId}/equipments`)
             .once('value')
             .then( (snapshot) => {
                 const equipments = [];

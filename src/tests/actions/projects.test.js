@@ -28,3 +28,7 @@ test('should handle remove project action object', () => {
         id
     });
 });
+
+test('should fetch user projects data', () => {
+    expect(true).toBeFalsy();
+})

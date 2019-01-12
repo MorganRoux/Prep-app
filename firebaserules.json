@@ -4,7 +4,7 @@
             "name" : "M"
             "email"
         },
-
+        "currentProject": "projectid",
         "verified" : true,
         "projects" : {
             "project1": {
@@ -23,7 +23,7 @@
 }
 
 "projects" : {
-    "projet1" : {
+    "project1" : {
         "about" : {
             "name"
             "createdAt"
@@ -61,7 +61,7 @@
             }
         }
     }
-    "projet2" : {
+    "project2" : {
         ...
     }
 }
@@ -80,9 +80,9 @@
         "$userid" : {
             "profile" : {
                 "name" : "(auth != null) && ($userId === auth.uid)",
-                "email" "(auth != null) && ($userId === auth.uid)"
+                "email": "(auth != null) && ($userId === auth.uid)"
             },
-
+            "currentProject" : "(auth != null) && ($userId === auth.uid)",
             "projects" : {
                 ".read": "(auth != null) && ($userId === auth.uid)",
                 ".write" : false,

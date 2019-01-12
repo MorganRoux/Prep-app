@@ -34,3 +34,7 @@ export const setCurrentProject = (id) => {
         id
     }
 }
+
+export const startFetchUserData = (uid) => {
+
+}

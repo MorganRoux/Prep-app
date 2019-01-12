@@ -11,20 +11,17 @@ import {
 } from '../../actions/equipment';
 import stocklist from '../fixtures/stocklist';
 import equipments from '../fixtures/equipment';
+import projects from '../fixtures/projects';
+import user from '../fixtures/user';
 import { addKitActions, removeKitActions } from '../fixtures/actions';
-
+import { setupFirebase } from '../fixtures/firebase'
 import database from '../../firebase/firebase';
 
 const createMockStore = configureMockStore([thunk]);
 
 beforeEach( (done) => {
-
-    const equipmentData = {};
-    equipments.forEach(({ category, quantity , id, stockName, parentId=null, parentName=null }) => {
-        equipmentData[id] = { category, quantity, stockName, parentId, parentName };
-    });
-    database.ref(`equipments`).set(equipmentData).then(()=>done());
-
+    setupFirebase().then(()=>done());
+    
 });
 
 test('should setup removeEquipment action object', () => {
@@ -38,20 +35,21 @@ test('should setup removeEquipment action object', () => {
 
 test('should remove equipement from the database if it\'s not a kit', (done) => {
 
-    const store = createMockStore({equipments, stocklist});
-    const {id, quantity, stockName } = equipments[1];
+    const store = createMockStore({equipments, stocklist, projects, user});
+    const projectId = '1';
+    const {id} = equipments[1];
     const action = {
         type: 'REMOVE_EQUIPMENT',
         id
-    };
-    return store.dispatch(startRemoveEquipment(id))
+    }
+    store.dispatch(startRemoveEquipment(id))
     .then ( () => {
         // test if the action has been transmitted to the reducer
         const actions = store.getActions();
         expect(actions[0]).toEqual(action);
 
         // test if the database has been updated
-        return database.ref(`equipments/${id}`).once('value')
+        return database.ref(`projects/${projectId}/equipments/${id}`).once('value')
         .then((snapshot) => {
             expect(snapshot.val()).toBeNull();
             done();
@@ -60,12 +58,9 @@ test('should remove equipement from the database if it\'s not a kit', (done) => 
 });
 
 test('should remove equipment from the database if it\'s a kit', (done) => {
-    const store = createMockStore({equipments, stocklist});
-    const {id, quantity, stockName } = equipments[3];
-    const action = {
-        type: 'REMOVE_EQUIPMENT',
-        id
-    };
+    const store = createMockStore({equipments, stocklist, projects, user});
+    const {id} = equipments[3];
+    const projectId = '1';
 
     return store.dispatch(startRemoveEquipment(id))
     .then (() => {
@@ -74,7 +69,7 @@ test('should remove equipment from the database if it\'s a kit', (done) => {
         expect(actions).toEqual(removeKitActions);
 
         // test if the items has been removed from the database
-        return database.ref(`equipments`).once('value')
+        return database.ref(`projects/${projectId}/equipments`).once('value')
             .then ((snapshot) => {
                 actions.forEach( ({id}) => {
                     expect(snapshot.child(id).val()).toBeNull();
@@ -96,7 +91,8 @@ test('should setup addEquipment action object', () => {
 });
 
 test('should add equipement to the database, if it\'s not a kit', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore({equipments, stocklist, projects, user});
+    const projectId = '1';
     const equipmentData = {
         category: 'microphone',
         quantity: 3, 
@@ -115,7 +111,7 @@ test('should add equipement to the database, if it\'s not a kit', (done) => {
                 parentName: null
             }
         });
-        return database.ref(`equipments/${actions[0].item.id}`).once('value');
+        return database.ref(`projects/${projectId}/equipments/${actions[0].item.id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual({
             category : equipmentData.category,
@@ -127,8 +123,8 @@ test('should add equipement to the database, if it\'s not a kit', (done) => {
 });
 
 test('should add equipements to the database if it\'s a kit', (done) => {
-    const store = createMockStore({stocklist});
-
+    const store = createMockStore({equipments, stocklist, projects, user});
+    const projectId = '1';
     const equipmentData = {
         category: 'kit',
         quantity: 1,
@@ -162,7 +158,7 @@ test('should add equipements to the database if it\'s a kit', (done) => {
 
         // Test the database has been updated correctly
         // Fetch the whole database and test every equipement added
-        return database.ref(`equipments`).once('value')
+        return database.ref(`projects/${projectId}/equipments`).once('value')
         .then((snapshot) => {
             actions.forEach( ({item}, index) => {
 
@@ -214,7 +210,7 @@ test('should setup setEquipmentList object', () => {
 });
 
 test('should fetch equipment list from the database', (done) => {
-    const store = createMockStore();
+    const store = createMockStore({equipments, stocklist, projects, user});
     
         store.dispatch(startFetchEquipmentList()).then( () => {
             const action = store.getActions();

@@ -44,4 +44,5 @@ test('should remove project from the reducer', () => {
         id: '2',
         role: '5'
     }]);
-})
+});
+
