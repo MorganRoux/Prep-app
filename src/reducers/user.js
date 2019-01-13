@@ -1,8 +1,6 @@
+import uuid from 'uuid'
+const userDefaultState = {}
 
-const userDefaultState = {
-    uid: '',
-    currentProject: ''
-}
 const userReducer = (state = userDefaultState, action) => {
     switch(action.type) {
     case 'LOGIN' : 
@@ -13,6 +11,10 @@ const userReducer = (state = userDefaultState, action) => {
 
     case 'SET_CURRENT_PROJECT' :
         return {...state, currentProject:action.id}
+
+    case 'SET_USER_DATA':
+        return action.user;
+
     default:
         return state
     }

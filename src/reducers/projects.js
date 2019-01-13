@@ -1,6 +1,6 @@
-import projects from '../tests/fixtures/projects';
+import { projects } from '../tests/fixtures/projects';
 
-const projectsDefaultState = projects;
+const projectsDefaultState = null; //projects;
 
 const projectsReducer = ( state = projectsDefaultState, action ) => {
 
@@ -21,6 +21,8 @@ const projectsReducer = ( state = projectsDefaultState, action ) => {
     case 'REMOVE_PROJECT' :
         return state.filter( (project) => (project.id !== action.id));
 
+    case 'SET_PROJECT_DATA' : 
+        return action.project;
     default:
         return state;
     }

@@ -1,64 +1,140 @@
 import database from '../../firebase/firebase';
-import equipments from '../fixtures/equipment';
-import { users } from '../fixtures/user';
-import projects from '../fixtures/projects';
 
 
 export const setupFirebase = () => {
 
-    const promise = [];
-    const usersData = {};
-    const userProjectData = {};
-    const equipmentData = {};
-    const projectsData = {};
-    const staffData = {};
-
-    equipments.forEach(({ category, quantity , id, stockName, parentId=null, parentName=null }) => {
-        equipmentData[id] = { 
-            category, 
-            quantity, 
-            stockName, 
-            parentId, 
-            parentName 
-        };
-    });
-
-    users.forEach( ({uid, name, email}) => {
-        staffData[uid] = {
-            name,
-            email,
-            role: '5'
+    const equipmentsData = {
+        '1' : {                         //ID
+        category: 'microphone',
+        quantity: 1,
+        stockName: 'sm57',                          // stockName of the corresponding element in stocklist
+        parentId: null,                // key in the database of the parent
+        parentName: null                //stockName of the parent
+        }, 
+        '2' : {
+        category: 'other',
+        quantity: 1,
+        stockName: 'B91',
+        parentId: null,
+        parentName: null
+        },
+        '3' : {
+        category: 'microphone',
+        quantity: 5,
+        stockName: 'B52',
+        parentId: null,
+        parentName: null
+        },
+        '4' : {
+        category: 'kit',
+        quantity: 1,
+        stockName: 'kit1',               
+        parentId: null,
+        parentName: null
+        },
+        '5' : {
+        category: 'microphone',
+        quantity: 3,
+        stockName: 'sm57',      
+        parentId: '4',
+        parentName: 'kit1'
+        },
+        '6' : {
+        category: 'microphone',
+        quantity: 10,
+        stockName: 'B52',   
+        parentId: '4',
+        parentName: 'kit1'
+        },
+        '7' : {
+        category: 'other',
+        quantity: 5,
+        stockName: 'B91',
+        parentId: '4',
+        parentName: 'kit1'
         }
-    })
-
-    projects.forEach( ({ id, name,role }) => {
-        userProjectData[id] = {
-            name,
-            role
-        };
-
-        projectsData[id] = {
-            about: {
-                name
-            },
-            staff : staffData,
-            equipments : equipmentData
-        }
-    });
-    users.forEach(({ uid, currentProject, name, email }) => {
-        usersData[uid] = {
+    };
+    
+    const usersData = {
+        '1625HT28': {
+            currentProject: 'idp1',
+            
             profile: {
-                name,
-                email
+                name: 'Morgan',
+                email: 'mail@mail.com'
             },
-            currentProject,
-            projects: userProjectData
-        }
-    });
 
-  
+            projects : {
+                'idp1' : {
+                    name: 'projet1',
+                    role: '5'
+                },
+                'idp2': {
+                    name : 'projet2',
+                    role: '5'
+                }
+            }
+        }, 
+        'oiiu567': {
+            currentProject: 'idp2',
+        
+            profile: {
+                name: 'Morgan2',
+                email: 'mail2@mail.com'
+            },
+
+            projects : {
+                'idp1' : {
+                    name: 'projet1',
+                    role: '5'
+                },
+                'idp2': {
+                    name : 'projet2',
+                    role: '5'
+                }
+            }
+        }
+    }
+
+    const projectsData = {
+        'idp1' : {
+            name: 'projet1',
+            role: '5',
+            staff: {
+                '1625HT28': {
+                name: 'Morgan',
+                email: 'mail@mail.com',
+                role: '5'
+                }, 
+                'oiiu567' : {
+                name: 'Morgan2',
+                email: 'mail2@mail.com',
+                role: '5'
+                }
+            },
+            equipments: equipmentsData
+        },
+        'idp2' : {
+            name: 'projet2',
+            role: '5',
+            staff: {
+                '1625HT28': {
+                name: 'Morgan',
+                email: 'mail@mail.com',
+                role: '5'
+                }, 
+                'oiiu567' : {
+                name: 'Morgan2',
+                email: 'mail2@mail.com',
+                role: '5'
+                }
+            },
+            equipments: equipmentsData
+        }
+    }
+
     return database.ref('users').set(usersData)
     .then( () => {
-         database.ref('projects').set(projectsData)
+         return database.ref('projects').set(projectsData)
     });
 }

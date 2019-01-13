@@ -16,7 +16,6 @@ export const startRemoveEquipment = (id) => {
         // item is not a kit
         if (category !== 'kit') {
             // delete from the database
-
             return database.ref(`projects/${projectId}/equipments/${id}`).remove()
             .then( () => {
                 // delete from the reducer
@@ -67,7 +66,6 @@ export const startAddEquipment = ({category, stockName, quantity, list}) => {
         // update the database
         return (dispatch, getState) => {
             const projectId = getState().user.currentProject;
-
             return database.ref(`projects/${projectId}/equipments`)
             .push({
                 category,
@@ -163,9 +161,11 @@ export const startFetchEquipmentList = () => {
     return (dispatch, getState) => {
         const projectId = getState().user.currentProject;
 
-        return database.ref(`projects/${projectId}/equipments`)
-            .once('value')
-            .then( (snapshot) => {
+        const ref = database.ref(`projects/${projectId}/equipments`);
+        //dispatch(setEquipmentRef(ref));
+        
+        return ref.once('value',
+            (snapshot) => {
                 const equipments = [];
                 snapshot.forEach( (childSnapshot) => {
 

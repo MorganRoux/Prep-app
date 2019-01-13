@@ -17,7 +17,7 @@ export class ProjectPicker extends React.Component {
                         value={this.props.user.currentProject}
                     >
                     <option value="">Selectionner</option>
-                    { this.props.projects.map( (project) => (
+                    { this.props.user.projects.map( (project) => (
                         <option 
                             key = {project.id} 
                             value={project.id}

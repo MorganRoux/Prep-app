@@ -1,5 +1,5 @@
 import userReducer from '../../reducers/user';
-
+import user from '../fixtures/user';
 
 test('should handle LOGIN action', () => {
     const uid = '1234';
@@ -20,7 +20,7 @@ test('should handle LOGOUT action', () => {
 
 });
 
-test('should set current project', () => {
+test('should set current project, and create new ref to the equipment database', () => {
     const id ='1';
     const action = {
         type: 'SET_CURRENT_PROJECT',
@@ -28,5 +28,17 @@ test('should set current project', () => {
     };
     const state = {uid: '12345', currentProject: '3'};
     const newState = userReducer(state, action);
-    expect(newState.currentProject).toBe(id)
+    expect(newState.currentProject).toBe(id);
+
+});
+
+
+test('should set user data', () => {
+    
+    const action = {
+        type: 'SET_USER_DATA',
+        user
+    };
+    const state = userReducer(null, action);
+    expect(state).toEqual(user);
 });

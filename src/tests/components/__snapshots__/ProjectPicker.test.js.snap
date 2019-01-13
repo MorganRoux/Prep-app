@@ -4,7 +4,7 @@ exports[`should render ProjectPicker 1`] = `
 <WithStyles(WithFormControlContext(Select))
   native={true}
   onChange={[Function]}
-  value="1"
+  value="idp1"
 >
   <option
     value=""
@@ -12,14 +12,14 @@ exports[`should render ProjectPicker 1`] = `
     Selectionner
   </option>
   <option
-    key="1"
-    value="1"
+    key="idp1"
+    value="idp1"
   >
     projet1
   </option>
   <option
-    key="2"
-    value="2"
+    key="idp2"
+    value="idp2"
   >
     projet2
   </option>

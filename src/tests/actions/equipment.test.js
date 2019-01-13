@@ -20,7 +20,7 @@ import database from '../../firebase/firebase';
 const createMockStore = configureMockStore([thunk]);
 
 beforeEach( (done) => {
-    setupFirebase().then(()=>done());
+    setupFirebase().then( ()=>done() );
     
 });
 
@@ -36,7 +36,7 @@ test('should setup removeEquipment action object', () => {
 test('should remove equipement from the database if it\'s not a kit', (done) => {
 
     const store = createMockStore({equipments, stocklist, projects, user});
-    const projectId = '1';
+    const projectId = 'idp1';
     const {id} = equipments[1];
     const action = {
         type: 'REMOVE_EQUIPMENT',
@@ -46,12 +46,13 @@ test('should remove equipement from the database if it\'s not a kit', (done) => 
     .then ( () => {
         // test if the action has been transmitted to the reducer
         const actions = store.getActions();
-        expect(actions[0]).toEqual(action);
+        
 
         // test if the database has been updated
         return database.ref(`projects/${projectId}/equipments/${id}`).once('value')
         .then((snapshot) => {
             expect(snapshot.val()).toBeNull();
+            expect(actions[0]).toEqual(action);
             done();
         });
     });
@@ -60,9 +61,10 @@ test('should remove equipement from the database if it\'s not a kit', (done) => 
 test('should remove equipment from the database if it\'s a kit', (done) => {
     const store = createMockStore({equipments, stocklist, projects, user});
     const {id} = equipments[3];
-    const projectId = '1';
+    const projectId = 'idp1';
 
-    return store.dispatch(startRemoveEquipment(id))
+    
+    store.dispatch(startRemoveEquipment(id))
     .then (() => {
         // test if the actions has been transmitted to the reducer
         const actions = store.getActions();
@@ -92,7 +94,7 @@ test('should setup addEquipment action object', () => {
 
 test('should add equipement to the database, if it\'s not a kit', (done) => {
     const store = createMockStore({equipments, stocklist, projects, user});
-    const projectId = '1';
+    const projectId = 'idp1';
     const equipmentData = {
         category: 'microphone',
         quantity: 3, 
@@ -124,7 +126,7 @@ test('should add equipement to the database, if it\'s not a kit', (done) => {
 
 test('should add equipements to the database if it\'s a kit', (done) => {
     const store = createMockStore({equipments, stocklist, projects, user});
-    const projectId = '1';
+    const projectId = 'idp1';
     const equipmentData = {
         category: 'kit',
         quantity: 1,

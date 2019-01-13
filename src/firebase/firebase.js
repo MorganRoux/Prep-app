@@ -13,25 +13,10 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
-
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export {firebase, googleAuthProvider, database as default};
-// const resetDatabase = () => {
+const handleAuthChange = (uid) => {
 
+};
+export {firebase, googleAuthProvider, handleAuthChange, database as default};
 
-//     database.ref().set({});
-//     equipments.forEach( ({category, quantity, parentId=null, parentName=null, stockName}) => {
-//         database.ref('equipments').push({
-//             category,
-//             quantity,
-//             stockName,
-//             parentId,
-//             parentName
-//         }).then(() => {
-//             console.log('data saved');
-//         }).catch((e) => {
-//             console.log('error : ', e);
-//         })
-//     });
-// }
