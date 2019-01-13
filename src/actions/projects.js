@@ -45,4 +45,50 @@ export const startFetchProjectData = (projectId) => {
     }
 }
 
+export const startRemoveProject = (projectId) => {
+    return (dispatch, getState) => {
+        const uid = getState().user.uid;
+
+        return Promise.all([
+            database.ref(`projects/${projectId}`).remove(),
+            database.ref(`users/${uid}/projects/${projectId}`).remove()
+        ]).then( () => dispatch(removeProject(projectId)));
+    }
+}
+
+export const startCreateProject = () => {
+    return (dispatch, getState) => {
+        const {uid, profile} = getState().user;
+        const {name, email} = profile
+        const staff=[];
+        staff[uid] = {name, email, role:'5'}
+        const newProject = {
+            name: 'New Project',
+            staff: staff
+        }
+        return database.ref('projects').push({
+            name: 'New Project',
+            staff
+        })
+        .then( (ref) => {
+
+            return database.ref(`users/${uid}/projects/${ref.key}`)
+            .set({
+                name: 'New Project',
+                role: '5'
+            }).then( () => dispatch(createProject({
+                name: 'New Project', 
+                id: ref.key,
+                staff: [{
+                    uid,
+                    name,
+                    email,
+                    role:'5'
+                }]
+            })));
+        });
+    }
+    
+}
+
 

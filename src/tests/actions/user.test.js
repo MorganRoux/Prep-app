@@ -69,6 +69,7 @@ test('should handle equipment ref action object', () => {
 
 });
 
+
 test('should fetch user data',(done) => {
 
     const store = createMockStore({});
@@ -122,6 +123,4 @@ test('should create new profile', (done) => {
         }));
         done();
     });
-
 });
-

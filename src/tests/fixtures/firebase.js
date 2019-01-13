@@ -99,7 +99,6 @@ export const setupFirebase = () => {
     const projectsData = {
         'idp1' : {
             name: 'projet1',
-            role: '5',
             staff: {
                 '1625HT28': {
                 name: 'Morgan',
@@ -116,7 +115,6 @@ export const setupFirebase = () => {
         },
         'idp2' : {
             name: 'projet2',
-            role: '5',
             staff: {
                 '1625HT28': {
                 name: 'Morgan',

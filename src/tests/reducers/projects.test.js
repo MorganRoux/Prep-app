@@ -8,19 +8,15 @@ test('should set default state', () => {
     expect(state).toEqual({});
 })
 
-// test('should create project in the reducer', () => {
-//     const project = {name : 'testproject', id:'6'}
-//     const action = {
-//         type: 'CREATE_PROJECT',
-//         project
-//     };
+test('should create project in the projectReducer', () => {
+    const action = {
+        type: 'CREATE_PROJECT',
+        project
+    };
 
-//     const newState = projectReducer(null, action);
-//     expect(newState).toEqual([{
-//         ...project,
-//         role: '5'
-//     }]);
-// });
+    const newState = projectReducer(null, action);
+    expect(newState).toEqual(project);
+});
 
 test('should remove project data from the projectReducer', () => {
     const id = 'idp1';
@@ -41,20 +37,6 @@ test('should set projects data', () => {
         project
     };
     const state = projectReducer(null, action);
-    expect(state).toEqual({
-        id: 'idp1',
-        name: 'projet1',
-        staff: [{
-            id: '1625HT28',
-            name: 'Morgan',
-            email: 'mail@mail.com',
-            role: '5'
-        }, {
-            id: 'oiiu567',
-            name: 'Morgan2',
-            email: 'mail2@mail.com',
-            role: '5'
-        }]
-    });
-})
+    expect(state).toEqual(project);
+});
 

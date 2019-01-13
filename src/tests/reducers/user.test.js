@@ -1,5 +1,6 @@
 import userReducer from '../../reducers/user';
 import user from '../fixtures/user';
+import { project } from '../fixtures/projects';
 
 test('should handle LOGIN action', () => {
     const uid = '1234';
@@ -55,4 +56,28 @@ test('should remove a project from the user profile', () => {
         name : 'projet2',
         role: '5'
     }]);
+});
+
+
+test('should add a project in the user profile', () => {
+    const action = {
+        type: 'CREATE_PROJECT',
+        project
+    };
+    const { uid, profile, currentProject } = user;
+    const oldState = {
+        uid,
+        currentProject,
+        profile
+    }
+    const {id, name} = project;
+    const state = userReducer(oldState, action);
+    expect(state).toEqual({
+        ...oldState,
+        projects: [{
+            id,
+            name,
+            role:'5'
+        }]
+    });
 });

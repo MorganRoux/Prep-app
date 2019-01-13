@@ -11,6 +11,10 @@ const projectReducer = ( state = projectsDefaultState, action ) => {
 
     case 'SET_PROJECT' : 
         return action.project;
+
+    case 'CREATE_PROJECT' :
+        return action.project;
+        
     default:
         return state;
     }

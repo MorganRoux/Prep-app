@@ -1,7 +1,13 @@
-import { createProject, removeProject, setProjectData, startFetchProjectData } from '../../actions/projects';
+import { 
+    createProject, 
+    startCreateProject,
+    removeProject, 
+    setProjectData, 
+    startFetchProjectData, 
+    startRemoveProject 
+} from '../../actions/projects';
 import { project } from '../fixtures/projects';
 import user from '../fixtures/user';
-import projectsReducer from '../../reducers/projects';
 import { setupFirebase } from '../fixtures/firebase'
 import database from '../../firebase/firebase';
 import configureMockStore from 'redux-mock-store';
@@ -64,6 +70,13 @@ test('should handle remove project action object', () => {
     });
 });
 
+test('should handle create project action object', () => {
+    const action = createProject(project)
+    expect(action).toEqual({
+        type: 'CREATE_PROJECT',
+        project
+    });
+})
 
 test('should fetch project data', (done) => {
 
@@ -77,6 +90,86 @@ test('should fetch project data', (done) => {
         done();
     });
 
+});
+
+test('should remove project from the database', (done) => {
+    
+    const store = createMockStore({user});
+    const projectId = 'idp1';
+
+    store.dispatch(startRemoveProject(projectId))
+    .then( () => {
+
+        const action = store.getActions()[0];
+        expect(action).toEqual({
+            type: 'REMOVE_PROJECT',
+            id: projectId
+        });
+
+        const uid = store.getState().user.uid;
+        return Promise.all([
+            database.ref(`projects/${projectId}`).once('value')
+                .then( 
+                    (snapshot) => expect(snapshot.exists()).toBeFalsy()
+                ),
+            database.ref(`users/${uid}/projects/${projectId}`).once('value')
+                .then( 
+                    (snapshot) => expect(snapshot.exists()).toBeFalsy()
+                )
+        ]).then(() => done());
+    });
+});
+
+test('should create project in the database and pass the action to the reducer', (done) => {
+    const store = createMockStore({user});
+    const projectId = 'newww';
+    const projectName = 'New Project';
+    const newProject = {
+        id: 'newww',
+        name: 'New Project',
+        role: '5'
+    }
+    const {uid, profile } = store.getState().user;
+    const { name, email } = profile;
+
+    store.dispatch(startCreateProject())
+    .then( () => {
+        //test if the action has been passed to the store
+        const action = store.getActions()[0];
+        expect(action).toEqual(createProject({
+                id: expect.any(String),
+                name: 'New Project',
+                staff: [{
+                    uid,
+                    name,
+                    email,
+                    role:'5'
+                }]
+            }));
+
+        const projectId = action.project.id;
+        //test if the project has been added to the databse
+        return Promise.all([
+
+            database.ref(`projects/${projectId}`).once('value')
+            .then( (snapshot) => {
+                const staff = {}
+                staff[uid] = {name, email, role:'5'};
+                expect(snapshot.val()).toEqual({
+                name: 'New Project',
+                staff
+              });
+            }),
+
+            database.ref(`users/${uid}/projects/${projectId}`).once('value')
+            .then( (snapshot) => {
+                expect(snapshot.val()).toEqual({
+                    name: 'New Project',
+                    role: '5'
+                });
+            })
+        ]).then( ()=>done() );
+    });
 });
 
     
