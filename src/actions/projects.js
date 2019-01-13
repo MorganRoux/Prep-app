@@ -13,7 +13,7 @@ export const removeProject = (id) => ({
 });
 
 export const setProjectData = (project) => ({
-        type: 'SET_PROJECT_DATA',
+        type: 'SET_PROJECT',
         project
 });
 
@@ -44,4 +44,5 @@ export const startFetchProjectData = (projectId) => {
         });
     }
 }
-       
+
+

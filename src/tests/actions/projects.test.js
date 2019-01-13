@@ -48,11 +48,22 @@ test('should handle remove project action object', () => {
 test('should handle set projects action object', () => {
     const action = setProjectData(project)
     expect(action).toEqual({
-        type: 'SET_PROJECT_DATA',
+        type: 'SET_PROJECT',
         project
     });
 
 });
+
+test('should handle remove project action object', () => {
+    const id = 'lknsclkn';
+
+    const action = removeProject(id);
+    expect(action).toEqual({
+        type: 'REMOVE_PROJECT',
+        id
+    });
+});
+
 
 test('should fetch project data', (done) => {
 

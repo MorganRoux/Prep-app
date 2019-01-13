@@ -1,58 +1,46 @@
-import projectsReducer from '../../reducers/projects';
+import projectReducer from '../../reducers/projects';
 import { project } from '../fixtures/projects';
 
 
 test('should set default state', () => {
     const action = {type: '@@INIT'};
-    const state = projectsReducer({},action);
+    const state = projectReducer({},action);
     expect(state).toEqual({});
 })
 
-test('should create project in the reducer', () => {
-    const project = {name : 'testproject', id:'6'}
-    const action = {
-        type: 'CREATE_PROJECT',
-        project
-    };
+// test('should create project in the reducer', () => {
+//     const project = {name : 'testproject', id:'6'}
+//     const action = {
+//         type: 'CREATE_PROJECT',
+//         project
+//     };
 
-    const newState = projectsReducer(null, action);
-    expect(newState).toEqual([{
-        ...project,
-        role: '5'
-    }]);
-});
+//     const newState = projectReducer(null, action);
+//     expect(newState).toEqual([{
+//         ...project,
+//         role: '5'
+//     }]);
+// });
 
-test('should remove project from the reducer', () => {
+test('should remove project data from the projectReducer', () => {
     const id = 'idp1';
     const action = {
         type: 'REMOVE_PROJECT',
         id
     };
-    const state =[{
-        name: 'project1',
-        id: 'idp1',
-        role: '5'
-    }, {
-        name: 'project2',
-        id: 'idp2',
-        role: '5'
-    }];
+    const state = project;
 
-    const newState = projectsReducer(state,action);
-    expect(newState).toEqual([{
-        name: 'project2',
-        id: 'idp2',
-        role: '5'
-    }]);
+    const newState = projectReducer(state,action);
+    expect(newState).toBeNull;
 });
 
 
 test('should set projects data', () => {
     const action = {
-        type: 'SET_PROJECT_DATA',
+        type: 'SET_PROJECT',
         project
     };
-    const state = projectsReducer(null, action);
+    const state = projectReducer(null, action);
     expect(state).toEqual({
         id: 'idp1',
         name: 'projet1',

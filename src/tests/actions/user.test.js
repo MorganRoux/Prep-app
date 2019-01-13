@@ -8,7 +8,8 @@ import {
     startFetchUserData, 
     setUserData, 
     setEquipementRef, 
-    createProfile 
+    createProfile,
+    removeProject
 } from '../../actions/user';
 import user from '../fixtures/user';
 
@@ -48,6 +49,26 @@ test('should handle currentproject action object', () => {
     });
 });
 
+
+test('should handle set user data action object', () => {
+    
+    const action = setUserData(user);
+    expect(action).toEqual({
+        type: 'SET_USER_DATA',
+        user
+    })
+
+})
+test('should handle equipment ref action object', () => {
+    const ref = database.ref(`projects/idp1/equipments`);
+    const action = setEquipementRef(ref);
+    expect(action).toEqual({
+        type : 'SET_REF',
+        ref
+    });
+
+});
+
 test('should fetch user data',(done) => {
 
     const store = createMockStore({});
@@ -79,24 +100,6 @@ test('should fetch user data',(done) => {
    
 });
 
-test('should handle set user data action object', () => {
-    
-    const action = setUserData(user);
-    expect(action).toEqual({
-        type: 'SET_USER_DATA',
-        user
-    })
-
-})
-test('should handle equipment ref action object', () => {
-    const ref = database.ref(`projects/idp1/equipments`);
-    const action = setEquipementRef(ref);
-    expect(action).toEqual({
-        type : 'SET_REF',
-        ref
-    });
-
-});
 
 test('should create new profile', (done) => {
     const uid = 'uidTest';

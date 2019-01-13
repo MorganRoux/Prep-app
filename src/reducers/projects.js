@@ -2,30 +2,18 @@ import { projects } from '../tests/fixtures/projects';
 
 const projectsDefaultState = null; //projects;
 
-const projectsReducer = ( state = projectsDefaultState, action ) => {
+const projectReducer = ( state = projectsDefaultState, action ) => {
 
     switch(action.type) {
-    case 'CREATE_PROJECT':
-        return state ? ([
-            ...state,
-            {
-                ...action.project,
-                role:'5'
-            }
-        ]) : ([{
-            ...action.project,
-            role:'5'
-        }]);
-        
-
+    
     case 'REMOVE_PROJECT' :
-        return state.filter( (project) => (project.id !== action.id));
+        return null;
 
-    case 'SET_PROJECT_DATA' : 
+    case 'SET_PROJECT' : 
         return action.project;
     default:
         return state;
     }
 }
 
-export default projectsReducer
+export default projectReducer

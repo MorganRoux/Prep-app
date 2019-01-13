@@ -7,6 +7,7 @@ exports[`should render ProjectPicker 1`] = `
   value="idp1"
 >
   <option
+    key="option-title-select"
     value=""
   >
     Selectionner
@@ -22,6 +23,12 @@ exports[`should render ProjectPicker 1`] = `
     value="idp2"
   >
     projet2
+  </option>
+  <option
+    key="option-remove"
+    value="remove"
+  >
+    Supprimer
   </option>
 </WithStyles(WithFormControlContext(Select))>
 `;

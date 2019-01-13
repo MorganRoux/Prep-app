@@ -42,3 +42,17 @@ test('should set user data', () => {
     const state = userReducer(null, action);
     expect(state).toEqual(user);
 });
+
+test('should remove a project from the user profile', () => {
+    const id= 'idp1'
+    const action = {
+        type: 'REMOVE_PROJECT',
+        id
+    };
+    const state = userReducer(user, action);
+    expect(state.projects).toEqual([{
+        id: 'idp2',
+        name : 'projet2',
+        role: '5'
+    }]);
+});

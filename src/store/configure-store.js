@@ -3,7 +3,7 @@ import equipmentsReducer from '../reducers/equipment';
 import filtersReducer from '../reducers/filters';
 import stocklistReducer from '../reducers/stocklist';
 import userReducer from '../reducers/user';
-import projectsReducer from '../reducers/projects';
+import projectReducer from '../reducers/projects';
 
 import thunk from 'redux-thunk';
 
@@ -17,7 +17,7 @@ const configureStore = () => {
             filters: filtersReducer,
             stocklist: stocklistReducer,
             user: userReducer,
-            projects: projectsReducer
+            project: projectReducer
         }), composeEnhancers(applyMiddleware(thunk))
     );
     return store;
