@@ -72,12 +72,21 @@ test('should handle remove project action object', () => {
     });
 });
 
-test('should handle setcurrentproject action object', () => {
-    const action = setCurrentProject(project);
-    expect(action).toEqual({
-        type: 'SET_CURRENT_PROJECT',
-        project
+test('should handle set current project action object and update the currenProject field in the database', (done) => {
+    const store= createMockStore({user});
+    store.dispatch(setCurrentProject(project)).then( () => {
+        const action = store.getActions()[0];
+        expect(action).toEqual({
+            type: 'SET_CURRENT_PROJECT',
+            project
+        });
+        database.ref(`users/${user.uid}/currentProject`).once('value')
+        .then( (snapshot) => {
+            expect(snapshot.val()).toBe(user.currentProject);
+            done();
+        });
     });
+    
 });
 
 test("should handle no current project action object", () => {

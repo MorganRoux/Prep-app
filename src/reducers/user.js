@@ -17,7 +17,7 @@ const userReducer = (state = userDefaultState, action) => {
         return {...state, currentProject:''}
 
     case 'SET_USER_DATA':
-        return action.user;
+        return {...state,...action.user};
 
     case 'REMOVE_PROJECT': 
         projects = state.projects.filter( ({id}) => action.id !== id);

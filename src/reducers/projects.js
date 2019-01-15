@@ -16,8 +16,8 @@ const projectReducer = ( state = projectsDefaultState, action ) => {
         return action.project;
         
     case 'SET_CURRENT_PROJECT': 
-        const {id, name, staff: staff0} = action.project;
-        const staff = Object.keys(staff0).map( (key) => ({id: key, ...staff0[key]}));
+        const {id, name, staff: staffData} = action.project;
+        const staff = Object.keys(staffData).map( (key) => ({id: key, ...staffData[key]}));
         return {id, name, staff}
 
     case 'NO_CURRENT_PROJECT' :

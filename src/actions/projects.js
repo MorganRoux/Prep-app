@@ -18,9 +18,15 @@ export const setProjectData = (project) => ({
 });
 
 export const setCurrentProject = (project) => {
-    return {
-        type: 'SET_CURRENT_PROJECT',
-        project
+    return (dispatch, getState) => {
+        const uid = getState().user.uid;
+        return database.ref(`users/${uid}/currentProject`).set(project.id)
+        .then(()=> {
+            dispatch({
+                type: 'SET_CURRENT_PROJECT',
+                project
+            });
+        });
     }
 }
 
@@ -37,21 +43,12 @@ export const startFetchProjectData = (projectId) => {
             
             const name = snapshot.val().name;
             const id = snapshot.key;
-            // get staff data
-            const staffData = [];
-            snapshot.child('/staff').forEach( (childSnapshot) => {
-                const { name, email, role } = childSnapshot.val();
-                staffData.push({
-                    id: childSnapshot.key,
-                    name,
-                    email,
-                    role
-                });
-            });
+            const staffData = snapshot.val().staff;
+            const staff = Object.keys(staffData).map( (key) => ({id: key, ...staffData[key]}));
             dispatch(setProjectData({
                 id,
                 name,
-                staff: staffData
+                staff
             }));
 
         });
@@ -81,11 +78,15 @@ export const startCreateProject = () => {
         })
         .then( (ref) => {
 
-            return database.ref(`users/${uid}/projects/${ref.key}`)
-            .set({
-                name: 'New Project',
-                role: '5'
-            }).then( () => dispatch(createProject({
+            return Promise.all([
+                database.ref(`users/${uid}/projects/${ref.key}`)
+                .set({
+                    name: 'New Project',
+                    role: '5'
+                }),
+                database.ref(`users/${uid}/currentProject`)
+                .set(ref.key)
+            ]).then( () => dispatch(createProject({
                 name: 'New Project', 
                 id: ref.key,
                 staff: [{

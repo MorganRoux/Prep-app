@@ -1,6 +1,7 @@
 
 import equipmentsReducer from '../../reducers/equipment';
 import equipments from '../fixtures/equipment';
+import { equipmentsData } from '../fixtures/firebase';
 
 test('should set default state', ()=>{
     const state = equipmentsReducer(undefined, '@@INIT');
@@ -73,4 +74,64 @@ test('should set equipment list', () => {
     }
     const state = equipmentsReducer(prevState, action);
     expect(state).toEqual(equipments);
+});
+
+
+test('should set current project equipments when there is data', () => {
+    const action = {
+        type: 'SET_CURRENT_PROJECT',
+        project: {
+            id: 'idp1',
+            name: 'projet1',
+            staff: {
+                '1625HT28': {
+                    name: 'Morgan',
+                    email: 'mail@mail.com',
+                    role: '5'
+                },
+                'oiiu567' : {
+                    name: 'Morgan2',
+                    email: 'mail2@mail.com',
+                    role: '5'
+                }
+            },
+            equipments: equipmentsData
+        }
+    };
+    const state = equipmentsReducer([], action);
+    expect(state).toEqual(equipments);
+});
+
+
+test('should set current project equipments when there is no data', () => {
+    const action = {
+        type: 'SET_CURRENT_PROJECT',
+        project: {
+            id: 'idp1',
+            name: 'projet1',
+            staff: {
+                '1625HT28': {
+                    name: 'Morgan',
+                    email: 'mail@mail.com',
+                    role: '5'
+                },
+                'oiiu567' : {
+                    name: 'Morgan2',
+                    email: 'mail2@mail.com',
+                    role: '5'
+                }
+            },
+        }
+    };
+    const state = equipmentsReducer([], action);
+    expect(state).toEqual([]);
+});
+
+test('should remove equipements when removing a poject',  () => {
+    const action = {
+        type: 'REMOVE_EQUIPMENT',
+        id: 'idp1'
+    };
+    const state = equipmentsReducer([], action);
+    expect(state).toEqual([]);
 })

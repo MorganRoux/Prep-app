@@ -1,9 +1,9 @@
 import database from '../../firebase/firebase';
 
 
-export const setupFirebase = () => {
 
-    const equipmentsData = {
+
+    export const equipmentsData = {
         '1' : {                         //ID
         category: 'microphone',
         quantity: 1,
@@ -145,6 +145,8 @@ export const setupFirebase = () => {
             }
         }
     }
+
+    export const setupFirebase = () => {
 
     return database.ref('users').set(usersData)
     .then( () => {

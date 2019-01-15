@@ -7,7 +7,8 @@ import {
     startFetchUserData, 
     setUserData, 
     setEquipementRef, 
-    createProfile
+    createProfile,
+    updateUser
 } from '../../actions/user';
 import user from '../fixtures/user';
 
@@ -114,3 +115,41 @@ test('should create new profile', (done) => {
         done();
     });
 });
+
+
+test('should update user in the database', (done) => {
+    const store= createMockStore({user});
+    const user2 = {
+        uid: 'ohzcoiug ',
+        currentProject: 'idp25',
+        
+        profile: {
+            name: 'Morgan3',
+            email: 'mail3@mail.com'
+        },
+
+        projects : [{
+            id: 'idp25',
+            name: 'projet25',
+            role: '5'
+        }, {
+            id: 'idp27',
+            name : 'projet27',
+            role: '5'
+        }]
+    }   
+    store.dispatch(updateUser(user2)).then(() => {
+        database.ref(`users/${user2.uid}`).once('value')
+        .then( (snapshot) => {
+            const action = store.getActions()[0];
+            expect(action).toEqual({
+                type : 'SET_USER_DATA',
+                user: user2
+            });
+            const userData = {...snapshot.val(), uid:snapshot.key};
+            const projectsData = Object.keys(userData.projects).map((key)=>({...userData.projects[key], id:key}));
+            expect({...userData, projects: projectsData}).toEqual(user2);
+            done();
+        })
+    });
+})

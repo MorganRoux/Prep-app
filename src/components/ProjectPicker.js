@@ -16,18 +16,22 @@ export class ProjectPicker extends React.Component {
 
     onChange = (e) => {
         switch(e.target.value) {
+        case 'select' : 
+            return;
+        case 'noproject' : 
+            return;
         case 'remove' :    
             this.props.startRemoveProject(this.props.user.currentProject);
             this.props.noCurrentProject();
-            break;
+            return;
 
         case 'create' :
             this.props.startCreateProject();
-            break;
+            return;
 
         default:
             this.setCurrentProject(e.target.value)
-
+            return;
         }
     }
 
@@ -39,9 +43,10 @@ export class ProjectPicker extends React.Component {
                         value={this.props.user.currentProject}
                     >
                     {this.props.user.projects.length > 0 ? (
-                    <option key="option-title-select" value="">Selectionner</option>
+                        <option key="option-title-select" value="select">Selectionner</option>
+                         
                     ) : (
-                    <option key="option-title-noproject" value="">Aucun Projet</option>
+                        <option key="option-title-noproject" value="noproject">Aucun Projet</option>
                     )}
                     
                     { this.props.user.projects.map( (project) => (

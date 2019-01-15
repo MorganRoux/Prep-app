@@ -29,6 +29,20 @@ const equipmentsReducer = (state = equipmentReducerDefaultState, action) => {
     case 'SET_EQUIPMENT_LIST':
         return action.equipments;
 
+    case 'SET_CURRENT_PROJECT' :
+    const equipments = action.project.equipments
+        if(action.project.equipments) {
+            return  Object.keys(equipments).map((key) => ({...equipments[key], id: key}) )
+        } else {
+            return []
+        }
+
+    case 'CREATE_PROJECT':
+        return [];
+        
+    case 'REMOVE_PROJECT' :
+        return [];
+
     default:
         return state;
     }

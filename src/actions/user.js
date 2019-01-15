@@ -75,6 +75,21 @@ export const startFetchUserData = (uid) => {
     }
 }
 
+export const updateUser = (userData) => {
+    return (dispatch, getState) => {
+        const {uid,...rest} = {...getState().user, ...userData};
+        const projects = rest.projects.reduce(
+            (acc, {id,...val}) => {
+                    acc[id]={...val};
+                    return acc
+            }, 
+            {});
+        return database.ref(`users/${uid}`).set({...rest, projects}).then(() => {
+            dispatch(setUserData(userData));
+        });
+    }
+} 
+
 export const createProfile = (uid) => {
     return (dispatch) => {
         const newProfile = {

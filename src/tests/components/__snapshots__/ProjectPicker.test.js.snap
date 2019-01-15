@@ -8,7 +8,7 @@ exports[`should render ProjectPicker 1`] = `
 >
   <option
     key="option-title-select"
-    value=""
+    value="select"
   >
     Selectionner
   </option>

@@ -98,7 +98,10 @@ export class EquipmentList extends React.Component {
                         ); 
                     }
                     })} 
-                    <EquipmentAddForm /> 
+                    {this.props.user.currentProject && (
+                        <EquipmentAddForm /> 
+                    )}
+                    
                 </Table>
         );
     }
@@ -128,7 +131,8 @@ export class SortableComponent extends React.Component {
 const mapStateToProps = (state) => {
     return {
         equipments: getVisibleEquipments(state.equipments, state.filters),
-        filters: state.filters
+        filters: state.filters,
+        user: state.user
     }
 };
 

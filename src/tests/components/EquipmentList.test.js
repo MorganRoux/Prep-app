@@ -2,9 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { EquipmentList, SortableComponent, EquipmentListSortable } from '../../components/EquipmentList';
 import equipments from '../fixtures/equipment';
+import user from '../fixtures/user';
 
 test('should render EquipmentList', () => {
-    const wrapper = shallow(<EquipmentList equipments = {equipments}/>);
+    const wrapper = shallow(
+        <EquipmentList 
+            equipments = {equipments}
+            user = {user}
+            filters = {{ text: '', sortBy: ''}}
+        />);
     expect(wrapper).toMatchSnapshot();
 
 });
