@@ -25,6 +25,12 @@ exports[`should render ProjectPicker 1`] = `
     projet2
   </option>
   <option
+    key="option-create"
+    value="create"
+  >
+    Créer
+  </option>
+  <option
     key="option-remove"
     value="remove"
   >

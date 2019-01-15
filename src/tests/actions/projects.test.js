@@ -1,4 +1,6 @@
 import { 
+    setCurrentProject,
+    noCurrentProject,
     createProject, 
     startCreateProject,
     removeProject, 
@@ -70,6 +72,21 @@ test('should handle remove project action object', () => {
     });
 });
 
+test('should handle setcurrentproject action object', () => {
+    const action = setCurrentProject(project);
+    expect(action).toEqual({
+        type: 'SET_CURRENT_PROJECT',
+        project
+    });
+});
+
+test("should handle no current project action object", () => {
+    const action = noCurrentProject(project);
+    expect(action).toEqual({
+        type: 'NO_CURRENT_PROJECT'
+    });
+});
+
 test('should handle create project action object', () => {
     const action = createProject(project)
     expect(action).toEqual({
@@ -122,13 +139,6 @@ test('should remove project from the database', (done) => {
 
 test('should create project in the database and pass the action to the reducer', (done) => {
     const store = createMockStore({user});
-    const projectId = 'newww';
-    const projectName = 'New Project';
-    const newProject = {
-        id: 'newww',
-        name: 'New Project',
-        role: '5'
-    }
     const {uid, profile } = store.getState().user;
     const { name, email } = profile;
 

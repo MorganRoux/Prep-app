@@ -128,6 +128,21 @@ export const setupFirebase = () => {
                 }
             },
             equipments: equipmentsData
+        },
+        'idp3' : {
+            name: 'projet3',
+            staff: {
+                '1625HT28': {
+                name: 'Morgan',
+                email: 'mail@mail.com',
+                role: '5'
+                }, 
+                'oiiu567' : {
+                name: 'Morgan2',
+                email: 'mail2@mail.com',
+                role: '5'
+                }
+            }
         }
     }
 

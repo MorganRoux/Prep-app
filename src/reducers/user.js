@@ -1,5 +1,4 @@
-import uuid from 'uuid'
-import { addKitActions } from '../tests/fixtures/actions';
+
 const userDefaultState = {}
 let projects =[];
 
@@ -12,7 +11,10 @@ const userReducer = (state = userDefaultState, action) => {
         return {...state, uid :''};
 
     case 'SET_CURRENT_PROJECT' :
-        return {...state, currentProject: action.id};
+        return {...state, currentProject: action.project.id};
+    
+    case 'NO_CURRENT_PROJECT' :
+        return {...state, currentProject:''}
 
     case 'SET_USER_DATA':
         return action.user;
@@ -29,7 +31,7 @@ const userReducer = (state = userDefaultState, action) => {
         } else {
         projects = [{name, id, role:'5'}];
         }
-         return {...state, projects}
+         return {...state, projects, currentProject: id}
 
     default:
         return state

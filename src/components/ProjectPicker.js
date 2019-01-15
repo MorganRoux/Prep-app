@@ -1,17 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentProject } from '../actions/user';
 import Select from '@material-ui/core/Select';
-import { removeProject } from '../actions/projects';
+import { startRemoveProject, startCreateProject, setCurrentProject, noCurrentProject } from '../actions/projects';
+import database from '../firebase/firebase';
 
 export class ProjectPicker extends React.Component { 
 
+    setCurrentProject = (id) => {
+            return database.ref(`/projects/${id}`).once('value')
+            .then( (snapshot)=> {
+                const projectToSet = snapshot.val();
+                this.props.setCurrentProject({...projectToSet, id});
+            });
+    }
+
     onChange = (e) => {
-        if(e.target.value !== 'remove') {
-            this.props.setCurrentProject(e.target.value);
-        } else {
-            this.props.removeProject(this.props.user.currentProject);
-            this.props.setCurrentProject('');
+        switch(e.target.value) {
+        case 'remove' :    
+            this.props.startRemoveProject(this.props.user.currentProject);
+            this.props.noCurrentProject();
+            break;
+
+        case 'create' :
+            this.props.startCreateProject();
+            break;
+
+        default:
+            this.setCurrentProject(e.target.value)
+
         }
     }
 
@@ -36,6 +52,7 @@ export class ProjectPicker extends React.Component {
                         {project.name}
                         </option>
                     ))}
+                    <option key="option-create" value="create">Créer</option>
                     {this.props.user.projects.length > 0 && (
                         <option key="option-remove" value="remove">Supprimer</option>
                     )}
@@ -47,11 +64,13 @@ export class ProjectPicker extends React.Component {
 
 const mapStateToProps = (state) => ({
     user: state.user,
-    projects: state.projects
+    project: state.project
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setCurrentProject: (id) => dispatch(setCurrentProject(id)),
-    removeProject: (id) => dispatch(removeProject(id))
+    startRemoveProject: (id) => dispatch(startRemoveProject(id)),
+    startCreateProject: (id) => dispatch(startCreateProject()),
+    noCurrentProject: () => dispatch(noCurrentProject())
 })
 export default connect(mapStateToProps,mapDispatchToProps)(ProjectPicker);

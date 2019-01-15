@@ -21,18 +21,41 @@ test('should handle LOGOUT action', () => {
 
 });
 
-test('should set current project, and create new ref to the equipment database', () => {
-    const id ='1';
+test('should set current project', () => {
     const action = {
         type: 'SET_CURRENT_PROJECT',
-        id
+        project: {
+            id: 'idp1',
+            name: 'projet1',
+            staff: {
+                '1625HT28': {
+                    name: 'Morgan',
+                    email: 'mail@mail.com',
+                    role: '5'
+                },
+                'oiiu567' : {
+                    name: 'Morgan2',
+                    email: 'mail2@mail.com',
+                    role: '5'
+                }
+            }
+        }
     };
     const state = {uid: '12345', currentProject: '3'};
     const newState = userReducer(state, action);
-    expect(newState.currentProject).toBe(id);
+    expect(newState.currentProject).toBe(project.id);
 
 });
 
+test('should empty current project ', () => {
+    const action = {
+        type: 'NO_CURRENT_PROJECT'
+    };
+    const state = {uid: '12345', currentProject: '3'};
+    const newState = userReducer(state, action);
+    expect(newState.currentProject).toBe('');
+
+});
 
 test('should set user data', () => {
     

@@ -4,12 +4,10 @@ import thunk from 'redux-thunk';
 import { 
     login, 
     logout, 
-    setCurrentProject, 
     startFetchUserData, 
     setUserData, 
     setEquipementRef, 
-    createProfile,
-    removeProject
+    createProfile
 } from '../../actions/user';
 import user from '../fixtures/user';
 
@@ -40,14 +38,6 @@ test('should handle logout action object', () => {
     });
 });
 
-test('should handle currentproject action object', () => {
-    const id = '7'
-    const action = setCurrentProject(id);
-    expect(action).toEqual({
-        type: 'SET_CURRENT_PROJECT',
-        id
-    });
-});
 
 
 test('should handle set user data action object', () => {
@@ -113,7 +103,7 @@ test('should create new profile', (done) => {
             currentProject: 'idp1',
             profile: {
                 name: 'Anonymous',
-                mail: 'unknown'
+                email: 'unknown'
             },
             projects: [{
                 id: 'idp1',

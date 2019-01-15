@@ -17,6 +17,19 @@ export const setProjectData = (project) => ({
         project
 });
 
+export const setCurrentProject = (project) => {
+    return {
+        type: 'SET_CURRENT_PROJECT',
+        project
+    }
+}
+
+export const noCurrentProject = () => {
+    return {
+        type: 'NO_CURRENT_PROJECT'
+    }
+}
+
 export const startFetchProjectData = (projectId) => {
     return (dispatch) => {
         return database.ref(`/projects/${projectId}`).once('value')
@@ -60,12 +73,8 @@ export const startCreateProject = () => {
     return (dispatch, getState) => {
         const {uid, profile} = getState().user;
         const {name, email} = profile
-        const staff=[];
+        const staff={};
         staff[uid] = {name, email, role:'5'}
-        const newProject = {
-            name: 'New Project',
-            staff: staff
-        }
         return database.ref('projects').push({
             name: 'New Project',
             staff

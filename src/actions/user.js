@@ -30,13 +30,6 @@ export const logout = (uid) => {
     }
 }
 
-export const setCurrentProject = (id) => {
-    return {
-        type: 'SET_CURRENT_PROJECT',
-        id
-    }
-}
-
 export const setUserData = (user) => {
     return {
         type: 'SET_USER_DATA',
@@ -89,7 +82,7 @@ export const createProfile = (uid) => {
             currentProject: 'idp1',
             profile: {
                 name: 'Anonymous',
-                mail: 'unknown'
+                email: 'unknown'
             },
             projects: {
                 'idp1' : {
@@ -105,7 +98,7 @@ export const createProfile = (uid) => {
                 currentProject: 'idp1',
                 profile: {
                     name: 'Anonymous',
-                    mail: 'unknown'
+                    email: 'unknown'
                 },
                 projects: [{
                     id: 'idp1',
