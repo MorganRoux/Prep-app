@@ -20,19 +20,34 @@ const userReducer = (state = userDefaultState, action) => {
         return {...state,...action.user};
 
     case 'REMOVE_PROJECT': 
-        projects = state.projects.filter( ({id}) => action.id !== id);
+    {
+        const projects = state.projects.filter( ({id}) => action.id !== id);
         return {...state, projects};
-
+    }
     case 'CREATE_PROJECT' :
+    {
         const {name, id } = action.project;
-        
+        let projects = [];
         if(state.projects !== undefined) {
         projects = [...state.projects, {name, id, role:'5'}]
         } else {
         projects = [{name, id, role:'5'}];
         }
          return {...state, projects, currentProject: id}
-
+    }
+    case 'UPDATE_PROJECT_NAME' :
+    {
+        const {id,name} = action.project;
+        const projects = [];
+        state.projects.forEach((project) => {
+            if(project.id === id) {
+                projects.push({...project, name});
+            } else {
+                projects.push(project);
+            }
+        });
+        return {...state, projects}
+    }
     default:
         return state
     }

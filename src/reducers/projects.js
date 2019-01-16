@@ -21,7 +21,10 @@ const projectReducer = ( state = projectsDefaultState, action ) => {
         return {id, name, staff}
 
     case 'NO_CURRENT_PROJECT' :
-        return null
+        return null;
+
+    case 'UPDATE_PROJECT_NAME' :
+        return {...state, name: action.project.name};
 
     default:
         return state;

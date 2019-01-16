@@ -98,7 +98,25 @@ export const startCreateProject = () => {
             })));
         });
     }
-    
+}
+
+export const updateProjectName = (project) => {
+    return (dispatch, getState) => {
+        const {id, name} = project;
+        const {uid} = getState().user;
+
+        return Promise.all([
+            database.ref(`users/${uid}/projects/${id}/name`)
+            .set(name),
+
+            database.ref(`projects/${id}/name`).set(name)
+        ]).then(()=> {
+            dispatch({
+                type: 'UPDATE_PROJECT_NAME',
+                project
+            });
+        });
+    }
 }
 
 

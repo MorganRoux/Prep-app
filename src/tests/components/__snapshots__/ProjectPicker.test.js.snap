@@ -1,40 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ProjectPicker 1`] = `
-<WithStyles(WithFormControlContext(Select))
-  native={true}
-  onChange={[Function]}
-  value="idp1"
->
-  <option
-    key="option-title-select"
-    value="select"
-  >
-    Selectionner
-  </option>
-  <option
-    key="idp1"
-    value="idp1"
-  >
-    projet1
-  </option>
-  <option
-    key="idp2"
-    value="idp2"
-  >
-    projet2
-  </option>
-  <option
-    key="option-create"
-    value="create"
-  >
-    Créer
-  </option>
-  <option
-    key="option-remove"
-    value="remove"
-  >
-    Supprimer
-  </option>
-</WithStyles(WithFormControlContext(Select))>
+<div>
+  <div>
+    <WithStyles(WithFormControlContext(Select))
+      native={true}
+      onChange={[Function]}
+      value="idp1"
+    >
+      <option
+        key="option-title-select"
+        value="select"
+      >
+        Sélectionner
+      </option>
+      <option
+        key="idp1"
+        value="idp1"
+      >
+        projet1
+      </option>
+      <option
+        key="idp2"
+        value="idp2"
+      >
+        projet2
+      </option>
+    </WithStyles(WithFormControlContext(Select))>
+    <WithStyles(IconButton)
+      aria-label="Delete"
+      className="removeproject"
+      onClick={[Function]}
+    >
+      <WithStyles(Icon)
+        color="primary"
+      >
+        remove_circle
+      </WithStyles(Icon)>
+    </WithStyles(IconButton)>
+    <WithStyles(IconButton)
+      aria-label="Add"
+      className="addproject"
+      onClick={[Function]}
+    >
+      <WithStyles(Icon)
+        color="primary"
+      >
+        add_circle
+      </WithStyles(Icon)>
+    </WithStyles(IconButton)>
+    <WithStyles(IconButton)
+      aria-label="Edit"
+      className="editproject"
+      onClick={[Function]}
+    >
+      <WithStyles(Icon)
+        color="primary"
+      >
+        create
+      </WithStyles(Icon)>
+    </WithStyles(IconButton)>
+  </div>
+</div>
 `;

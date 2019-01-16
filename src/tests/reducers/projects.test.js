@@ -1,5 +1,5 @@
 import projectReducer from '../../reducers/projects';
-import { project } from '../fixtures/projects';
+import { project, project2 } from '../fixtures/projects';
 
 
 test('should set default state', () => {
@@ -70,4 +70,14 @@ test('should empty current project', () => {
     };
     const state = projectReducer(null, action);
     expect(state).toEqual(null);
+});
+
+test('should update project', () => {
+    const name = 'test'
+    const action = {
+        type: 'UPDATE_PROJECT_NAME',
+        project: {...project, name}
+    }
+    const state = projectReducer(project, action);
+    expect(state).toEqual({...project, name})
 });

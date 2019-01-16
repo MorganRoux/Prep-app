@@ -5,20 +5,27 @@ import { project } from '../fixtures/projects'
 import { shallow } from 'enzyme';
 import Select from '@material-ui/core/Select';
 import { setupFirebase } from '../fixtures/firebase';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-let setCurrentProject, startRemoveProject, startCreateProject, noCurrentProject, wrapper;
+const createMockStore = configureMockStore([thunk]);
+
+let setCurrentProject, startRemoveProject, startCreateProject, noCurrentProject, wrapper, updateProjectName;
 
 beforeEach( (done) => {
     setCurrentProject = jest.fn();
     startRemoveProject = jest.fn();
     startCreateProject = jest.fn();
     noCurrentProject = jest.fn();
+    updateProjectName = jest.fn();
     wrapper = shallow(
         <ProjectPicker 
             setCurrentProject={setCurrentProject}
             startRemoveProject={startRemoveProject}
             startCreateProject={startCreateProject}
             noCurrentProject={noCurrentProject}
+            updateProjectName={updateProjectName}
+            projectName={''}
             user={user}
             project={project}
         />);
@@ -64,7 +71,7 @@ test(' should retrieve the project from the database', (done) => {
 });
 
 test('should handle remove selection', () => {
-    wrapper.find(Select).simulate('change', {target:{value: 'remove'}});
+    wrapper.find('.removeproject').simulate('click');
     expect(noCurrentProject).toHaveBeenCalled();
     expect(startRemoveProject).toHaveBeenCalled();
     expect(startCreateProject).not.toHaveBeenCalled();
@@ -72,9 +79,43 @@ test('should handle remove selection', () => {
 });
 
 test('should handle create selection', () => {
-    wrapper.find(Select).simulate('change', {target:{value: 'create'}});
+    wrapper.find('.addproject').simulate('click');
     expect(setCurrentProject).not.toHaveBeenCalled()
     expect(startRemoveProject).not.toHaveBeenCalled();
     expect(startCreateProject).toHaveBeenCalled();
 })
 
+test('onEditName', () => {
+    const store = createMockStore({user});
+    const name = 'test'
+    const projectData = {...project, name}
+    wrapper.find('.editproject').simulate('click');
+    wrapper.find('.projectname').simulate('change',{ target:{value: name} });
+    wrapper.find('form').simulate('submit', {preventDefault: () => {}});
+    expect(updateProjectName).toHaveBeenCalledWith(projectData);
+});
+
+test('onChangeEditName', () => {
+    const store = createMockStore({user});
+    wrapper.find('.editproject').simulate('click');
+    const value = 'test';
+     wrapper.find('.projectname').simulate('change', { 
+         target: {value }
+     });
+     expect(wrapper.state('projectName')).toBe(value);
+
+    
+});
+
+test('onEditClose', () => {
+    const store = createMockStore({user});
+    wrapper.find('.editproject').simulate('click');
+    wrapper.find('form').simulate('reset', { preventDefault: () => {} });
+    expect(wrapper.state('projectName')).toBe('');
+});
+
+test('onEditOpen', () => {
+    const store = createMockStore({user, project});
+    wrapper.find('.editproject').simulate('click');
+    expect(wrapper.state('projectName')).toBe(store.getState().project.name);
+});

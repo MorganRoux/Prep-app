@@ -6,7 +6,8 @@ import {
     removeProject, 
     setProjectData, 
     startFetchProjectData, 
-    startRemoveProject 
+    startRemoveProject, 
+    updateProjectName
 } from '../../actions/projects';
 import { project } from '../fixtures/projects';
 import user from '../fixtures/user';
@@ -191,4 +192,27 @@ test('should create project in the database and pass the action to the reducer',
     });
 });
 
-    
+test('should update project in the database and pass the action to the reducer', (done) => {
+    const store = createMockStore({user, project});
+    const name = 'test';
+
+    store.dispatch(updateProjectName({...project, name})).then(() => {
+        const action = store.getActions()[0];
+        expect(action).toEqual({
+            type: 'UPDATE_PROJECT_NAME',
+            project: {...project, name}
+        });
+
+        return Promise.all ([
+            database.ref(`users/${user.uid}/projects/idp1/name`).once('value')
+            .then((snapshot) => {
+                expect(snapshot.val()).toBe(name);
+            }),
+            database.ref(`projects/idp1/name`).once('value')
+            .then((snapshot) => {
+                expect(snapshot.val()).toBe(name)
+            })
+        ]).then(()=>done()); 
+    });
+});
+
